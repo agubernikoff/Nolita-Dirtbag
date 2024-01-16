@@ -9,14 +9,16 @@ export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   return (
     <header className="header">
-      <NavLink prefetch="intent" to="/" style={activeLinkStyle} end>
-        <strong>{shop.name}</strong>
-      </NavLink>
-      <HeaderMenu
-        menu={menu}
-        viewport="desktop"
-        primaryDomainUrl={header.shop.primaryDomain.url}
-      />
+      <strong
+        style={{
+          color: 'black',
+          textAlign: 'center',
+          padding: '15px',
+          backgroundColor: 'white',
+        }}
+      >
+        {shop.name}
+      </strong>
       <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
     </header>
   );
@@ -86,14 +88,21 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
  */
 function HeaderCtas({isLoggedIn, cart}) {
   return (
-    <nav className="header-ctas" role="navigation">
+    <div className="header-ctas">
       <HeaderMenuMobileToggle />
-      <NavLink prefetch="intent" to="/account" style={activeLinkStyle}>
-        {isLoggedIn ? 'Account' : 'Sign in'}
-      </NavLink>
-      <SearchToggle />
-      <CartToggle cart={cart} />
-    </nav>
+      <div className="header-section-hold">
+        <p>Instagram</p>
+      </div>
+      <div className="header-section-hold">
+        <p>Newsletter</p>
+      </div>
+      <div className="header-section-hold">
+        <p>Information</p>
+      </div>
+      <div className="header-section-hold">
+        <p>Bag [0]</p>
+      </div>
+    </div>
   );
 }
 
