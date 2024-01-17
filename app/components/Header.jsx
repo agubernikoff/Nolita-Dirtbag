@@ -1,5 +1,5 @@
 import {Await, NavLink} from '@remix-run/react';
-import {Suspense} from 'react';
+import {Suspense, useState} from 'react';
 import {useRootLoaderData} from '~/root';
 
 /**
@@ -87,20 +87,68 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
  * @param {Pick<HeaderProps, 'isLoggedIn' | 'cart'>}
  */
 function HeaderCtas({isLoggedIn, cart}) {
+  const [activeDropdown, setActiveDropdown] = useState(null);
+  const [dropdownWidth, setDropdownWidth] = useState('auto');
+
+  const handleMouseEnter = (section) => {
+    setActiveDropdown(section);
+    setDropdownWidth(`${document.querySelector('.header-ctas').offsetWidth}px`);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveDropdown(null);
+    setDropdownWidth('auto');
+  };
   return (
     <div className="header-ctas">
       <HeaderMenuMobileToggle />
-      <div className="header-section-hold">
+      <div
+        className="header-section-hold"
+        onMouseEnter={() => handleMouseEnter('instagram')}
+        onMouseLeave={handleMouseLeave}
+      >
         <p>Instagram</p>
+        {activeDropdown === 'instagram' && (
+          <div className="dropdown-content" style={{width: dropdownWidth}}>
+            <p>Dropdown Content</p>
+          </div>
+        )}
       </div>
-      <div className="header-section-hold">
+      <div
+        className="header-section-hold"
+        onMouseEnter={() => handleMouseEnter('newsletter')}
+        onMouseLeave={handleMouseLeave}
+      >
         <p>Newsletter</p>
+        {activeDropdown === 'newsletter' && (
+          <div className="dropdown-content" style={{width: dropdownWidth}}>
+            <p>newsletter Dropdown Content</p>
+          </div>
+        )}
       </div>
-      <div className="header-section-hold">
+      <div
+        className="header-section-hold"
+        onMouseEnter={() => handleMouseEnter('information')}
+        onMouseLeave={handleMouseLeave}
+      >
         <p>Information</p>
+        {activeDropdown === 'information' && (
+          <div className="dropdown-content" style={{width: dropdownWidth}}>
+            <p>info Dropdown Content</p>
+          </div>
+        )}
       </div>
-      <div className="header-section-hold">
+      <div
+        className="header-section-hold"
+        onMouseEnter={() => handleMouseEnter('bag')}
+        onMouseLeave={handleMouseLeave}
+      >
         <p>Bag [0]</p>
+        {activeDropdown === 'bag' && (
+          <div className="dropdown-content" style={{width: dropdownWidth}}>
+            <p>bag Dropdown Content</p>
+          </div>
+        )}
       </div>
     </div>
   );

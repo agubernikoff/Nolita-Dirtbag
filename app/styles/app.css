@@ -141,7 +141,6 @@ aside li {
   top: 0;
   z-index: 1;
   justify-content: space-between;
-  width: 95%;
 }
 
 .header-menu-mobile-toggle {
@@ -173,6 +172,7 @@ aside li {
 .header-ctas {
   align-items: center;
   display: flex;
+  position: relative;
 }
 
 .header-section-hold {
@@ -180,7 +180,26 @@ aside li {
   text-align: center;
   padding: 15px;
   background-color: white;
+  position: relative;
 }
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  z-index: 1;
+  width: 100%;
+}
+
+.header-section-hold:hover .dropdown-content,
+.header-ctas:hover .dropdown-content {
+  display: block;
+}
+
 /*
 * --------------------------------------------------
 * components/Footer
