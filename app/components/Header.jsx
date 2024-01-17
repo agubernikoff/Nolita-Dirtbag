@@ -138,21 +138,21 @@ function HeaderCtas({isLoggedIn, cart}) {
       )}
       {activeDropdown === 'newsletter' && (
         <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content" onMouseLeave={handleMouseLeave}>
+          <div className="dropdown-content">
             <p>newsletter Dropdown Content</p>
           </div>
         </div>
       )}
       {activeDropdown === 'information' && (
         <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content" onMouseLeave={handleMouseLeave}>
+          <div className="dropdown-content">
             <p>info Dropdown Content</p>
           </div>
         </div>
       )}
       {activeDropdown === 'bag' && (
         <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content" onMouseLeave={handleMouseLeave}>
+          <div className="dropdown-content">
             <p>bag Dropdown Content</p>
           </div>
         </div>
