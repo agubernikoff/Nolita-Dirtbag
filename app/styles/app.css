@@ -181,12 +181,14 @@ aside li {
   background-color: white;
   padding: 1rem;
 }
-
-.dropdown-content {
+.dropdown-container {
   position: absolute;
-  top: 110%;
+  top: 100%;
   left: 0;
   right: 0;
+}
+.dropdown-content {
+  margin-top: 1rem;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;

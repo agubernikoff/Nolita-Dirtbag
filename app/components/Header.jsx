@@ -97,7 +97,7 @@ function HeaderCtas({isLoggedIn, cart}) {
     setActiveDropdown(null);
   };
   return (
-    <div className="header-ctas-container" onMouseLeave={handleMouseLeave}>
+    <div className="header-ctas-container">
       <div className="header-ctas">
         <HeaderMenuMobileToggle />
         <p
@@ -130,23 +130,31 @@ function HeaderCtas({isLoggedIn, cart}) {
         </p>
       </div>
       {activeDropdown === 'instagram' && (
-        <div className="dropdown-content">
-          <p>Dropdown Content</p>
+        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
+          <div className="dropdown-content">
+            <p>Dropdown Content</p>
+          </div>
         </div>
       )}
       {activeDropdown === 'newsletter' && (
-        <div className="dropdown-content">
-          <p>newsletter Dropdown Content</p>
+        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
+          <div className="dropdown-content" onMouseLeave={handleMouseLeave}>
+            <p>newsletter Dropdown Content</p>
+          </div>
         </div>
       )}
       {activeDropdown === 'information' && (
-        <div className="dropdown-content">
-          <p>info Dropdown Content</p>
+        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
+          <div className="dropdown-content" onMouseLeave={handleMouseLeave}>
+            <p>info Dropdown Content</p>
+          </div>
         </div>
       )}
       {activeDropdown === 'bag' && (
-        <div className="dropdown-content">
-          <p>bag Dropdown Content</p>
+        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
+          <div className="dropdown-content" onMouseLeave={handleMouseLeave}>
+            <p>bag Dropdown Content</p>
+          </div>
         </div>
       )}
     </div>
