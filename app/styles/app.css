@@ -168,11 +168,12 @@ aside li {
 .header-menu-item {
   cursor: pointer;
 }
-
+.header-ctas-container {
+  position: relative;
+}
 .header-ctas {
   align-items: center;
   display: flex;
-  position: relative;
 }
 
 .header-section-hold {
@@ -184,7 +185,7 @@ aside li {
 }
 
 .dropdown-content {
-  display: none;
+  /* display: none; */
   position: absolute;
   top: 100%;
   left: 0;
@@ -192,7 +193,6 @@ aside li {
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;
-  width: 100%;
 }
 
 .header-section-hold:hover .dropdown-content,
