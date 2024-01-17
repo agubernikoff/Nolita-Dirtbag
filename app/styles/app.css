@@ -174,25 +174,23 @@ aside li {
 .header-ctas {
   align-items: center;
   display: flex;
+  /* padding: 2%; */
 }
 
 .header-section-hold {
-  flex: 1;
-  text-align: center;
-  padding: 15px;
   background-color: white;
-  position: relative;
+  padding: 1rem;
 }
 
 .dropdown-content {
-  /* display: none; */
   position: absolute;
-  top: 100%;
+  top: 110%;
   left: 0;
   right: 0;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;
+  padding: 1rem;
 }
 
 .header-section-hold:hover .dropdown-content,

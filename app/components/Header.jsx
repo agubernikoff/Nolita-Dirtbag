@@ -13,7 +13,7 @@ export function Header({header, isLoggedIn, cart}) {
         style={{
           color: 'black',
           textAlign: 'center',
-          padding: '15px',
+          padding: '1rem',
           backgroundColor: 'white',
         }}
       >
@@ -97,37 +97,37 @@ function HeaderCtas({isLoggedIn, cart}) {
     setActiveDropdown(null);
   };
   return (
-    <div className="header-ctas-container">
+    <div className="header-ctas-container" onMouseLeave={handleMouseLeave}>
       <div className="header-ctas">
         <HeaderMenuMobileToggle />
-        <div
+        <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('instagram')}
-          onMouseLeave={handleMouseLeave}
+          // onMouseLeave={handleMouseLeave}
         >
-          <p>Instagram</p>
-        </div>
-        <div
+          Instagram
+        </p>
+        <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('newsletter')}
-          onMouseLeave={handleMouseLeave}
+          // onMouseLeave={handleMouseLeave}
         >
-          <p>Newsletter</p>
-        </div>
-        <div
+          Newsletter
+        </p>
+        <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('information')}
-          onMouseLeave={handleMouseLeave}
+          // onMouseLeave={handleMouseLeave}
         >
-          <p>Information</p>
-        </div>
-        <div
+          Information
+        </p>
+        <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('bag')}
-          onMouseLeave={handleMouseLeave}
+          // onMouseLeave={handleMouseLeave}
         >
-          <p>Bag [0]</p>
-        </div>
+          Bag [0]
+        </p>
       </div>
       {activeDropdown === 'instagram' && (
         <div className="dropdown-content">
