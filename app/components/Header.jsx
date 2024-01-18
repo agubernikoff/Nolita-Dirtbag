@@ -1,6 +1,7 @@
 import {Await, NavLink} from '@remix-run/react';
 import {Suspense, useState} from 'react';
 import {useRootLoaderData} from '~/root';
+import Meme_Sequence from '../../public/Meme_Sequence.mp4';
 
 /**
  * @param {HeaderProps}
@@ -103,28 +104,24 @@ function HeaderCtas({isLoggedIn, cart}) {
         <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('instagram')}
-          // onMouseLeave={handleMouseLeave}
         >
           Instagram
         </p>
         <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('newsletter')}
-          // onMouseLeave={handleMouseLeave}
         >
           Newsletter
         </p>
         <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('information')}
-          // onMouseLeave={handleMouseLeave}
         >
           Information
         </p>
         <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('bag')}
-          // onMouseLeave={handleMouseLeave}
         >
           Bag [0]
         </p>
@@ -132,15 +129,23 @@ function HeaderCtas({isLoggedIn, cart}) {
       {activeDropdown === 'instagram' && (
         <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
           <div className="dropdown-content">
-            <p>Dropdown Content</p>
+            <li>INSTAGRAM</li>
+            <video
+              width="auto"
+              height="auto"
+              style={{width: '100%'}}
+              autoPlay
+              loop
+            >
+              <source src={Meme_Sequence} type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
           </div>
         </div>
       )}
       {activeDropdown === 'newsletter' && (
         <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content">
-            <p>newsletter Dropdown Content</p>
-          </div>
+          <div className="dropdown-content"></div>
         </div>
       )}
       {activeDropdown === 'information' && (
