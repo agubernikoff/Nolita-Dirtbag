@@ -1,4 +1,5 @@
 import {Await, NavLink} from '@remix-run/react';
+import {Info} from 'node_modules/property-information/lib/util/info';
 import {Suspense, useState} from 'react';
 import {useRootLoaderData} from '~/root';
 import Meme_Sequence from '../../public/Meme_Sequence.mp4';
@@ -145,14 +146,18 @@ function HeaderCtas({isLoggedIn, cart}) {
       )}
       {activeDropdown === 'newsletter' && (
         <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content"></div>
+          <div className="dropdown-content">
+            <li>NEWSLETTER</li>
+            <form className="newsletter-input-container">
+              <input placeholder="Email Address" name="email"></input>
+              <button type="submit">Submit</button>
+            </form>
+          </div>
         </div>
       )}
       {activeDropdown === 'information' && (
         <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content">
-            <p>info Dropdown Content</p>
-          </div>
+          <InformationTab />
         </div>
       )}
       {activeDropdown === 'bag' && (
@@ -165,7 +170,75 @@ function HeaderCtas({isLoggedIn, cart}) {
     </div>
   );
 }
+function InformationTab() {
+  const [toDisplay, setToDisplay] = useState('Information');
+  switch (toDisplay) {
+    case 'Information':
+      return <Information setToDisplay={setToDisplay} />;
+    case 'Terms of Service':
+      return <TermsOfService setToDisplay={setToDisplay} />;
+    case 'Privacy Policy':
+      return <PrivacyPolicy setToDisplay={setToDisplay} />;
+    case 'Shipping and Returns':
+      return <ShippingAndReturns setToDisplay={setToDisplay} />;
+  }
+}
 
+function Information({setToDisplay}) {
+  return (
+    <div className="dropdown-content">
+      <li>INFORMATION</li>
+      <img />
+      <p></p>
+      <li>SUPPORT</li>
+      <div>
+        <p onClick={(e) => setToDisplay(e.target.innerText)}>
+          Terms of Service
+        </p>
+        <p onClick={(e) => setToDisplay(e.target.innerText)}>Privacy Policy</p>
+        <p onClick={(e) => setToDisplay(e.target.innerText)}>
+          Shipping and Returns
+        </p>
+      </div>
+      <li>CONTACT</li>
+      <p>team@nolitadirtbag.com</p>
+      <li>CREDITS</li>
+      <p>© Nolita Dirtbag 2024,</p>
+      <p>All Rights Reserved</p>
+      <a
+        href="https://www.swallstudios.com/"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        Site Credit
+      </a>
+    </div>
+  );
+}
+function TermsOfService({setToDisplay}) {
+  return (
+    <div className="dropdown-content">
+      <button onClick={() => setToDisplay('Information')}>Back</button>
+      <li>TERMS OF SERVICE</li>
+    </div>
+  );
+}
+function ShippingAndReturns({setToDisplay}) {
+  return (
+    <div className="dropdown-content">
+      <button onClick={() => setToDisplay('Information')}>Back</button>
+      <li>SHIPPING AND RETURNS</li>
+    </div>
+  );
+}
+function PrivacyPolicy({setToDisplay}) {
+  return (
+    <div className="dropdown-content">
+      <button onClick={() => setToDisplay('Information')}>Back</button>
+      <li>PRIVACY POLICY</li>
+    </div>
+  );
+}
 function HeaderMenuMobileToggle() {
   return (
     <a className="header-menu-mobile-toggle" href="#mobile-menu-aside">

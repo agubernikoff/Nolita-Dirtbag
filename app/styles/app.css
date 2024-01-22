@@ -200,6 +200,28 @@ aside li {
   display: block;
 }
 
+.newsletter-input-container {
+  width: 100%;
+  border-bottom: 1px solid black;
+  display: flex;
+  justify-content: space-between;
+}
+.newsletter-input-container > input {
+  width: 80%;
+  border: none;
+  outline: none;
+  margin-bottom: 0.5%;
+}
+.newsletter-input-container > button {
+  white-space: nowrap;
+  cursor: pointer;
+  background: none;
+  color: black;
+  border: none;
+  padding: 0%;
+  width: fit-content;
+}
+
 /*
 * --------------------------------------------------
 * components/Footer
