@@ -187,12 +187,24 @@ aside li {
   left: 0;
   right: 0;
 }
+.dropdown-content > li {
+  list-style: none;
+}
 .dropdown-content {
   margin-top: 1rem;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;
-  padding: 1rem;
+  padding: 0.75rem;
+  padding-top: 0.2rem;
+}
+.dropdown-content > li::before {
+  content: '\25a0';
+  font-size: 1.85em;
+  display: inline-block;
+  width: 0.75em;
+  margin-right: 0;
+  vertical-align: sub;
 }
 
 .header-section-hold:hover .dropdown-content,
@@ -202,24 +214,34 @@ aside li {
 
 .newsletter-input-container {
   width: 100%;
-  border-bottom: 1px solid black;
+  border-bottom: 2px solid black;
   display: flex;
   justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
+
 .newsletter-input-container > input {
-  width: 80%;
+  width: 70%;
   border: none;
   outline: none;
-  margin-bottom: 0.5%;
+  font-family: 'nolita-font';
+  margin: 0;
+  padding: 0;
+  font-size: 0.9rem;
 }
+
 .newsletter-input-container > button {
   white-space: nowrap;
   cursor: pointer;
   background: none;
   color: black;
   border: none;
-  padding: 0%;
+  padding: 0;
   width: fit-content;
+  font-family: 'nolita-font';
+  font-size: 0.9rem;
 }
 
 /*
