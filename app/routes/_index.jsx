@@ -66,27 +66,20 @@ export default function Homepage() {
 function AllProducts({products}) {
   return (
     <div className="recommended-products">
-      <h2>Recommended Products</h2>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products-grid">
+            <div className="recommended-products-container">
               {products.edges.map((product) => (
-                <div>
-                  <Link
-                    key={product.id}
-                    className="recommended-product"
-                    to={`/products/${product.handle}`}
-                  >
-                    <Image
-                      src={product.node.images.edges[0].node.url}
-                      aspectRatio="1/1"
-                      sizes="(min-width: 45em) 20vw, 50vw"
-                    />
-                  </Link>
+                <div className="product-container">
+                  <Image
+                    src={product.node.images.edges[0].node.url}
+                    aspectRatio="1/1"
+                    sizes="(min-width: 45em) 20vw, 50vw"
+                  />
                   <div className="product-interaction-container">
                     <div className="product-details">details box</div>
-                    {product.node.images == 0 ? (
+                    {product.node.images ? (
                       <div className="product-cart-container">
                         <div className="product-cart-sizing">
                           sizing hehe click an option
