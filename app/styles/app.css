@@ -417,11 +417,18 @@ aside li {
   display: flex;
   height: 100vh;
   align-items: flex-end;
+  justify-content: center;
+  width: 40vw;
+}
+
+.product-container:hover {
+  outline: 1px solid grey;
 }
 
 .product-container > img {
   height: auto;
-  width: 40vw !important;
+  width: 55% !important;
+  margin: 0 auto;
 }
 
 /*
@@ -444,7 +451,7 @@ aside li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   position: absolute;
   bottom: 5%;
 }
