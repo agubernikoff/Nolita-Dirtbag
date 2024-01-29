@@ -72,21 +72,41 @@ function AllProducts({products}) {
           {({products}) => (
             <div className="recommended-products-grid">
               {products.edges.map((product) => (
-                <Link
-                  key={product.id}
-                  className="recommended-product"
-                  to={`/products/${product.handle}`}
-                >
-                  <Image
-                    src={product.node.images.edges[0].node.url}
-                    aspectRatio="1/1"
-                    sizes="(min-width: 45em) 20vw, 50vw"
-                  />
-                  <h4>{product.node.title}</h4>
-                  <small>
-                    <Money data={product.node.priceRange.minVariantPrice} />
-                  </small>
-                </Link>
+                <div>
+                  <Link
+                    key={product.id}
+                    className="recommended-product"
+                    to={`/products/${product.handle}`}
+                  >
+                    <Image
+                      src={product.node.images.edges[0].node.url}
+                      aspectRatio="1/1"
+                      sizes="(min-width: 45em) 20vw, 50vw"
+                    />
+                  </Link>
+                  <div className="product-interaction-container">
+                    <div className="product-details">details box</div>
+                    {product.node.images == 0 ? (
+                      <div className="product-cart-container">
+                        <div className="product-cart-sizing">
+                          sizing hehe click an option
+                        </div>
+                        <div className="product-cart-add-cart">
+                          <button>Add to bag</button>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="product-cart-soldout">
+                        <p>Sold Out</p>
+                      </div>
+                    )}
+
+                    {/* <h4>{product.node.title}</h4>
+                    <small>
+                      <Money data={product.node.priceRange.minVariantPrice} />
+                    </small> */}
+                  </div>
+                </div>
               ))}
             </div>
           )}

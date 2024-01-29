@@ -423,6 +423,46 @@ aside li {
   height: auto;
 }
 
+.product-interaction-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+}
+.product-details {
+  width: 45%;
+  background-color: white;
+  padding: 4%;
+}
+.product-cart-container {
+  display: flex;
+  width: 45%;
+}
+.product-cart-sizing {
+  width: 60%;
+  background-color: white;
+  padding: 4%;
+}
+.product-cart-add-cart {
+  background-color: black;
+  border: 1px solid white;
+  /* padding: 3%; */
+  width: 40%;
+  margin-left: 1.5%;
+  padding: 4%;
+}
+.product-cart-add-cart > button {
+  background-color: transparent;
+  color: white;
+  border: none;
+  font-family: 'nolita-font';
+}
+.product-cart-soldout {
+  width: 45%;
+  background-color: rgb(184, 184, 184);
+  color: white;
+}
+
 /*
 * --------------------------------------------------
 * routes/collections.$handle.tsx
