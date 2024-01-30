@@ -143,6 +143,7 @@ aside li {
   z-index: 1;
   justify-content: space-between;
   width: 96vw;
+  font-size: 0.75rem;
 }
 
 .header-menu-mobile-toggle {
@@ -182,6 +183,7 @@ aside li {
 .header-section-hold {
   background-color: white;
   padding: 1rem;
+  font-size: 0.75rem;
 }
 .dropdown-container {
   position: absolute;
@@ -409,7 +411,7 @@ aside li {
 
 .recommended-products-container {
   display: flex;
-  gap: 1.5rem;
+  /* gap: 1.5rem; */
 }
 
 .product-container {
@@ -454,34 +456,47 @@ aside li {
   width: 90%;
   position: absolute;
   bottom: 5%;
+  font-size: 0.75rem !important;
+}
+.product-interaction-container > p {
+  font-size: 0.75rem !important;
 }
 .product-details {
-  width: 45%;
+  width: 49.5%;
   background-color: white;
-  padding: 4%;
+  height: 60px;
+}
+.product-details > p {
+  font-size: 0.75rem !important;
 }
 .product-cart-container {
   display: flex;
-  width: 45%;
+  width: 49.5%;
 }
 .product-cart-sizing {
-  width: 60%;
+  width: 70%;
   background-color: white;
-  padding: 4%;
+  height: 60px;
 }
+.product-cart-sizing > p,
+button {
+  font-size: 0.75rem !important;
+}
+
 .product-cart-add-cart {
   background-color: black;
   border: 1px solid white;
   /* padding: 3%; */
-  width: 40%;
-  margin-left: 1.5%;
-  padding: 4%;
+  width: 30%;
+  margin-left: 2%;
+  height: 60px;
 }
 .product-cart-add-cart > button {
   background-color: transparent;
   color: white;
   border: none;
   font-family: 'nolita-font';
+  font-size: 0.75rem;
 }
 .product-cart-soldout {
   width: 45%;
