@@ -195,7 +195,7 @@ aside li {
   list-style: none;
 }
 .dropdown-content {
-  margin-top: 1rem;
+  margin-top: 0.5rem;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;
