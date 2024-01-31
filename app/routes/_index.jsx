@@ -1,6 +1,6 @@
 import {defer} from '@shopify/remix-oxygen';
-import {Await, useLoaderData, Link} from '@remix-run/react';
-import {Suspense} from 'react';
+import {Await, useLoaderData} from '@remix-run/react';
+import {Suspense, useState} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 
 /**
@@ -71,64 +71,118 @@ function AllProducts({products}) {
           {({products}) => (
             <div className="recommended-products-container">
               {products.edges.map((product) => (
-                <div className="product-container">
-                  <Image
-                    src={product.node.images.edges[0].node.url}
-                    aspectRatio="1/1"
-                    sizes="(min-width: 45em) 20vw, 50vw"
-                  />
-                  <div className="product-interaction-container">
-                    <div className="product-details">
-                      <div className="product-details-container">
-                        <p className="font-size">{product.node.title}</p>
-                        <p className="font-size">
-                          <Money
-                            data={product.node.priceRange.minVariantPrice}
-                          />
-                        </p>
-                        <p className="font-size-details">Details +</p>
-                      </div>
-                    </div>
-                    {product.node.images ? (
-                      <div className="product-cart-container">
-                        <div className="product-cart-sizing">
-                          <div className="product-cart-sizing-container">
-                            <p className="font-size">Size:</p>
-                            <div className="product-size-button-container">
-                              <button className="product-size-button">S</button>
-                              <button className="product-size-button">M</button>
-                              <button className="product-size-button">L</button>
-                              <button className="product-size-button">
-                                XL
-                              </button>
-                              <button className="product-size-button">
-                                XXL
-                              </button>
-                            </div>
-                          </div>
-                        </div>
-                        <div className="product-cart-add-cart">
-                          <button>Add to bag</button>
-                        </div>
-                      </div>
-                    ) : (
-                      <div className="product-cart-soldout">
-                        <p>Sold Out</p>
-                      </div>
-                    )}
-
-                    {/* <h4>{product.node.title}</h4>
-                    <small>
-                      <Money data={product.node.priceRange.minVariantPrice} />
-                    </small> */}
-                  </div>
-                </div>
+                <Product product={product} key={product.node.id} />
               ))}
             </div>
           )}
         </Await>
       </Suspense>
       <br />
+    </div>
+  );
+}
+
+function Product({product}) {
+  const [size, setSize] = useState();
+
+  function handleSizeButtonClick(e) {
+    if (size === e.target.innerText) {
+      setSize();
+    } else {
+      setSize(e.target.innerText);
+    }
+  }
+  return (
+    <div className="product-container">
+      <Image
+        src={product.node.images.edges[0].node.url}
+        aspectRatio="1/1"
+        sizes="(min-width: 45em) 20vw, 50vw"
+      />
+      <div className="product-interaction-container">
+        <div className="product-details">
+          <div className="product-details-container">
+            <p className="font-size">{product.node.title}</p>
+            <p className="font-size">
+              <Money data={product.node.priceRange.minVariantPrice} />
+            </p>
+            <p className="font-size-details">Details +</p>
+          </div>
+        </div>
+        {product.node.images ? (
+          <div className="product-cart-container">
+            <div className="product-cart-sizing">
+              <div className="product-cart-sizing-container">
+                <p className="font-size">Size:</p>
+                <div className="product-size-button-container">
+                  <button
+                    onClick={(e) => handleSizeButtonClick(e)}
+                    className={
+                      size === 'S'
+                        ? 'product-size-button size-button-selected'
+                        : 'product-size-button'
+                    }
+                  >
+                    S
+                  </button>
+                  <button
+                    onClick={(e) => handleSizeButtonClick(e)}
+                    className={
+                      size === 'M'
+                        ? 'product-size-button size-button-selected'
+                        : 'product-size-button'
+                    }
+                  >
+                    M
+                  </button>
+                  <button
+                    onClick={(e) => handleSizeButtonClick(e)}
+                    className={
+                      size === 'L'
+                        ? 'product-size-button size-button-selected'
+                        : 'product-size-button'
+                    }
+                  >
+                    L
+                  </button>
+                  <button
+                    onClick={(e) => handleSizeButtonClick(e)}
+                    className={
+                      size === 'XL'
+                        ? 'product-size-button size-button-selected'
+                        : 'product-size-button'
+                    }
+                  >
+                    XL
+                  </button>
+                  <button
+                    onClick={(e) => handleSizeButtonClick(e)}
+                    className={
+                      size === 'XXL'
+                        ? 'product-size-button size-button-selected'
+                        : 'product-size-button'
+                    }
+                  >
+                    XXL
+                  </button>
+                </div>
+              </div>
+            </div>
+            <div className="product-cart-add-cart">
+              <button>Add to bag</button>
+            </div>
+          </div>
+        ) : (
+          <div className="product-cart-soldout">
+            <p>Sold Out</p>
+          </div>
+        )}
+
+        {/* <h4>{product.node.title}</h4>
+      <small>
+        <Money data={product.node.priceRange.minVariantPrice} />
+      </small> */}
+      </div>
     </div>
   );
 }

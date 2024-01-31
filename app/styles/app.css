@@ -549,6 +549,10 @@ button {
   margin: 0;
   cursor: pointer;
 }
+.size-button-selected {
+  background-color: black;
+  color: white;
+}
 /*
 * --------------------------------------------------
 * routes/collections.$handle.tsx
