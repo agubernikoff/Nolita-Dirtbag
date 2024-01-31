@@ -79,22 +79,32 @@ function AllProducts({products}) {
                   />
                   <div className="product-interaction-container">
                     <div className="product-details">
-                      <p>{product.node.title}</p>
-                      <p>
-                        <Money data={product.node.priceRange.minVariantPrice} />
-                      </p>
-                      <p>Details +</p>
+                      <div className="product-details-container">
+                        <p className="font-size">{product.node.title}</p>
+                        <p className="font-size">
+                          <Money
+                            data={product.node.priceRange.minVariantPrice}
+                          />
+                        </p>
+                        <p className="font-size-details">Details +</p>
+                      </div>
                     </div>
                     {product.node.images ? (
                       <div className="product-cart-container">
                         <div className="product-cart-sizing">
-                          <p>Size:</p>
-                          <div className="product-size-button-container">
-                            <button className="product-size-button">S</button>
-                            <button className="product-size-button">M</button>
-                            <button className="product-size-button">L</button>
-                            <button className="product-size-button">XL</button>
-                            <button className="product-size-button">XXL</button>
+                          <div className="product-cart-sizing-container">
+                            <p className="font-size">Size:</p>
+                            <div className="product-size-button-container">
+                              <button className="product-size-button">S</button>
+                              <button className="product-size-button">M</button>
+                              <button className="product-size-button">L</button>
+                              <button className="product-size-button">
+                                XL
+                              </button>
+                              <button className="product-size-button">
+                                XXL
+                              </button>
+                            </div>
                           </div>
                         </div>
                         <div className="product-cart-add-cart">

@@ -143,7 +143,7 @@ aside li {
   z-index: 1;
   justify-content: space-between;
   width: 96vw;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 
 .header-menu-mobile-toggle {
@@ -183,7 +183,7 @@ aside li {
 .header-section-hold {
   background-color: white;
   padding: 1rem;
-  font-size: 0.75rem;
+  font-size: 0.65rem;
 }
 .dropdown-container {
   position: absolute;
@@ -233,7 +233,7 @@ aside li {
   font-family: 'nolita-font';
   margin: 0;
   padding: 0;
-  font-size: 0.9rem;
+  font-size: 0.65rem;
 }
 
 .newsletter-input-container > button {
@@ -245,7 +245,7 @@ aside li {
   padding: 0;
   width: fit-content;
   font-family: 'nolita-font';
-  font-size: 0.9rem;
+  font-size: 0.65rem;
 }
 
 /*
@@ -456,18 +456,28 @@ aside li {
   width: 90%;
   position: absolute;
   bottom: 5%;
-  font-size: 0.75rem !important;
+  font-size: 0.65rem !important;
 }
 .product-interaction-container > p {
-  font-size: 0.75rem !important;
+  font-size: 0.65rem !important;
 }
 .product-details {
   width: 49.5%;
   background-color: white;
-  height: 60px;
+  height: 75px;
 }
-.product-details > p {
-  font-size: 0.75rem !important;
+.product-details-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 4%;
+  margin-left: 3%;
+}
+.product-details-container > p {
+  margin: 0;
+}
+.font-size-details {
+  font-size: 0.65rem;
+  padding-top: 3%;
 }
 .product-cart-container {
   display: flex;
@@ -476,11 +486,11 @@ aside li {
 .product-cart-sizing {
   width: 70%;
   background-color: white;
-  height: 60px;
+  height: 75px;
 }
 .product-cart-sizing > p,
 button {
-  font-size: 0.75rem !important;
+  font-size: 0.65rem !important;
 }
 
 .product-cart-add-cart {
@@ -489,21 +499,54 @@ button {
   /* padding: 3%; */
   width: 30%;
   margin-left: 2%;
-  height: 60px;
+  height: 73px;
 }
 .product-cart-add-cart > button {
   background-color: transparent;
   color: white;
   border: none;
   font-family: 'nolita-font';
-  font-size: 0.75rem;
+  font-size: 0.65rem;
+  margin-top: 8%;
+  padding-left: 8%;
 }
 .product-cart-soldout {
-  width: 45%;
+  width: 49.5%;
   background-color: rgb(184, 184, 184);
   color: white;
+  height: 75px;
 }
-
+.product-cart-soldout > p {
+  font-size: 0.65rem;
+  padding-top: 4%;
+  padding-left: 4%;
+}
+.product-cart-sizing-container {
+  margin-left: 4%;
+  margin-top: 4%;
+  margin-right: 4%;
+}
+.product-size-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+}
+.font-size {
+  font-size: 0.65rem !important;
+  margin-bottom: 2%;
+}
+.product-size-button {
+  background-color: white;
+  border: 1px solid black;
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  font-family: 'nolita-font';
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+}
 /*
 * --------------------------------------------------
 * routes/collections.$handle.tsx
