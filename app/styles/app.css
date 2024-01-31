@@ -204,7 +204,7 @@ aside li {
 }
 .dropdown-content > li::before {
   content: '\25a0';
-  font-size: 1.85em;
+  font-size: 2em;
   display: inline-block;
   width: 0.75em;
   margin-right: 0;
