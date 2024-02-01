@@ -1,7 +1,10 @@
 import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData} from '@remix-run/react';
-import {Suspense, useState} from 'react';
+import {Suspense, useState, useRef} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
+import {motion, useAnimate} from 'framer-motion';
+import useMeasure from 'react-use-measure';
+import {useEffect} from 'react';
 
 /**
  * @type {MetaFunction}
@@ -84,6 +87,7 @@ function AllProducts({products}) {
 
 function Product({product}) {
   const [size, setSize] = useState();
+  const [expandDetails, setExpandDetails] = useState(false);
 
   function handleSizeButtonClick(e) {
     if (size === e.target.innerText) {
@@ -92,6 +96,16 @@ function Product({product}) {
       setSize(e.target.innerText);
     }
   }
+  let [productDetails, {height}] = useMeasure();
+  const [scope, animate] = useAnimate();
+
+  function handleExpandDetailsClick() {
+    setExpandDetails(!expandDetails);
+  }
+
+  useEffect(() => {
+    animate(scope.current, {height: height + 10});
+  }, [animate, scope, height]);
   return (
     <div className="product-container">
       <Image
@@ -100,16 +114,45 @@ function Product({product}) {
         sizes="(min-width: 45em) 20vw, 50vw"
       />
       <div className="product-interaction-container">
-        <div className="product-details">
-          <div className="product-details-container">
+        <motion.div
+          className="product-details"
+          onClick={handleExpandDetailsClick}
+          ref={scope}
+        >
+          <div className="product-details-container" ref={productDetails}>
             <p className="font-size">{product.node.title}</p>
             <Money
               data={product.node.priceRange.minVariantPrice}
               className="font-size"
             />
-            <p className="font-size-details">Details +</p>
+            <div>
+              {expandDetails ? (
+                <>
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                    do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  </p>
+                  <p>
+                    Duis aute irure dolor in reprehenderit in voluptate velit
+                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+                    occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                  </p>
+                  <ul>
+                    <li>x</li>
+                    <li>y</li>
+                    <li>z</li>
+                  </ul>
+                  <p>Close Details</p>
+                </>
+              ) : (
+                <p className="font-size-details">Details +</p>
+              )}
+            </div>
           </div>
-        </div>
+        </motion.div>
         {product.node.images ? (
           <div className="product-cart-container">
             <div className="product-cart-sizing">

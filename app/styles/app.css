@@ -453,6 +453,7 @@ aside li {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: flex-end;
   width: 90%;
   position: absolute;
   bottom: 5%;
@@ -464,7 +465,8 @@ aside li {
 .product-details {
   width: 49.5%;
   background-color: white;
-  height: 75px;
+  min-height: 75px;
+  overflow: hidden;
 }
 .product-details-container {
   display: flex;
