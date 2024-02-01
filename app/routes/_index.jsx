@@ -103,9 +103,10 @@ function Product({product}) {
         <div className="product-details">
           <div className="product-details-container">
             <p className="font-size">{product.node.title}</p>
-            <p className="font-size">
-              <Money data={product.node.priceRange.minVariantPrice} />
-            </p>
+            <Money
+              data={product.node.priceRange.minVariantPrice}
+              className="font-size"
+            />
             <p className="font-size-details">Details +</p>
           </div>
         </div>
