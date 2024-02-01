@@ -427,10 +427,16 @@ aside li {
   outline: 1px solid grey;
 }
 
-.product-container > img {
-  height: 90%;
+.product-image-container {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
+  height: 90vh;
+}
+
+.product-image-container > img {
   width: 50% !important;
-  margin: 0 auto;
 }
 
 /*

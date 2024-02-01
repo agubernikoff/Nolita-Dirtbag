@@ -106,14 +106,16 @@ function Product({product}) {
   useEffect(() => {
     animate(scope.current, {height: height + 10});
   }, [animate, scope, height]);
-  console.log(product.node.images.edges[0].node.url);
+  console.log(product);
   return (
     <div className="product-container">
-      <img
-        src={product.node.images.edges[0].node.url}
-        aspectRatio="1/1"
-        sizes="(min-width: 45em) 20vw, 50vw"
-      />
+      <div className="product-image-container">
+        <img
+          src={product.node.images.edges[0].node.url}
+          sizes="(min-width: 45em) 20vw, 50vw"
+          alt={product.node.title}
+        />
+      </div>
       <div className="product-interaction-container">
         <motion.div
           className="product-details"
