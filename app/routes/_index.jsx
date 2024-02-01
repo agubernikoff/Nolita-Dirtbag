@@ -1,10 +1,9 @@
 import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData} from '@remix-run/react';
-import {Suspense, useState, useRef} from 'react';
+import {Suspense, useState, useEffect} from 'react';
 import {Image, Money} from '@shopify/hydrogen';
 import {motion, useAnimate} from 'framer-motion';
 import useMeasure from 'react-use-measure';
-import {useEffect} from 'react';
 
 /**
  * @type {MetaFunction}
@@ -300,6 +299,12 @@ const GET_ALL_PRODUCTS = `query AllProducts($country: CountryCode, $language: La
             amount
             currencyCode
           }
+        }
+        description
+        descriptionHtml
+        options {
+          name,
+          values
         }
         images(first: 1) {
           edges {
