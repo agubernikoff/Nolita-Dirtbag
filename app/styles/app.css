@@ -428,8 +428,8 @@ aside li {
 }
 
 .product-container > img {
-  height: auto;
-  width: 55% !important;
+  height: 90%;
+  width: 50% !important;
   margin: 0 auto;
 }
 

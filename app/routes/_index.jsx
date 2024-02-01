@@ -106,9 +106,10 @@ function Product({product}) {
   useEffect(() => {
     animate(scope.current, {height: height + 10});
   }, [animate, scope, height]);
+  console.log(product.node.images.edges[0].node.url);
   return (
     <div className="product-container">
-      <Image
+      <img
         src={product.node.images.edges[0].node.url}
         aspectRatio="1/1"
         sizes="(min-width: 45em) 20vw, 50vw"
