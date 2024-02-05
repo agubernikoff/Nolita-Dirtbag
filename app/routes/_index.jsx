@@ -105,7 +105,26 @@ function Product({product}) {
   useEffect(() => {
     animate(scope.current, {height: height + 10});
   }, [animate, scope, height]);
-  console.log(product);
+  console.log(product.node);
+
+  const mappedSizeButtons = product.node.options.find((o) => o.name === 'Size')
+    ? product.node.options
+        .find((o) => o.name === 'Size')
+        .values.map((sizeOption) => (
+          <button
+            key={sizeOption}
+            onClick={(e) => handleSizeButtonClick(e)}
+            className={
+              size === sizeOption
+                ? 'product-size-button size-button-selected'
+                : 'product-size-button'
+            }
+          >
+            {sizeOption}
+          </button>
+        ))
+    : null;
+  console.log(mappedSizeButtons);
   return (
     <div className="product-container">
       <div className="product-image-container">
@@ -130,23 +149,11 @@ function Product({product}) {
             <div>
               {expandDetails ? (
                 <>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                    ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                  </p>
-                  <p>
-                    Duis aute irure dolor in reprehenderit in voluptate velit
-                    esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                    occaecat cupidatat non proident, sunt in culpa qui officia
-                    deserunt mollit anim id est laborum.
-                  </p>
-                  <ul>
-                    <li>x</li>
-                    <li>y</li>
-                    <li>z</li>
-                  </ul>
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: product.node.descriptionHtml,
+                    }}
+                  ></div>
                   <p>Close Details</p>
                 </>
               ) : (
@@ -161,7 +168,7 @@ function Product({product}) {
               <div className="product-cart-sizing-container">
                 <p className="font-size">Size:</p>
                 <div className="product-size-button-container">
-                  <button
+                  {/* <button
                     onClick={(e) => handleSizeButtonClick(e)}
                     className={
                       size === 'S'
@@ -210,7 +217,8 @@ function Product({product}) {
                     }
                   >
                     XXL
-                  </button>
+                  </button> */}
+                  {mappedSizeButtons}
                 </div>
               </div>
             </div>
