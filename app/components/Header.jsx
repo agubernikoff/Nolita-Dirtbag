@@ -189,7 +189,11 @@ function Information({setToDisplay}) {
   return (
     <div className="dropdown-content">
       <li>INFORMATION</li>
-      <img src={image} alt="sick painting" />
+      <img
+        style={{width: '100%', borderRadius: '0', marginBottom: '2%'}}
+        src={image}
+        alt="sick painting"
+      />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
