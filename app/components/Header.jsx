@@ -3,6 +3,7 @@ import {Info} from 'node_modules/property-information/lib/util/info';
 import {Suspense, useState} from 'react';
 import {useRootLoaderData} from '~/root';
 import Meme_Sequence from '../../public/Meme_Sequence.mp4';
+import image from '../../public/image.jpg';
 
 /**
  * @param {HeaderProps}
@@ -188,7 +189,7 @@ function Information({setToDisplay}) {
   return (
     <div className="dropdown-content">
       <li>INFORMATION</li>
-      <img src="../../public/image.jpg" />
+      <img src={image} alt="sick painting" />
       <p>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
