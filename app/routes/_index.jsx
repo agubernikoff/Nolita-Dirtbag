@@ -154,7 +154,9 @@ function Product({product}) {
                       __html: product.node.descriptionHtml,
                     }}
                   ></div>
-                  <p>Close Details</p>
+                  <p style={{fontSize: '.65rem', marginBottom: '2%'}}>
+                    Close Details
+                  </p>
                 </>
               ) : (
                 <p className="font-size-details">Details +</p>

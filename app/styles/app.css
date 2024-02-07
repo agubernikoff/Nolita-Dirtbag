@@ -201,6 +201,11 @@ aside li {
   z-index: 1;
   padding: 0.75rem;
   padding-top: 0.2rem;
+  font-size: 0.65rem;
+}
+.dropdown-content > li {
+  margin-top: 2%;
+  margin-bottom: 2%;
 }
 .dropdown-content > li::before {
   content: '\25a0';
@@ -210,7 +215,15 @@ aside li {
   margin-right: 0;
   vertical-align: sub;
 }
-
+.dropdown-content > p {
+  font-size: 0.65rem;
+}
+.dropdown-info > p {
+  font-size: 0.65rem;
+}
+.site-credit {
+  margin-top: 3%;
+}
 .header-section-hold:hover .dropdown-content,
 .header-ctas:hover .dropdown-content {
   display: block;
@@ -424,7 +437,7 @@ aside li {
 }
 
 .product-container:hover {
-  outline: 1px solid grey;
+  /* outline: 1px solid grey; */
 }
 
 .product-image-container {

@@ -188,10 +188,15 @@ function Information({setToDisplay}) {
   return (
     <div className="dropdown-content">
       <li>INFORMATION</li>
-      <img />
-      <p></p>
+      <img src="../../public/image.jpg" />
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
+        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        ut labore et dolore magna aliqua.
+      </p>
       <li>SUPPORT</li>
-      <div>
+      <div className="dropdown-info">
         <p onClick={(e) => setToDisplay(e.target.innerText)}>
           Terms of Service
         </p>
@@ -205,13 +210,15 @@ function Information({setToDisplay}) {
       <li>CREDITS</li>
       <p>© Nolita Dirtbag 2024,</p>
       <p>All Rights Reserved</p>
-      <a
-        href="https://www.swallstudios.com/"
-        rel="noopener noreferrer"
-        target="_blank"
-      >
-        Site Credit
-      </a>
+      <div className="site-credit">
+        <a
+          href="https://www.swallstudios.com/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Site Credit
+        </a>
+      </div>
     </div>
   );
 }
