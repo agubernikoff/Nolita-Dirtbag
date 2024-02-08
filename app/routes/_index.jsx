@@ -28,7 +28,6 @@ export async function loader({context}) {
 export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
-  console.log(data.allProducts);
   return (
     <div className="home">
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
@@ -87,6 +86,10 @@ function AllProducts({products}) {
 function Product({product}) {
   const [size, setSize] = useState();
   const [expandDetails, setExpandDetails] = useState(false);
+  const [imageIndex, setImageIndex] = useState(0);
+  const [imageSrc, setImageSrc] = useState(
+    product.node.images.edges[imageIndex].node.url,
+  );
 
   function handleSizeButtonClick(e) {
     if (size === e.target.innerText) {
@@ -124,12 +127,33 @@ function Product({product}) {
           </button>
         ))
     : null;
-  console.log(mappedSizeButtons);
+
+  function cycleImages(delta) {
+    const imagesArray = product.node.images.edges.map((i) => i.node.url);
+    const newIndex = imageIndex + delta;
+    if (newIndex >= 0 && newIndex < imagesArray.length) {
+      setImageIndex(imageIndex + delta);
+      setImageSrc(imagesArray[imageIndex + delta]);
+    }
+  }
+
   return (
     <div className="product-container">
+      <div
+        className="left-image-button-container"
+        onClick={() => {
+          cycleImages(-1);
+        }}
+      ></div>
+      <div
+        className="right-image-button-container"
+        onClick={() => {
+          cycleImages(1);
+        }}
+      ></div>
       <div className="product-image-container">
         <img
-          src={product.node.images.edges[0].node.url}
+          src={imageSrc}
           sizes="(min-width: 45em) 20vw, 50vw"
           alt={product.node.title}
         />

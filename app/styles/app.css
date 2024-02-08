@@ -435,7 +435,20 @@ aside li {
   justify-content: center;
   width: 40vw;
 }
-
+.left-image-button-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+}
+.right-image-button-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 50%;
+}
 .product-container:hover {
   /* outline: 1px solid grey; */
 }
