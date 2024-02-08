@@ -514,23 +514,29 @@ button {
   font-size: 0.65rem !important;
 }
 
-.product-cart-add-cart {
-  background-color: black;
-  border: 1px solid white;
-  /* padding: 3%; */
-  width: 30%;
+.disabled-add-to-cart {
+  background-color: transparent;
+  color: grey;
+  border: none;
+  font-family: 'nolita-font';
+  font-size: 0.65rem;
+  border: 1px solid grey;
+  display: flex;
+  text-align: left;
+  padding: 2%;
   margin-left: 2%;
-  height: 73px;
-  cursor: pointer;
 }
-.product-cart-add-cart > button {
+.add-to-cart {
   background-color: transparent;
   color: white;
   border: none;
   font-family: 'nolita-font';
   font-size: 0.65rem;
-  margin-top: 8%;
-  padding-left: 8%;
+  border: 1px solid white;
+  display: flex;
+  text-align: left;
+  padding: 2%;
+  margin-left: 2%;
   cursor: pointer;
 }
 .product-cart-soldout {

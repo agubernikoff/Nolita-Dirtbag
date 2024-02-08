@@ -170,6 +170,7 @@ function Product({product}) {
               <div className="product-cart-sizing-container">
                 <p className="font-size">Size:</p>
                 <div className="product-size-button-container">
+                  {mappedSizeButtons}
                   {/* <button
                     onClick={(e) => handleSizeButtonClick(e)}
                     className={
@@ -220,13 +221,18 @@ function Product({product}) {
                   >
                     XXL
                   </button> */}
-                  {mappedSizeButtons}
                 </div>
               </div>
             </div>
-            <div className="product-cart-add-cart">
-              <button>Add to bag</button>
-            </div>
+            {/* <div className="product-cart-add-cart"> */}
+            {size ? (
+              <button className="add-to-cart">Add to bag</button>
+            ) : (
+              <button disabled className="disabled-add-to-cart">
+                Add to bag
+              </button>
+            )}
+            {/* </div> */}
           </div>
         ) : (
           <div className="product-cart-soldout">
