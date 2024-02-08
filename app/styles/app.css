@@ -207,7 +207,8 @@ aside li {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-.dropdown-content > li::before {
+.dropdown-content > li::before,
+.info-subsection-head > li::before {
   content: '\25a0';
   font-size: 2em;
   display: inline-block;
@@ -228,7 +229,25 @@ aside li {
 .header-ctas:hover .dropdown-content {
   display: block;
 }
-
+.info-subsection-head {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.info-subsection-head > li::marker {
+  font-size: 0;
+}
+.info-sub-button {
+  background: none;
+  border: none;
+  color: inherit;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+  text-decoration: none;
+  margin-bottom: 0.35rem;
+}
 .newsletter-input-container {
   width: 100%;
   border-bottom: 2px solid black;
