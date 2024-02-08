@@ -316,7 +316,22 @@ const GET_ALL_PRODUCTS = `query AllProducts($country: CountryCode, $language: La
           name,
           values
         }
-        images(first: 1) {
+        availableForSale
+        variants(first: 10) {
+          nodes {
+            id
+          title
+          availableForSale
+          image {
+            id
+            url
+            altText
+            width
+            height
+          }
+          }
+        }
+        images(first: 10) {
           edges {
             node {
               id
