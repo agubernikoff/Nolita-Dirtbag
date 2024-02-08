@@ -567,6 +567,7 @@ button {
   text-align: left;
   padding: 2%;
   margin-left: 2%;
+  width: 30%;
 }
 .add-to-cart {
   background-color: transparent;
@@ -580,6 +581,7 @@ button {
   padding: 2%;
   margin-left: 2%;
   cursor: pointer;
+  width: 30%;
 }
 .product-cart-soldout {
   width: 49.5%;
