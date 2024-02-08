@@ -190,18 +190,28 @@ aside li {
   top: 100%;
   left: 0;
   right: 0;
+  max-height: 69vh;
+  overflow: auto;
+}
+.dropdown-content-container {
+  /* margin-top: 0.5rem; */
+  background-color: white;
+  /* border: 1px solid #ddd; */
+  z-index: 1;
+  /* padding: 0.75rem;
+  padding-top: 0.2rem; */
 }
 .dropdown-content > li {
   list-style: none;
 }
 .dropdown-content {
+  font-size: 0.65rem;
   margin-top: 0.5rem;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;
   padding: 0.75rem;
   padding-top: 0.2rem;
-  font-size: 0.65rem;
 }
 .dropdown-content > li {
   margin-top: 2%;

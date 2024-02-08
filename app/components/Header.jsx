@@ -4,6 +4,7 @@ import {Suspense, useState} from 'react';
 import {useRootLoaderData} from '~/root';
 import Meme_Sequence from '../../public/Meme_Sequence.mp4';
 import image from '../../public/image.jpg';
+import {motion, AnimatePresence} from 'framer-motion';
 
 /**
  * @param {HeaderProps}
@@ -128,66 +129,114 @@ function HeaderCtas({isLoggedIn, cart}) {
           Bag [0]
         </p>
       </div>
-      {activeDropdown === 'instagram' && (
-        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content">
-            <li>INSTAGRAM</li>
-            <video
-              width="auto"
-              height="auto"
-              style={{width: '100%'}}
-              autoPlay
-              loop
-            >
-              <source src={Meme_Sequence} type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          </div>
-        </div>
-      )}
-      {activeDropdown === 'newsletter' && (
-        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content">
-            <li>NEWSLETTER</li>
-            <form className="newsletter-input-container">
-              <input placeholder="Email Address" name="email"></input>
-              <button type="submit">Submit</button>
-            </form>
-          </div>
-        </div>
-      )}
-      {activeDropdown === 'information' && (
-        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <InformationTab />
-        </div>
-      )}
-      {activeDropdown === 'bag' && (
-        <div className="dropdown-container" onMouseLeave={handleMouseLeave}>
-          <div className="dropdown-content">
-            <p>bag Dropdown Content</p>
-          </div>
-        </div>
-      )}
+      <AnimatePresence mode="popLayout">
+        {activeDropdown && (
+          <motion.div
+            className="dropdown-container"
+            onMouseLeave={handleMouseLeave}
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.25}}
+            key="ig"
+          >
+            {activeDropdown === 'instagram' && (
+              <div className="dropdown-content">
+                <li>INSTAGRAM</li>
+                <video
+                  width="auto"
+                  height="auto"
+                  style={{width: '100%'}}
+                  autoPlay
+                  loop
+                >
+                  <source src={Meme_Sequence} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              </div>
+            )}
+            {activeDropdown === 'newsletter' && (
+              <div className="dropdown-content">
+                <li>NEWSLETTER</li>
+                <form className="newsletter-input-container">
+                  <input placeholder="Email Address" name="email"></input>
+                  <button type="submit">Submit</button>
+                </form>
+              </div>
+            )}
+            {activeDropdown === 'information' && <InformationTab />}
+            {activeDropdown === 'bag' && (
+              <div className="dropdown-content">
+                <p>bag Dropdown Content</p>
+              </div>
+            )}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
 function InformationTab() {
   const [toDisplay, setToDisplay] = useState('Information');
-  switch (toDisplay) {
-    case 'Information':
-      return <Information setToDisplay={setToDisplay} />;
-    case 'Terms of Service':
-      return <TermsOfService setToDisplay={setToDisplay} />;
-    case 'Privacy Policy':
-      return <PrivacyPolicy setToDisplay={setToDisplay} />;
-    case 'Shipping and Returns':
-      return <ShippingAndReturns setToDisplay={setToDisplay} />;
-  }
+  return (
+    <div className="dropdown-content-container">
+      <AnimatePresence mode="wait" initial={false}>
+        {toDisplay === 'Information' && (
+          <motion.div
+            className="dropdown-content"
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.25}}
+            key="info"
+          >
+            <Information setToDisplay={setToDisplay} />
+          </motion.div>
+        )}
+        {toDisplay === 'Terms of Service' && (
+          <motion.div
+            className="dropdown-content"
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.25}}
+            key="tos"
+          >
+            <TermsOfService setToDisplay={setToDisplay} />
+          </motion.div>
+        )}
+        {toDisplay === 'Privacy Policy' && (
+          <motion.div
+            className="dropdown-content"
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.25}}
+            key="pp"
+          >
+            <PrivacyPolicy setToDisplay={setToDisplay} />
+          </motion.div>
+        )}
+        {toDisplay === 'Shipping and Returns' && (
+          <motion.div
+            className="dropdown-content"
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            transition={{duration: 0.25}}
+            key="sar"
+          >
+            <ShippingAndReturns setToDisplay={setToDisplay} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
 }
 
 function Information({setToDisplay}) {
   return (
-    <div className="dropdown-content">
+    <>
       <div className="info-subsection-head" style={{marginBottom: '-1%'}}>
         <li>INFORMATION</li>
       </div>
@@ -226,12 +275,12 @@ function Information({setToDisplay}) {
           Site Credit
         </a>
       </div>
-    </div>
+    </>
   );
 }
 function TermsOfService({setToDisplay}) {
   return (
-    <div className="dropdown-content">
+    <>
       <div className="info-subsection-head">
         <li>TERMS OF SERVICE</li>
         <button
@@ -700,12 +749,12 @@ function TermsOfService({setToDisplay}) {
         Questions about the Terms of Service should be sent to us at
         team@nolitadirtbag.com.
       </p>
-    </div>
+    </>
   );
 }
 function ShippingAndReturns({setToDisplay}) {
   return (
-    <div className="dropdown-content">
+    <>
       <div className="info-subsection-head">
         <li>SHIPPING AND RETURNS</li>
         <button
@@ -761,12 +810,12 @@ function ShippingAndReturns({setToDisplay}) {
         If you have any questions or concerns about our refund policy, please
         contact us at team@nolitadirtbag.com.
       </p>
-    </div>
+    </>
   );
 }
 function PrivacyPolicy({setToDisplay}) {
   return (
-    <div className="dropdown-content">
+    <>
       <div className="info-subsection-head">
         <li>PRIVACY POLICY</li>
         <button
@@ -973,7 +1022,7 @@ function PrivacyPolicy({setToDisplay}) {
       </p>
       <br></br>
       <p>Last updated: May 24th, 2023</p>
-    </div>
+    </>
   );
 }
 function HeaderMenuMobileToggle() {
