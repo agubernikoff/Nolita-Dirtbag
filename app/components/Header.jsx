@@ -188,7 +188,7 @@ function InformationTab() {
 function Information({setToDisplay}) {
   return (
     <div className="dropdown-content">
-      <div className="info-subsection-head">
+      <div className="info-subsection-head" style={{marginBottom: '-1%'}}>
         <li>INFORMATION</li>
       </div>
       <img
