@@ -188,7 +188,9 @@ function InformationTab() {
 function Information({setToDisplay}) {
   return (
     <div className="dropdown-content">
-      <li>INFORMATION</li>
+      <div className="info-subsection-head">
+        <li>INFORMATION</li>
+      </div>
       <img
         style={{width: '100%', borderRadius: '0', marginBottom: '2%'}}
         src={image}
