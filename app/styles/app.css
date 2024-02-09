@@ -193,6 +193,9 @@ aside li {
   max-height: 69vh;
   overflow: auto;
 }
+.dropdown-container::-webkit-scrollbar {
+  display: none;
+}
 .dropdown-content-container {
   /* margin-top: 0.5rem; */
   background-color: white;
@@ -213,6 +216,7 @@ aside li {
   padding: 0.75rem;
   padding-top: 0.2rem;
 }
+
 .dropdown-content > li {
   margin-top: 2%;
   margin-bottom: 2%;
