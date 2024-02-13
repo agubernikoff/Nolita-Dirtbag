@@ -188,7 +188,7 @@ function Product({product}) {
             </div>
           </div>
         </motion.div>
-        {product.node.images ? (
+        {product.node.availableForSale ? (
           <div className="product-cart-container">
             <div className="product-cart-sizing">
               <div className="product-cart-sizing-container">
