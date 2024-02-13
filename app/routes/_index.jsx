@@ -112,7 +112,7 @@ function Product({product}) {
 
   const mappedSizeButtons = product.node.variants
     ? product.node.variants.nodes.map((sizeOption) => {
-        sizeOption.availableForSale ? (
+        return sizeOption.availableForSale ? (
           <button
             key={sizeOption.title}
             onClick={(e) => handleSizeButtonClick(e)}
@@ -122,7 +122,7 @@ function Product({product}) {
                 : 'product-size-button'
             }
           >
-            {sizeOption.titlez}
+            {sizeOption.title}
           </button>
         ) : (
           <button
