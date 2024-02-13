@@ -100,6 +100,7 @@ function HeaderCtas({isLoggedIn, cart}) {
   const handleMouseLeave = () => {
     setActiveDropdown(null);
   };
+  console.log(cart);
   return (
     <div className="header-ctas-container">
       <div className="header-ctas">
@@ -126,7 +127,8 @@ function HeaderCtas({isLoggedIn, cart}) {
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('bag')}
         >
-          Bag [0]
+          {/* {`Bag [${cart.lines.nodes.length}]`} */}
+          <CartToggle cart={cart} />
         </p>
       </div>
       <AnimatePresence mode="popLayout">
@@ -1041,7 +1043,7 @@ function SearchToggle() {
  * @param {{count: number}}
  */
 function CartBadge({count}) {
-  return <a href="#cart-aside">Cart {count}</a>;
+  return <a href="#cart-aside">Bag [{count}]</a>;
 }
 
 /**
