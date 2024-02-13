@@ -579,14 +579,25 @@ button {
   border: none;
   font-family: 'nolita-font';
   font-size: 0.65rem;
-  border: 1px solid white;
   display: flex;
   text-align: left;
-  padding: 2%;
-  margin-left: 2%;
   cursor: pointer;
-  width: 30%;
+  margin-top: 6%;
 }
+form {
+  background-color: transparent !important;
+  color: #fff !important;
+  border: none !important;
+  font-family: nolita-font !important;
+  font-size: 0.65rem !important;
+  border: 1px solid white !important;
+  display: flex !important;
+  text-align: left !important;
+  margin-left: 2% !important;
+  cursor: pointer !important;
+  width: 29.25% !important;
+}
+
 .product-cart-soldout {
   width: 49.5%;
   background-color: rgb(184, 184, 184);
