@@ -628,6 +628,9 @@ button {
   background-color: black;
   color: white;
 }
+.size-button-soldout {
+  border-color: #dadada;
+}
 /*
 * --------------------------------------------------
 * routes/collections.$handle.tsx

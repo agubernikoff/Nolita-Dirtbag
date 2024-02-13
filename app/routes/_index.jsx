@@ -110,22 +110,30 @@ function Product({product}) {
   }, [animate, scope, height]);
   console.log(product.node);
 
-  const mappedSizeButtons = product.node.options.find((o) => o.name === 'Size')
-    ? product.node.options
-        .find((o) => o.name === 'Size')
-        .values.map((sizeOption) => (
+  const mappedSizeButtons = product.node.variants
+    ? product.node.variants.nodes.map((sizeOption) => {
+        sizeOption.availableForSale ? (
           <button
-            key={sizeOption}
+            key={sizeOption.title}
             onClick={(e) => handleSizeButtonClick(e)}
             className={
-              size === sizeOption
+              size === sizeOption.title
                 ? 'product-size-button size-button-selected'
                 : 'product-size-button'
             }
           >
-            {sizeOption}
+            {sizeOption.titlez}
           </button>
-        ))
+        ) : (
+          <button
+            key={sizeOption.title}
+            disabled
+            className={'product-size-button size-button-soldout'}
+          >
+            {sizeOption.title}
+          </button>
+        );
+      })
     : null;
 
   function cycleImages(delta) {
