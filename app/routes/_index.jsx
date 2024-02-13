@@ -143,6 +143,14 @@ function Product({product}) {
       setImageIndex(imageIndex + delta);
       setImageSrc(imagesArray[imageIndex + delta]);
     }
+    if (newIndex < 0) {
+      setImageIndex(imagesArray.length - 1);
+      setImageSrc(imagesArray[imagesArray.length - 1]);
+    }
+    if (newIndex >= imagesArray.length) {
+      setImageIndex(0);
+      setImageSrc(imagesArray[0]);
+    }
   }
 
   return (
