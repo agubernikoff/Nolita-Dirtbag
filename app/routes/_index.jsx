@@ -1,7 +1,7 @@
 import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData} from '@remix-run/react';
 import {Suspense, useState, useEffect} from 'react';
-import {Image, Money} from '@shopify/hydrogen';
+import {Image, Money, CartForm} from '@shopify/hydrogen';
 import {motion, useAnimate} from 'framer-motion';
 import useMeasure from 'react-use-measure';
 
@@ -91,11 +91,11 @@ function Product({product}) {
     product.node.images.edges[imageIndex].node.url,
   );
 
-  function handleSizeButtonClick(e) {
-    if (size === e.target.innerText) {
+  function handleSizeButtonClick(id) {
+    if (size === id) {
       setSize();
     } else {
-      setSize(e.target.innerText);
+      setSize(id);
     }
   }
   let [productDetails, {height}] = useMeasure();
@@ -115,9 +115,9 @@ function Product({product}) {
         return sizeOption.availableForSale ? (
           <button
             key={sizeOption.title}
-            onClick={(e) => handleSizeButtonClick(e)}
+            onClick={() => handleSizeButtonClick(sizeOption.id)}
             className={
-              size === sizeOption.title
+              size === sizeOption.id
                 ? 'product-size-button size-button-selected'
                 : 'product-size-button'
             }
@@ -266,7 +266,22 @@ function Product({product}) {
             </div>
             {/* <div className="product-cart-add-cart"> */}
             {size ? (
-              <button className="add-to-cart">Add to bag</button>
+              <AddToCartButton
+                disabled={!size}
+                onClick={() => {
+                  window.location.href = window.location.href + '#cart-aside';
+                }}
+                lines={
+                  size
+                    ? [
+                        {
+                          merchandiseId: size,
+                          quantity: 1,
+                        },
+                      ]
+                    : []
+                }
+              />
             ) : (
               <button disabled className="disabled-add-to-cart">
                 Add to bag
@@ -286,6 +301,30 @@ function Product({product}) {
       </small> */}
       </div>
     </div>
+  );
+}
+
+function AddToCartButton({analytics, children, disabled, lines, onClick}) {
+  return (
+    <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
+      {(fetcher) => (
+        <>
+          <input
+            name="analytics"
+            type="hidden"
+            value={JSON.stringify(analytics)}
+          />
+          <button
+            type="submit"
+            onClick={onClick}
+            disabled={disabled ?? fetcher.state !== 'idle'}
+            className="add-to-cart"
+          >
+            Add to bag
+          </button>
+        </>
+      )}
+    </CartForm>
   );
 }
 
