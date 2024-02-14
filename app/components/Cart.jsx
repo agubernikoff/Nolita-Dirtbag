@@ -9,10 +9,10 @@ export function CartMain({layout, cart}) {
   const linesCount = Boolean(cart?.lines?.nodes?.length || 0);
   console.log('LinesCount ', cart?._data?.lines?.nodes?.length);
   console.log(layout);
-  // const withDiscount =
-  //   cart &&
-  //   Boolean(cart.discountCodes.filter((code) => code.applicable).length);
-  const className = 'cart-main';
+  const withDiscount =
+    cart &&
+    Boolean(cart.discountCodes.filter((code) => code.applicable).length);
+  const className = `cart-main ${withDiscount ? 'with-discount' : ''}`;
 
   return (
     <div className={className}>
