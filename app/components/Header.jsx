@@ -5,6 +5,7 @@ import {useRootLoaderData} from '~/root';
 import Meme_Sequence from '../../public/Meme_Sequence.mp4';
 import image from '../../public/image.jpg';
 import {motion, AnimatePresence} from 'framer-motion';
+import {CartMain} from './Cart.jsx';
 
 /**
  * @param {HeaderProps}
@@ -169,7 +170,7 @@ function HeaderCtas({isLoggedIn, cart}) {
             {activeDropdown === 'information' && <InformationTab />}
             {activeDropdown === 'bag' && (
               <div className="dropdown-content">
-                <p>bag Dropdown Content</p>
+                <CartMain />
               </div>
             )}
           </motion.div>
