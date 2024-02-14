@@ -179,7 +179,9 @@ aside li {
   display: flex;
   /* padding: 2%; */
 }
-
+.bag-header-link:hover {
+  text-decoration: none;
+}
 .header-section-hold {
   background-color: white;
   padding: 1rem;

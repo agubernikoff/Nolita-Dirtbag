@@ -6,10 +6,12 @@ import Meme_Sequence from '../../public/Meme_Sequence.mp4';
 import image from '../../public/image.jpg';
 import {motion, AnimatePresence} from 'framer-motion';
 import {CartMain} from './Cart.jsx';
+import {Cart} from '../routes/cart.jsx';
 
 /**
  * @param {HeaderProps}
  */
+
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   return (
@@ -101,7 +103,7 @@ function HeaderCtas({isLoggedIn, cart}) {
   const handleMouseLeave = () => {
     setActiveDropdown(null);
   };
-  console.log(cart);
+  console.log('header: ', cart);
   return (
     <div className="header-ctas-container">
       <div className="header-ctas">
@@ -170,7 +172,13 @@ function HeaderCtas({isLoggedIn, cart}) {
             {activeDropdown === 'information' && <InformationTab />}
             {activeDropdown === 'bag' && (
               <div className="dropdown-content">
-                <CartMain />
+                <Suspense fallback={<p>Loading cart ...</p>}>
+                  <Await resolve={cart}>
+                    {(cart) => {
+                      return <CartMain cart={cart} layout="aside" />;
+                    }}
+                  </Await>
+                </Suspense>
               </div>
             )}
           </motion.div>
@@ -1044,7 +1052,7 @@ function SearchToggle() {
  * @param {{count: number}}
  */
 function CartBadge({count}) {
-  return <a href="#cart-aside">Bag [{count}]</a>;
+  return <a className="bag-header-link">Bag [{count}]</a>;
 }
 
 /**

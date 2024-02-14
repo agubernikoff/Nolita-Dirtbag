@@ -5,11 +5,14 @@ import {useVariantUrl} from '~/utils';
  * @param {CartMainProps}
  */
 export function CartMain({layout, cart}) {
+  console.log('cart: ', cart);
   const linesCount = Boolean(cart?.lines?.nodes?.length || 0);
-  const withDiscount =
-    cart &&
-    Boolean(cart.discountCodes.filter((code) => code.applicable).length);
-  const className = `cart-main ${withDiscount ? 'with-discount' : ''}`;
+  console.log('LinesCount ', cart?._data?.lines?.nodes?.length);
+  console.log(layout);
+  // const withDiscount =
+  //   cart &&
+  //   Boolean(cart.discountCodes.filter((code) => code.applicable).length);
+  const className = 'cart-main';
 
   return (
     <div className={className}>
@@ -45,6 +48,7 @@ function CartDetails({layout, cart}) {
  * }}
  */
 function CartLines({lines, layout}) {
+  console.log('DOODOO: ', lines);
   if (!lines) return null;
 
   return (

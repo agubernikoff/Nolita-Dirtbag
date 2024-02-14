@@ -16,6 +16,7 @@ import favicon from '../public/favicon.svg';
 import resetStyles from './styles/reset.css';
 import appStyles from './styles/app.css';
 import {Layout} from '~/components/Layout';
+import {useEffect} from 'react';
 
 /**
  * This is important to avoid re-fetching root queries on sub-navigations
@@ -108,7 +109,9 @@ export default function App() {
   const nonce = useNonce();
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
-
+  useEffect(() => {
+    data ? console.log('data: ', data) : null;
+  });
   return (
     <html lang="en">
       <head>
@@ -142,6 +145,7 @@ export function ErrorBoundary() {
   } else if (error instanceof Error) {
     errorMessage = error.message;
   }
+  console.log('rootdata ', rootData);
 
   return (
     <html lang="en">
