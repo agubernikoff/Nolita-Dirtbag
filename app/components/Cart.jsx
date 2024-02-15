@@ -6,10 +6,7 @@ import {useState, useEffect} from 'react';
  * @param {CartMainProps}
  */
 export function CartMain({layout, cart}) {
-  console.log('cart: ', cart);
   const linesCount = Boolean(cart?.lines?.nodes?.length || 0);
-  console.log('LinesCount ', cart?._data?.lines?.nodes?.length);
-  console.log(layout);
   const withDiscount =
     cart &&
     Boolean(cart.discountCodes.filter((code) => code.applicable).length);
@@ -29,7 +26,6 @@ export function CartMain({layout, cart}) {
 function CartDetails({layout, cart}) {
   const [heightOfSummary, setHOS] = useState(0);
   const cartHasItems = !!cart && cart.totalQuantity > 0;
-  console.log('fuck ', heightOfSummary);
   return (
     <div
       className="cart-details"
@@ -53,7 +49,6 @@ function CartDetails({layout, cart}) {
  * }}
  */
 function CartLines({lines, layout}) {
-  console.log('DOODOO: ', lines);
   if (!lines) return null;
 
   return (

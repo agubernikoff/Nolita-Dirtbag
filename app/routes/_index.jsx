@@ -108,7 +108,6 @@ function Product({product}) {
   useEffect(() => {
     animate(scope.current, {height: height + 10});
   }, [animate, scope, height]);
-  console.log(product.node);
 
   const mappedSizeButtons = product.node.variants
     ? product.node.variants.nodes.map((sizeOption) => {

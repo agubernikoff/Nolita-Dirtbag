@@ -103,7 +103,6 @@ function HeaderCtas({isLoggedIn, cart}) {
   const handleMouseLeave = () => {
     setActiveDropdown(null);
   };
-  console.log('header: ', cart);
   return (
     <div className="header-ctas-container">
       <div className="header-ctas">
