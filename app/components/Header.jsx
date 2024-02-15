@@ -172,6 +172,7 @@ function HeaderCtas({isLoggedIn, cart}) {
             {activeDropdown === 'information' && <InformationTab />}
             {activeDropdown === 'bag' && (
               <div className="dropdown-content">
+                <li>BAG</li>
                 <Suspense fallback={<p>Loading cart ...</p>}>
                   <Await resolve={cart}>
                     {(cart) => {
