@@ -1,6 +1,7 @@
 import {CartForm, Image, Money} from '@shopify/hydrogen';
 import {useVariantUrl} from '~/utils';
-
+import useMeasure from 'react-use-measure';
+import {useState, useEffect} from 'react';
 /**
  * @param {CartMainProps}
  */
@@ -26,14 +27,18 @@ export function CartMain({layout, cart}) {
  * @param {CartMainProps}
  */
 function CartDetails({layout, cart}) {
+  const [heightOfSummary, setHOS] = useState(0);
   const cartHasItems = !!cart && cart.totalQuantity > 0;
-
+  console.log('fuck ', heightOfSummary);
   return (
-    <div className="cart-details">
+    <div
+      className="cart-details"
+      style={{paddingBottom: `${heightOfSummary}px`}}
+    >
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (
-        <CartSummary cost={cart.cost} layout={layout}>
-          <CartDiscounts discountCodes={cart.discountCodes} />
+        <CartSummary cost={cart.cost} layout={layout} setHOS={setHOS}>
+          {/* <CartDiscounts discountCodes={cart.discountCodes} /> */}
           <CartCheckoutActions checkoutUrl={cart.checkoutUrl} />
         </CartSummary>
       )}
@@ -129,12 +134,14 @@ export function CartCheckoutActions({checkoutUrl}) {
  *   layout: CartMainProps['layout'];
  * }}
  */
-export function CartSummary({cost, layout, children = null}) {
+export function CartSummary({cost, layout, children = null, setHOS}) {
+  let [cartSummary, {height}] = useMeasure();
+  useEffect(() => setHOS(height));
   const className =
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
 
   return (
-    <div aria-labelledby="cart-summary" className={className}>
+    <div aria-labelledby="cart-summary" className={className} ref={cartSummary}>
       <h4>Totals</h4>
       <dl className="cart-subtotal">
         <dt>Subtotal</dt>
