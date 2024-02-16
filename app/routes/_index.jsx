@@ -210,56 +210,6 @@ function Product({product}) {
                 <p className="font-size">Size:</p>
                 <div className="product-size-button-container">
                   {mappedSizeButtons}
-                  {/* <button
-                    onClick={(e) => handleSizeButtonClick(e)}
-                    className={
-                      size === 'S'
-                        ? 'product-size-button size-button-selected'
-                        : 'product-size-button'
-                    }
-                  >
-                    S
-                  </button>
-                  <button
-                    onClick={(e) => handleSizeButtonClick(e)}
-                    className={
-                      size === 'M'
-                        ? 'product-size-button size-button-selected'
-                        : 'product-size-button'
-                    }
-                  >
-                    M
-                  </button>
-                  <button
-                    onClick={(e) => handleSizeButtonClick(e)}
-                    className={
-                      size === 'L'
-                        ? 'product-size-button size-button-selected'
-                        : 'product-size-button'
-                    }
-                  >
-                    L
-                  </button>
-                  <button
-                    onClick={(e) => handleSizeButtonClick(e)}
-                    className={
-                      size === 'XL'
-                        ? 'product-size-button size-button-selected'
-                        : 'product-size-button'
-                    }
-                  >
-                    XL
-                  </button>
-                  <button
-                    onClick={(e) => handleSizeButtonClick(e)}
-                    className={
-                      size === 'XXL'
-                        ? 'product-size-button size-button-selected'
-                        : 'product-size-button'
-                    }
-                  >
-                    XXL
-                  </button> */}
                 </div>
               </div>
             </div>
