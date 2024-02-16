@@ -1,12 +1,11 @@
-import {Await, NavLink} from '@remix-run/react';
+import {Await, NavLink, useLocation} from '@remix-run/react';
 import {Info} from 'node_modules/property-information/lib/util/info';
-import {Suspense, useState} from 'react';
+import {Suspense, useState, useEffect} from 'react';
 import {useRootLoaderData} from '~/root';
 import Meme_Sequence from '../../public/Meme_Sequence.mp4';
 import image from '../../public/image.jpg';
 import {motion, AnimatePresence} from 'framer-motion';
 import {CartMain} from './Cart.jsx';
-import {Cart} from '../routes/cart.jsx';
 
 /**
  * @param {HeaderProps}
@@ -94,6 +93,7 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
  * @param {Pick<HeaderProps, 'isLoggedIn' | 'cart'>}
  */
 function HeaderCtas({isLoggedIn, cart}) {
+  const loc = useLocation();
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const handleMouseEnter = (section) => {
@@ -102,7 +102,12 @@ function HeaderCtas({isLoggedIn, cart}) {
 
   const handleMouseLeave = () => {
     setActiveDropdown(null);
+    window.location.hash = '';
   };
+  useEffect(() => {
+    if (loc.hash.includes('#bag')) handleMouseEnter('bag');
+  }, [loc.hash]);
+
   return (
     <div className="header-ctas-container">
       <div className="header-ctas">

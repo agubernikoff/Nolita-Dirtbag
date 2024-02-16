@@ -218,7 +218,11 @@ function Product({product}) {
               <AddToCartButton
                 disabled={!size}
                 onClick={() => {
-                  window.location.href = window.location.href + '#cart-aside';
+                  window.location.href =
+                    window.location.href +
+                    `${
+                      window.location.href.slice(-1) === '#' ? 'bag' : '#bag'
+                    }`;
                 }}
                 lines={
                   size
