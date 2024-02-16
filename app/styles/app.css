@@ -493,10 +493,12 @@ aside li {
 .right-arrow-product {
   margin-right: 10%;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 .left-arrow-product {
   margin-left: 10%;
   cursor: pointer;
+  font-size: 1.5rem;
 }
 .product-container:hover {
   /* outline: 1px solid grey; */
