@@ -151,21 +151,39 @@ function Product({product}) {
       setImageSrc(imagesArray[0]);
     }
   }
+  const [isHovered, setIsHovered] = useState(false);
+  console.log(isHovered);
 
   return (
-    <div className="product-container">
+    <div
+      className="product-container"
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
       <div
         className="left-image-button-container"
         onClick={() => {
           cycleImages(-1);
         }}
-      ></div>
+      >
+        {isHovered ? (
+          <p className="left-arrow-product" style={{color: 'white'}}>
+            &lt;
+          </p>
+        ) : null}{' '}
+      </div>
       <div
         className="right-image-button-container"
         onClick={() => {
           cycleImages(1);
         }}
-      ></div>
+      >
+        {isHovered ? (
+          <p className="right-arrow-product" style={{color: 'white'}}>
+            &gt;
+          </p>
+        ) : null}{' '}
+      </div>
       <div className="product-image-container">
         <img
           src={imageSrc}
