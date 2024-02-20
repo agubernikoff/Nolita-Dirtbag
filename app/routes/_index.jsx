@@ -17,12 +17,14 @@ export const meta = () => {
  */
 export async function loader({context}) {
   const {storefront} = context;
+  const {cart} = context;
+  const carti = cart.get();
   // const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
   // const featuredCollection = collections.nodes[0];
   // const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
   const allProducts = storefront.query(GET_ALL_PRODUCTS);
 
-  return defer({allProducts});
+  return defer({allProducts, carti});
 }
 
 export default function Homepage() {
@@ -31,7 +33,7 @@ export default function Homepage() {
   return (
     <div className="home">
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
-      <AllProducts products={data.allProducts} />
+      <AllProducts products={data.allProducts} cart={data.carti} />
     </div>
   );
 }
@@ -64,7 +66,7 @@ export default function Homepage() {
  *   products: Promise<RecommendedProductsQuery>;
  * }}
  */
-function AllProducts({products}) {
+function AllProducts({products, cart}) {
   return (
     <div className="recommended-products">
       <Suspense fallback={<div>Loading...</div>}>
@@ -72,7 +74,7 @@ function AllProducts({products}) {
           {({products}) => (
             <div className="recommended-products-container">
               {products.edges.map((product) => (
-                <Product product={product} key={product.node.id} />
+                <Product product={product} key={product.node.id} cart={cart} />
               ))}
             </div>
           )}
@@ -83,7 +85,7 @@ function AllProducts({products}) {
   );
 }
 
-function Product({product}) {
+function Product({product, cart}) {
   const [size, setSize] = useState();
   const [expandDetails, setExpandDetails] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
@@ -91,6 +93,11 @@ function Product({product}) {
     product.node.images.edges[imageIndex].node.url,
   );
 
+  console.log(
+    product.node.title,
+    product.node.variants.nodes.map((v) => v.id),
+    cart._data.lines.nodes.map((l) => l.merchandise.id),
+  );
   function handleSizeButtonClick(id) {
     if (size === id) {
       setSize();
@@ -152,7 +159,6 @@ function Product({product}) {
     }
   }
   const [isHovered, setIsHovered] = useState(false);
-  console.log(isHovered);
 
   return (
     <div
