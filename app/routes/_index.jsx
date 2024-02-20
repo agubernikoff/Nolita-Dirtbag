@@ -93,11 +93,11 @@ function Product({product, cart}) {
     product.node.images.edges[imageIndex].node.url,
   );
 
-  console.log(
-    product.node.title,
-    product.node.variants.nodes.map((v) => v.id),
-    cart._data.lines.nodes.map((l) => l.merchandise.id),
-  );
+  // console.log(
+  //   product.node.title,
+  //   product.node.variants.nodes.map((v) => v.id),
+  //   cart._data.lines.nodes.map((l) => l.merchandise.id),
+  // );
   function handleSizeButtonClick(id) {
     if (size === id) {
       setSize();
