@@ -29,7 +29,7 @@ function CartDetails({layout, cart}) {
   return (
     <div
       className="cart-details"
-      style={{paddingBottom: `${heightOfSummary}px`}}
+      // style={{paddingBottom: `${heightOfSummary}px`}}
     >
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (
@@ -87,20 +87,22 @@ export function CartLineItem({layout, line}) {
       )}
 
       <div>
-        <p>
-          <strong>{product.title}</strong>
-        </p>
-        <CartLinePrice line={line} as="span" />
-        <ul>
-          {selectedOptions.map((option) => (
-            <li key={option.name}>
-              <small>
-                {option.name}: {option.value}
-              </small>
-            </li>
-          ))}
-        </ul>
-        <CartLineQuantity line={line} />
+        <div className="cart-title-price">
+          <p>{product.title}</p>
+          <CartLinePrice line={line} as="span" />
+        </div>
+        <div className="cart-size-quant">
+          <ul>
+            {selectedOptions.map((option) => (
+              <li key={option.name} style={{marginBottom: '0%'}}>
+                <p style={{fontSize: '.65rem', fontFamily: 'nolita-font'}}>
+                  {option.name}: {option.value}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <CartLineQuantity line={line} />
+        </div>
       </div>
     </li>
   );
@@ -115,7 +117,12 @@ export function CartCheckoutActions({checkoutUrl}) {
   return (
     <div>
       <a href={checkoutUrl} target="_self">
-        <p>Continue to Checkout &rarr;</p>
+        <button
+          style={{fontFamily: 'nolita-font', fontSize: '.65rem'}}
+          className="checkout-button"
+        >
+          Checkout
+        </button>
       </a>
       <br />
     </div>
@@ -136,19 +143,30 @@ export function CartSummary({cost, layout, children = null, setHOS}) {
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
 
   return (
-    <div aria-labelledby="cart-summary" className={className} ref={cartSummary}>
-      <h4>Totals</h4>
-      <dl className="cart-subtotal">
-        <dt>Subtotal</dt>
-        <dd>
-          {cost?.subtotalAmount?.amount ? (
-            <Money data={cost?.subtotalAmount} />
-          ) : (
-            '-'
-          )}
-        </dd>
-      </dl>
-      {children}
+    <div>
+      <div
+        aria-labelledby="cart-summary"
+        className="cart-summary-page"
+        ref={cartSummary}
+      >
+        <dl
+          className="cart-subtotal"
+          style={{display: 'flex', justifyContent: 'space-between'}}
+        >
+          <dt>Subtotal</dt>
+          <dd>
+            {cost?.subtotalAmount?.amount ? (
+              <Money data={cost?.subtotalAmount} />
+            ) : (
+              '-'
+            )}
+          </dd>
+        </dl>
+        <div className="checkout-text">
+          <p>Shipping, taxes, and discounts calculated at checkout.</p>
+        </div>
+        {children}
+      </div>
     </div>
   );
 }
@@ -163,7 +181,9 @@ export function CartLineRemoveButton({lineIds}) {
       action={CartForm.ACTIONS.LinesRemove}
       inputs={{lineIds}}
     >
-      <button type="submit">Remove</button>
+      <button className="cart-remove-button" type="submit">
+        Remove
+      </button>
     </CartForm>
   );
 }
@@ -178,29 +198,43 @@ export function CartLineQuantity({line}) {
   const nextQuantity = Number((quantity + 1).toFixed(0));
 
   return (
-    <div className="cart-line-quantiy">
-      <small>Quantity: {quantity} &nbsp;&nbsp;</small>
-      <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
-        <button
-          aria-label="Decrease quantity"
-          disabled={quantity <= 1}
-          name="decrease-quantity"
-          value={prevQuantity}
+    <div>
+      <div className="cart-line-quantiy">
+        <p
+          style={{
+            fontSize: '.65rem',
+            fontFamily: 'nolita-font',
+            display: 'flex',
+            alignItems: 'center',
+          }}
         >
-          <span>&#8722; </span>
-        </button>
-      </CartLineUpdateButton>
-      &nbsp;
-      <CartLineUpdateButton lines={[{id: lineId, quantity: nextQuantity}]}>
-        <button
-          aria-label="Increase quantity"
-          name="increase-quantity"
-          value={nextQuantity}
-        >
-          <span>&#43;</span>
-        </button>
-      </CartLineUpdateButton>
-      &nbsp;
+          Qty:
+          <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
+            <button
+              aria-label="Decrease quantity"
+              disabled={quantity <= 1}
+              name="decrease-quantity"
+              value={prevQuantity}
+              className="cart-button-quant"
+            >
+              <span>&#8722; </span>
+            </button>
+          </CartLineUpdateButton>
+          ({quantity})
+          <CartLineUpdateButton lines={[{id: lineId, quantity: nextQuantity}]}>
+            <button
+              aria-label="Increase quantity"
+              name="increase-quantity"
+              value={nextQuantity}
+              className="cart-button-quant"
+            >
+              <span>&#43;</span>
+            </button>
+          </CartLineUpdateButton>{' '}
+          &nbsp;&nbsp;
+        </p>
+        &nbsp; &nbsp;
+      </div>
       <CartLineRemoveButton lineIds={[lineId]} />
     </div>
   );
