@@ -52,8 +52,8 @@ function CartLines({lines, layout}) {
   if (!lines) return null;
 
   return (
-    <div aria-labelledby="cart-lines">
-      <ul>
+    <div aria-labelledby="cart-lines" className="cart-lines">
+      <ul className="cart-lines-ul">
         {lines.nodes.map((line) => (
           <CartLineItem key={line.id} line={line} layout={layout} />
         ))}
@@ -80,9 +80,9 @@ export function CartLineItem({layout, line}) {
           alt={title}
           aspectRatio="1/1"
           data={image}
-          height={100}
+          // height={100}
           loading="lazy"
-          width={100}
+          // width={100}
         />
       )}
 
@@ -115,8 +115,12 @@ export function CartCheckoutActions({checkoutUrl}) {
   if (!checkoutUrl) return null;
 
   return (
-    <div>
-      <a href={checkoutUrl} target="_self">
+    <div style={{paddingBottom: '0%'}}>
+      <a
+        href={checkoutUrl}
+        target="_self"
+        style={{marginBottom: '0%', paddingBottom: '0%'}}
+      >
         <button
           style={{fontFamily: 'nolita-font', fontSize: '.65rem'}}
           className="checkout-button"
@@ -143,7 +147,7 @@ export function CartSummary({cost, layout, children = null, setHOS}) {
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
 
   return (
-    <div>
+    <div style={{marginBottom: '0%', paddingBottom: '0%'}}>
       <div
         aria-labelledby="cart-summary"
         className="cart-summary-page"

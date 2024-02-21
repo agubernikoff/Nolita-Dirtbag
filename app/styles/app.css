@@ -328,9 +328,9 @@ aside li {
 * --------------------------------------------------
 */
 .cart-main {
-  height: 60vh;
-  max-height: 70vh;
-  overflow: auto;
+  height: 80vh;
+  max-height: 80vh;
+  overflow: hidden;
   width: auto;
   font-family: 'nolita-font';
 }
@@ -341,7 +341,17 @@ aside li {
 .cart-main.with-discount {
   max-height: 70vh;
 }
+.cart-details {
+  height: 100%;
+}
+.cart-lines {
+  height: 56%;
+  overflow: scroll;
+}
 
+.cart-lines::-webkit-scrollbar {
+  display: none;
+}
 .cart-line {
   display: flex;
   padding: 0.75rem 0;
@@ -399,8 +409,10 @@ aside li {
   font-size: 0.65rem;
 }
 .cart-summary-page {
+  margin-top: 3%;
   position: relative;
   border-top: 1px solid black;
+  padding-bottom: 0%;
 }
 
 .cart-summary-aside {
