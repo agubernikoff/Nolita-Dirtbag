@@ -78,11 +78,11 @@ export function CartLineItem({layout, line}) {
       {image && (
         <Image
           alt={title}
-          aspectRatio="1/1"
+          aspectRatio="1/.75"
           data={image}
-          height={100}
+          // height={100}
           loading="lazy"
-          width={100}
+          // width={100}
         />
       )}
 
