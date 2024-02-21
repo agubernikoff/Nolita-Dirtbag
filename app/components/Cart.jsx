@@ -29,7 +29,7 @@ function CartDetails({layout, cart}) {
   return (
     <div
       className="cart-details"
-      // style={{paddingBottom: `${heightOfSummary}px`}}
+      style={{paddingBottom: `${heightOfSummary}px`}}
     >
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (
@@ -52,8 +52,8 @@ function CartLines({lines, layout}) {
   if (!lines) return null;
 
   return (
-    <div aria-labelledby="cart-lines" className="cart-lines">
-      <ul className="cart-lines-ul">
+    <div aria-labelledby="cart-lines">
+      <ul>
         {lines.nodes.map((line) => (
           <CartLineItem key={line.id} line={line} layout={layout} />
         ))}
@@ -80,29 +80,27 @@ export function CartLineItem({layout, line}) {
           alt={title}
           aspectRatio="1/1"
           data={image}
-          // height={100}
+          height={100}
           loading="lazy"
-          // width={100}
+          width={100}
         />
       )}
 
-      <div>
-        <div className="cart-title-price">
-          <p>{product.title}</p>
-          <CartLinePrice line={line} as="span" />
-        </div>
-        <div className="cart-size-quant">
-          <ul>
-            {selectedOptions.map((option) => (
-              <li key={option.name} style={{marginBottom: '0%'}}>
-                <p style={{fontSize: '.65rem', fontFamily: 'nolita-font'}}>
-                  {option.name}: {option.value}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <CartLineQuantity line={line} />
-        </div>
+      <div className="cart-title-price">
+        <p>{product.title}</p>
+        <CartLinePrice line={line} as="span" />
+      </div>
+      <div className="cart-size-quant">
+        <ul>
+          {selectedOptions.map((option) => (
+            <li key={option.name} style={{marginBottom: '0%'}}>
+              <p style={{fontSize: '.65rem', fontFamily: 'nolita-font'}}>
+                {option.name}: {option.value}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <CartLineQuantity line={line} />
       </div>
     </li>
   );
@@ -115,12 +113,8 @@ export function CartCheckoutActions({checkoutUrl}) {
   if (!checkoutUrl) return null;
 
   return (
-    <div style={{paddingBottom: '0%'}}>
-      <a
-        href={checkoutUrl}
-        target="_self"
-        style={{marginBottom: '0%', paddingBottom: '0%'}}
-      >
+    <div>
+      <a href={checkoutUrl} target="_self">
         <button
           style={{fontFamily: 'nolita-font', fontSize: '.65rem'}}
           className="checkout-button"
@@ -147,30 +141,24 @@ export function CartSummary({cost, layout, children = null, setHOS}) {
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
 
   return (
-    <div style={{marginBottom: '0%', paddingBottom: '0%'}}>
-      <div
-        aria-labelledby="cart-summary"
-        className="cart-summary-page"
-        ref={cartSummary}
+    <div aria-labelledby="cart-summary" className={className} ref={cartSummary}>
+      <dl
+        className="cart-subtotal"
+        style={{display: 'flex', justifyContent: 'space-between'}}
       >
-        <dl
-          className="cart-subtotal"
-          style={{display: 'flex', justifyContent: 'space-between'}}
-        >
-          <dt>Subtotal</dt>
-          <dd>
-            {cost?.subtotalAmount?.amount ? (
-              <Money data={cost?.subtotalAmount} />
-            ) : (
-              '-'
-            )}
-          </dd>
-        </dl>
-        <div className="checkout-text">
-          <p>Shipping, taxes, and discounts calculated at checkout.</p>
-        </div>
-        {children}
-      </div>
+        <dt>Subtotal</dt>
+        <dd>
+          {cost?.subtotalAmount?.amount ? (
+            <Money data={cost?.subtotalAmount} />
+          ) : (
+            '-'
+          )}
+        </dd>
+      </dl>
+      <p className="checkout-text">
+        Shipping, taxes, and discounts calculated at checkout.
+      </p>
+      {children}
     </div>
   );
 }
@@ -210,6 +198,7 @@ export function CartLineQuantity({line}) {
             fontFamily: 'nolita-font',
             display: 'flex',
             alignItems: 'center',
+            marginBottom: '2%',
           }}
         >
           Qty:
