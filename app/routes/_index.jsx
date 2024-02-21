@@ -17,14 +17,12 @@ export const meta = () => {
  */
 export async function loader({context}) {
   const {storefront} = context;
-  const {cart} = context;
-  const carti = cart.get();
   // const {collections} = await storefront.query(FEATURED_COLLECTION_QUERY);
   // const featuredCollection = collections.nodes[0];
   // const recommendedProducts = storefront.query(RECOMMENDED_PRODUCTS_QUERY);
   const allProducts = storefront.query(GET_ALL_PRODUCTS);
 
-  return defer({allProducts, carti});
+  return defer({allProducts});
 }
 
 export default function Homepage() {
@@ -33,7 +31,7 @@ export default function Homepage() {
   return (
     <div className="home">
       {/* <FeaturedCollection collection={data.featuredCollection} /> */}
-      <AllProducts products={data.allProducts} cart={data.carti} />
+      <AllProducts products={data.allProducts} />
     </div>
   );
 }
@@ -66,7 +64,7 @@ export default function Homepage() {
  *   products: Promise<RecommendedProductsQuery>;
  * }}
  */
-function AllProducts({products, cart}) {
+function AllProducts({products}) {
   return (
     <div className="recommended-products">
       <Suspense fallback={<div>Loading...</div>}>
@@ -74,7 +72,7 @@ function AllProducts({products, cart}) {
           {({products}) => (
             <div className="recommended-products-container">
               {products.edges.map((product) => (
-                <Product product={product} key={product.node.id} cart={cart} />
+                <Product product={product} key={product.node.id} />
               ))}
             </div>
           )}
@@ -85,7 +83,7 @@ function AllProducts({products, cart}) {
   );
 }
 
-function Product({product, cart}) {
+function Product({product}) {
   const [size, setSize] = useState();
   const [expandDetails, setExpandDetails] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
@@ -93,11 +91,6 @@ function Product({product, cart}) {
     product.node.images.edges[imageIndex].node.url,
   );
 
-  // console.log(
-  //   product.node.title,
-  //   product.node.variants.nodes.map((v) => v.id),
-  //   cart._data.lines.nodes.map((l) => l.merchandise.id),
-  // );
   function handleSizeButtonClick(id) {
     if (size === id) {
       setSize();
@@ -245,7 +238,11 @@ function Product({product, cart}) {
                   window.location.href =
                     window.location.href +
                     `${
-                      window.location.href.slice(-1) === '#' ? 'bag' : '#bag'
+                      window.location.href.includes('#bag')
+                        ? ''
+                        : window.location.href.slice(-1) === '#'
+                        ? 'bag'
+                        : '#bag'
                     }`;
                 }}
                 lines={
@@ -293,7 +290,15 @@ function AddToCartButton({analytics, children, disabled, lines, onClick}) {
           />
           <button
             type="submit"
-            onClick={onClick}
+            onClick={(e) => {
+              onClick();
+              e.target.innerHTML = 'Added';
+              e.target.parentNode.style.backgroundColor = 'grey';
+              setTimeout(() => {
+                e.target.innerHTML = 'Add to bag';
+                e.target.parentNode.style.backgroundColor = 'transparent';
+              }, 3000);
+            }}
             disabled={disabled ?? fetcher.state !== 'idle'}
             className="add-to-cart"
           >
