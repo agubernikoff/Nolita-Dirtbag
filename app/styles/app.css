@@ -328,30 +328,19 @@ aside li {
 * --------------------------------------------------
 */
 .cart-main {
-  height: 80vh;
-  max-height: 80vh;
-  overflow: hidden;
+  height: 60vh;
+  max-height: 70vh;
+  overflow: auto;
   width: auto;
   font-family: 'nolita-font';
 }
 .cart-main::-webkit-scrollbar {
   display: none;
 }
-
 .cart-main.with-discount {
   max-height: 70vh;
 }
-.cart-details {
-  height: 100%;
-}
-.cart-lines {
-  height: 56%;
-  overflow: scroll;
-}
 
-.cart-lines::-webkit-scrollbar {
-  display: none;
-}
 .cart-line {
   display: flex;
   padding: 0.75rem 0;
@@ -361,10 +350,13 @@ aside li {
 }
 
 .cart-line img {
-  height: auto;
+  height: 100%;
   display: block;
   margin-right: 0.75rem;
-  width: 100%;
+}
+
+.cart-summary-page {
+  position: relative;
 }
 .cart-title-price {
   display: flex;
@@ -408,12 +400,6 @@ aside li {
   font-family: 'nolita-font';
   font-size: 0.65rem;
 }
-.cart-summary-page {
-  margin-top: 3%;
-  position: relative;
-  border-top: 1px solid black;
-  padding-bottom: 0%;
-}
 
 .cart-summary-aside {
   background: white;
@@ -421,22 +407,29 @@ aside li {
   bottom: 0;
   padding-top: 0.75rem;
   position: absolute;
-  width: calc(var(--aside-width) - 40px);
+  width: 92%;
 }
 
 .cart-line-quantiy {
   display: flex;
-  margin-bottom: 3%;
 }
 
+.cart-discount {
+  align-items: center;
+  display: flex;
+  margin-top: 0.25rem;
+}
+
+.cart-subtotal {
+  align-items: center;
+  display: flex;
+}
 .checkout-text {
+  font-family: 'nolita-font';
+  font-size: 0.65rem;
   width: 50%;
 }
 
-.checkout-text > p {
-  font-family: 'nolita-font';
-  font-size: 0.65rem;
-}
 .checkout-button {
   color: white;
   margin-top: 3%;
@@ -449,17 +442,6 @@ aside li {
   display: flex;
   padding-top: 2%;
   padding-left: 2%;
-}
-.cart-discount {
-  align-items: center;
-  display: flex;
-  margin-top: 0.25rem;
-}
-
-.cart-subtotal {
-  margin-top: 7%;
-  align-items: center;
-  display: flex;
 }
 /*
 * --------------------------------------------------
@@ -688,7 +670,7 @@ button {
   margin-top: 6%;
 }
 form {
-  background-color: transparent;
+  background-color: transparent !important;
   color: #fff !important;
   border: none !important;
   font-family: nolita-font !important;
@@ -699,7 +681,6 @@ form {
   margin-left: 2% !important;
   cursor: pointer !important;
   width: 29.25% !important;
-  transition: background-color 1s ease;
 }
 
 .product-cart-soldout {
