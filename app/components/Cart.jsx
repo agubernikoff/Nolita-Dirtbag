@@ -80,36 +80,34 @@ export function CartLineItem({layout, line}) {
           alt={title}
           aspectRatio="1/1.05"
           data={image}
-          height={500}
+          height={300}
           loading="lazy"
-          width={500}
+          width={300}
           crop="center"
         />
       )}
 
-      <div>
-        <div className="cart-title-price">
-          <p>{product.title}</p>
-          <CartLinePrice line={line} as="span" />
-        </div>
-        <div className="cart-size-quant">
-          <ul>
-            {selectedOptions.map((option) => (
-              <li key={option.name} style={{marginBottom: '0%'}}>
-                <p
-                  style={{
-                    fontSize: '.65rem',
-                    fontFamily: 'nolita-font',
-                    wordSpacing: '3px',
-                  }}
-                >
-                  {`${option.name}: ${option.value}`}
-                </p>
-              </li>
-            ))}
-          </ul>
-          <CartLineQuantity line={line} />
-        </div>
+      <div className="cart-title-price">
+        <p>{product.title}</p>
+        <CartLinePrice line={line} as="span" />
+      </div>
+      <div className="cart-size-quant">
+        <ul>
+          {selectedOptions.map((option) => (
+            <li key={option.name} style={{marginBottom: '0%'}}>
+              <p
+                style={{
+                  fontSize: '.65rem',
+                  fontFamily: 'nolita-font',
+                  wordSpacing: '3px',
+                }}
+              >
+                {option.name}: {option.value}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <CartLineQuantity line={line} />
       </div>
     </li>
   );
@@ -207,7 +205,7 @@ export function CartLineQuantity({line}) {
             fontFamily: 'nolita-font',
             display: 'flex',
             alignItems: 'center',
-            wordSpacing: '5px',
+            marginBottom: '2%',
           }}
         >
           <span
