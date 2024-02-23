@@ -78,11 +78,12 @@ export function CartLineItem({layout, line}) {
       {image && (
         <Image
           alt={title}
-          aspectRatio="1/1"
+          aspectRatio="1/1.05"
           data={image}
-          // height={100}
+          height={500}
           loading="lazy"
-          // width={100}
+          width={500}
+          crop="center"
         />
       )}
 
@@ -95,8 +96,14 @@ export function CartLineItem({layout, line}) {
           <ul>
             {selectedOptions.map((option) => (
               <li key={option.name} style={{marginBottom: '0%'}}>
-                <p style={{fontSize: '.65rem', fontFamily: 'nolita-font'}}>
-                  {option.name}: {option.value}
+                <p
+                  style={{
+                    fontSize: '.65rem',
+                    fontFamily: 'nolita-font',
+                    wordSpacing: '3px',
+                  }}
+                >
+                  {`${option.name}: ${option.value}`}
                 </p>
               </li>
             ))}
@@ -210,9 +217,16 @@ export function CartLineQuantity({line}) {
             fontFamily: 'nolita-font',
             display: 'flex',
             alignItems: 'center',
+            wordSpacing: '5px',
           }}
         >
-          Qty:
+          <span
+            style={{
+              marginRight: '3px',
+            }}
+          >
+            {'Qty: '}
+          </span>
           <CartLineUpdateButton lines={[{id: lineId, quantity: prevQuantity}]}>
             <button
               aria-label="Decrease quantity"
