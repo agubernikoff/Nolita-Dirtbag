@@ -350,7 +350,7 @@ aside li {
 }
 
 .cart-line img {
-  width: 100%;
+  height: 100%;
   display: block;
   margin-right: 0.75rem;
 }
@@ -670,7 +670,7 @@ button {
   margin-top: 6%;
 }
 form {
-  background-color: transparent !important;
+  background-color: transparent;
   color: #fff !important;
   border: none !important;
   font-family: nolita-font !important;
@@ -681,6 +681,7 @@ form {
   margin-left: 2% !important;
   cursor: pointer !important;
   width: 29.25% !important;
+  transition: background-color 1s ease;
 }
 
 .product-cart-soldout {
