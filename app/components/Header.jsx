@@ -130,13 +130,14 @@ function HeaderCtas({isLoggedIn, cart}) {
         >
           Information
         </p>
-        <p
-          className="header-section-hold"
-          onMouseEnter={() => handleMouseEnter('bag')}
-        >
-          {/* {`Bag [${cart.lines.nodes.length}]`} */}
-          <CartToggle cart={cart} />
-        </p>
+        <div>
+          <p
+            className="header-section-hold"
+            onMouseEnter={() => handleMouseEnter('bag')}
+          >
+            <CartToggle cart={cart} allCaps={false} />
+          </p>
+        </div>
       </div>
       <AnimatePresence mode="popLayout">
         {activeDropdown && (
@@ -151,7 +152,12 @@ function HeaderCtas({isLoggedIn, cart}) {
           >
             {activeDropdown === 'instagram' && (
               <div className="dropdown-content">
-                <li>INSTAGRAM</li>
+                <div
+                  className="info-subsection-head"
+                  style={{marginBottom: '-1%'}}
+                >
+                  <li>INSTAGRAM</li>
+                </div>
                 <video
                   width="auto"
                   height="auto"
@@ -166,7 +172,12 @@ function HeaderCtas({isLoggedIn, cart}) {
             )}
             {activeDropdown === 'newsletter' && (
               <div className="dropdown-content">
-                <li>NEWSLETTER</li>
+                <div
+                  className="info-subsection-head"
+                  style={{marginBottom: '-1%'}}
+                >
+                  <li>NEWSLETTER</li>
+                </div>
                 <form className="newsletter-input-container">
                   <input placeholder="Email Address" name="email"></input>
                   <button type="submit">Submit</button>
@@ -176,7 +187,14 @@ function HeaderCtas({isLoggedIn, cart}) {
             {activeDropdown === 'information' && <InformationTab />}
             {activeDropdown === 'bag' && (
               <div className="dropdown-content">
-                <li>BAG</li>
+                <div
+                  className="info-subsection-head"
+                  style={{marginBottom: '-1%'}}
+                >
+                  <li>
+                    <CartToggle cart={cart} allCaps={true} />
+                  </li>
+                </div>
                 <Suspense fallback={<p>Loading cart ...</p>}>
                   <Await resolve={cart}>
                     {(cart) => {
@@ -1056,20 +1074,24 @@ function SearchToggle() {
 /**
  * @param {{count: number}}
  */
-function CartBadge({count}) {
-  return <a className="bag-header-link">Bag [{count}]</a>;
+function CartBadge({count, allCaps}) {
+  return (
+    <a className="bag-header-link">{`${allCaps ? 'BAG' : 'Bag'} [${count}]`}</a>
+  );
 }
 
 /**
  * @param {Pick<HeaderProps, 'cart'>}
  */
-function CartToggle({cart}) {
+function CartToggle({cart, allCaps}) {
   return (
     <Suspense fallback={<CartBadge count={0} />}>
       <Await resolve={cart}>
         {(cart) => {
-          if (!cart) return <CartBadge count={0} />;
-          return <CartBadge count={cart.totalQuantity || 0} />;
+          if (!cart) return <CartBadge count={0} allCaps={allCaps} />;
+          return (
+            <CartBadge count={cart.totalQuantity || 0} allCaps={allCaps} />
+          );
         }}
       </Await>
     </Suspense>

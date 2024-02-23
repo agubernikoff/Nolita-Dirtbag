@@ -237,6 +237,7 @@ aside li {
 }
 .dropdown-info > p {
   font-size: 0.65rem;
+  cursor: pointer;
 }
 .site-credit {
   margin-top: 3%;
