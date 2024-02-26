@@ -102,7 +102,7 @@ function HeaderCtas({isLoggedIn, cart}) {
 
   const handleMouseLeave = () => {
     setActiveDropdown(null);
-    window.location.hash = '';
+    window.location.hash = 'x';
   };
   useEffect(() => {
     if (loc.hash.includes('#bag')) handleMouseEnter('bag');

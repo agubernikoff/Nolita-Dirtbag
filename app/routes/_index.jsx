@@ -235,15 +235,11 @@ function Product({product}) {
               <AddToCartButton
                 disabled={!size}
                 onClick={() => {
-                  window.location.href =
-                    window.location.href +
-                    `${
-                      window.location.href.includes('#bag')
-                        ? ''
-                        : window.location.href.slice(-1) === '#'
-                        ? 'bag'
-                        : '#bag'
-                    }`;
+                  window.location.href = `${
+                    window.location.href.includes('#')
+                      ? window.location.href.replace('#x', '#bag')
+                      : window.location.href + '#bag'
+                  }`;
                 }}
                 lines={
                   size
