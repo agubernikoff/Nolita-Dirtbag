@@ -122,7 +122,7 @@ export default function App() {
         <Layout {...data}>
           <Outlet />
         </Layout>
-        <ScrollRestoration nonce={nonce} />
+        {/* <ScrollRestoration nonce={nonce} /> */}
         <Scripts nonce={nonce} />
         <LiveReload nonce={nonce} />
       </body>
