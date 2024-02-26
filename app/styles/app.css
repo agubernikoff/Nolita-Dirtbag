@@ -173,10 +173,15 @@ aside li {
 }
 .header-ctas-container {
   position: relative;
+  width: 30%;
+  padding: 1rem;
+  background: white;
 }
 .header-ctas {
   align-items: center;
   display: flex;
+  width: 100%;
+  justify-content: space-between;
   /* padding: 2%; */
 }
 .bag-header-link:hover {
@@ -184,7 +189,7 @@ aside li {
 }
 .header-section-hold {
   background-color: white;
-  padding: 1rem;
+  /* padding: 1rem; */
   font-size: 0.65rem;
 }
 .dropdown-container {
@@ -274,6 +279,7 @@ aside li {
   margin-top: 2% !important;
   margin-bottom: 2% !important;
   margin-left: 0 !important;
+  background: transparent !important;
 }
 
 .newsletter-input-container > input {
@@ -354,7 +360,7 @@ aside li {
 .cart-line img {
   height: 100%;
   display: block;
-  margin-right: 0.75rem;
+  margin: auto;
 }
 
 .cart-summary-page {
@@ -671,8 +677,8 @@ button {
   cursor: pointer;
   margin-top: 6%;
 }
-form {
-  background-color: transparent;
+.product-cart-container > form {
+  background-color: black;
   color: #fff !important;
   border: none !important;
   font-family: nolita-font !important;

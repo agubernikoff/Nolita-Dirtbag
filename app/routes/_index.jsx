@@ -292,8 +292,8 @@ function AddToCartButton({analytics, children, disabled, lines, onClick}) {
               e.target.parentNode.style.backgroundColor = 'grey';
               setTimeout(() => {
                 e.target.innerHTML = 'Add to bag';
-                e.target.parentNode.style.backgroundColor = 'transparent';
-              }, 3000);
+                e.target.parentNode.style.backgroundColor = 'black';
+              }, 1500);
             }}
             disabled={disabled ?? fetcher.state !== 'idle'}
             className="add-to-cart"
