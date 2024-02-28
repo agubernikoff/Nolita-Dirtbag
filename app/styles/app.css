@@ -358,7 +358,8 @@ aside li {
   font-family: 'nolita-font';
 }
 .cart-main::-webkit-scrollbar,
-.info-main::-webkit-scrollbar {
+.info-main::-webkit-scrollbar,
+body::-webkit-scrollbar {
   display: none;
 }
 .cart-main.with-discount {
