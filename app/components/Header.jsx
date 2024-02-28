@@ -274,40 +274,44 @@ function Information({setToDisplay}) {
       <div className="info-subsection-head" style={{marginBottom: '-1%'}}>
         <li>INFORMATION</li>
       </div>
-      <img
-        style={{width: '100%', borderRadius: '0', marginBottom: '2%'}}
-        src={image}
-        alt="sick painting"
-      />
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor
-        sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        ut labore et dolore magna aliqua.
-      </p>
-      <li>SUPPORT</li>
-      <div className="dropdown-info">
-        <p onClick={(e) => setToDisplay(e.target.innerText)}>
-          Terms of Service
+      <div className="info-main">
+        <img
+          style={{width: '100%', borderRadius: '0', marginBottom: '2%'}}
+          src={image}
+          alt="sick painting"
+        />
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
+          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <p onClick={(e) => setToDisplay(e.target.innerText)}>Privacy Policy</p>
-        <p onClick={(e) => setToDisplay(e.target.innerText)}>
-          Shipping and Returns
-        </p>
-      </div>
-      <li>CONTACT</li>
-      <p>team@nolitadirtbag.com</p>
-      <li>CREDITS</li>
-      <p>© Nolita Dirtbag 2024,</p>
-      <p>All Rights Reserved</p>
-      <div className="site-credit">
-        <a
-          href="https://www.swallstudios.com/"
-          rel="noopener noreferrer"
-          target="_blank"
-        >
-          Site Credit
-        </a>
+        <li>SUPPORT</li>
+        <div className="dropdown-info">
+          <p onClick={(e) => setToDisplay(e.target.innerText)}>
+            Terms of Service
+          </p>
+          <p onClick={(e) => setToDisplay(e.target.innerText)}>
+            Privacy Policy
+          </p>
+          <p onClick={(e) => setToDisplay(e.target.innerText)}>
+            Shipping and Returns
+          </p>
+        </div>
+        <li>CONTACT</li>
+        <p>team@nolitadirtbag.com</p>
+        <li>CREDITS</li>
+        <p>© Nolita Dirtbag 2024,</p>
+        <p>All Rights Reserved</p>
+        <div className="site-credit">
+          <a
+            href="https://www.swallstudios.com/"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
+            Site Credit
+          </a>
+        </div>
       </div>
     </>
   );

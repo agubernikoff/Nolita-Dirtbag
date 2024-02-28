@@ -173,7 +173,7 @@ aside li {
 }
 .header-ctas-container {
   position: relative;
-  width: 30%;
+  width: 18%;
   padding: 1rem;
   background: white;
 }
@@ -210,6 +210,7 @@ aside li {
   z-index: 1;
   /* padding: 0.75rem;
   padding-top: 0.2rem; */
+  /* overflow: hidden; */
 }
 .dropdown-content > li {
   list-style: none;
@@ -229,13 +230,26 @@ aside li {
   margin-bottom: 2%;
 }
 .dropdown-content > li::before,
-.info-subsection-head > li::before {
+.info-subsection-head > li::before,
+.info-main > li::before {
   content: '\25a0';
   font-size: 2em;
   display: inline-block;
   width: 0.75em;
   margin-right: 0;
   vertical-align: sub;
+}
+.info-main {
+  height: 60vh;
+  max-height: 70vh;
+  overflow: auto;
+  width: auto;
+  font-family: 'nolita-font';
+  font-size: 0.65rem;
+}
+.info-main > p {
+  font-family: 'nolita-font';
+  font-size: 0.65rem;
 }
 .dropdown-content > p {
   font-size: 0.65rem;
@@ -257,7 +271,8 @@ aside li {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-.info-subsection-head > li::marker {
+.info-subsection-head > li::marker,
+.info-main > li::marker {
   font-size: 0;
 }
 .info-sub-button {
@@ -342,7 +357,8 @@ aside li {
   width: auto;
   font-family: 'nolita-font';
 }
-.cart-main::-webkit-scrollbar {
+.cart-main::-webkit-scrollbar,
+.info-main::-webkit-scrollbar {
   display: none;
 }
 .cart-main.with-discount {
@@ -361,6 +377,7 @@ aside li {
   height: 100%;
   display: block;
   margin: auto;
+  width: 100%;
 }
 
 .cart-summary-page {
@@ -404,7 +421,7 @@ aside li {
   color: black;
   cursor: pointer;
   text-decoration: underline;
-  margin-left: -8%;
+  /* margin-left: -8%; */
   font-family: 'nolita-font';
   font-size: 0.65rem;
 }
