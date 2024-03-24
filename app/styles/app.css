@@ -554,6 +554,9 @@ body::-webkit-scrollbar {
   display: flex;
   /* gap: 1.5rem; */
 }
+.recommended-products-container-mobile {
+  flex-direction: column;
+}
 
 .product-container {
   position: relative;
@@ -562,6 +565,14 @@ body::-webkit-scrollbar {
   align-items: flex-end;
   justify-content: center;
   width: 40vw;
+}
+.product-container-mobile {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  align-items: flex-end;
+  justify-content: center;
+  width: 100%;
 }
 .left-image-button-container {
   position: absolute;
@@ -635,6 +646,17 @@ body::-webkit-scrollbar {
   bottom: 5%;
   font-size: 0.65rem !important;
 }
+.product-interaction-container-mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  width: 90%;
+  position: absolute;
+  bottom: 5%;
+  font-size: 0.65rem !important;
+  gap: 0.5rem;
+}
 .product-interaction-container > p {
   font-size: 0.65rem !important;
 }
@@ -644,35 +666,55 @@ body::-webkit-scrollbar {
   min-height: 75px;
   overflow: hidden;
 }
+.product-details-mobile {
+  width: 100%;
+  background-color: white;
+  overflow: hidden;
+}
 .product-details-container {
   display: flex;
   flex-direction: column;
   margin-top: 4%;
   margin-left: 3%;
 }
-.product-details-container > p {
+.product-details-container-mobile {
+  margin: 1.5% 3%;
+}
+.product-details-container > div > div > p {
   margin: 0;
 }
 .font-size-details {
   font-size: 0.65rem;
   padding-top: 3%;
 }
+.font-size-details-mobile {
+  font-size: 0.65rem;
+}
 .product-cart-container {
   display: flex;
   width: 49.5%;
+}
+.product-cart-container-mobile {
+  display: flex;
+  width: 100%;
 }
 .product-cart-sizing {
   width: 70%;
   background-color: white;
   height: 75px;
 }
-.product-cart-sizing > p,
+.product-cart-sizing-mobile {
+  width: 50%;
+  background-color: white;
+}
+.product-cart-sizing,
+.product-cart-sizing-mobile > p,
 button {
   font-size: 0.65rem !important;
 }
 
 .disabled-add-to-cart {
-  background-color: transparent;
+  background-color: black;
   color: grey;
   border: none;
   font-family: 'nolita-font';
@@ -682,7 +724,7 @@ button {
   text-align: left;
   padding: 2%;
   margin-left: 2%;
-  width: 30%;
+  width: 50%;
 }
 .add-to-cart {
   background-color: transparent;
@@ -722,9 +764,7 @@ button {
   padding-left: 4%;
 }
 .product-cart-sizing-container {
-  margin-left: 4%;
-  margin-top: 4%;
-  margin-right: 4%;
+  margin: 4%;
 }
 .product-size-button-container {
   display: flex;

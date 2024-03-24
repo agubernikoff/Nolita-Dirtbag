@@ -111,7 +111,7 @@ function HeaderCtas({isLoggedIn, cart}) {
   return (
     <div className="header-ctas-container">
       <div className="header-ctas">
-        <HeaderMenuMobileToggle />
+        {/* <HeaderMenuMobileToggle /> */}
         <p
           className="header-section-hold"
           onMouseEnter={() => handleMouseEnter('instagram')}

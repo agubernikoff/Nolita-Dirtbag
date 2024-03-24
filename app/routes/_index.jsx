@@ -65,14 +65,36 @@ export default function Homepage() {
  * }}
  */
 function AllProducts({products}) {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
   return (
-    <div className="recommended-products">
+    <div
+      className={
+        isMobile ? 'recommended-products-mobile' : 'recommended-products'
+      }
+    >
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
           {({products}) => (
-            <div className="recommended-products-container">
+            <div
+              className={
+                isMobile
+                  ? 'recommended-products-container-mobile'
+                  : 'recommended-products-container'
+              }
+            >
               {products.edges.map((product) => (
-                <Product product={product} key={product.node.id} />
+                <Product
+                  product={product}
+                  key={product.node.id}
+                  isMobile={isMobile}
+                />
               ))}
             </div>
           )}
@@ -83,7 +105,7 @@ function AllProducts({products}) {
   );
 }
 
-function Product({product}) {
+function Product({product, isMobile}) {
   const [size, setSize] = useState();
   const [expandDetails, setExpandDetails] = useState(false);
   const [imageIndex, setImageIndex] = useState(0);
@@ -155,7 +177,7 @@ function Product({product}) {
 
   return (
     <div
-      className="product-container"
+      className={isMobile ? 'product-container-mobile' : 'product-container'}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
@@ -190,18 +212,54 @@ function Product({product}) {
           alt={product.node.title}
         />
       </div>
-      <div className="product-interaction-container">
+      <div
+        className={
+          isMobile
+            ? 'product-interaction-container-mobile'
+            : 'product-interaction-container'
+        }
+      >
         <motion.div
-          className="product-details"
+          className={isMobile ? 'product-details-mobile' : 'product-details'}
           onClick={handleExpandDetailsClick}
           ref={scope}
         >
-          <div className="product-details-container" ref={productDetails}>
-            <p className="font-size">{product.node.title}</p>
-            <Money
-              data={product.node.priceRange.minVariantPrice}
-              className="font-size"
-            />
+          <div
+            className={
+              isMobile
+                ? 'product-details-container-mobile'
+                : 'product-details-container'
+            }
+            ref={productDetails}
+          >
+            <div
+              style={
+                isMobile
+                  ? {
+                      display: 'flex',
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
+                    }
+                  : null
+              }
+            >
+              <div>
+                <p className="font-size">{product.node.title}</p>
+                <Money
+                  data={product.node.priceRange.minVariantPrice}
+                  className="font-size"
+                />
+              </div>
+              {expandDetails ? null : (
+                <p
+                  className={
+                    isMobile ? 'font-size-details-mobile' : 'font-size-details'
+                  }
+                >
+                  Details +
+                </p>
+              )}
+            </div>
             <div>
               {expandDetails ? (
                 <>
@@ -214,17 +272,25 @@ function Product({product}) {
                     Close Details
                   </p>
                 </>
-              ) : (
-                <p className="font-size-details">Details +</p>
-              )}
+              ) : null}
             </div>
           </div>
         </motion.div>
         {product.node.availableForSale ? (
-          <div className="product-cart-container">
-            <div className="product-cart-sizing">
+          <div
+            className={
+              isMobile
+                ? 'product-cart-container-mobile'
+                : 'product-cart-container'
+            }
+          >
+            <div
+              className={
+                isMobile ? 'product-cart-sizing-mobile' : 'product-cart-sizing'
+              }
+            >
               <div className="product-cart-sizing-container">
-                <p className="font-size">Size:</p>
+                {isMobile ? null : <p className="font-size">Size:</p>}
                 <div className="product-size-button-container">
                   {mappedSizeButtons}
                 </div>
