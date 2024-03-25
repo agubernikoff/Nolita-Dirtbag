@@ -13,19 +13,33 @@ import {CartMain} from './Cart.jsx';
 
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
   return (
     <header className="header">
-      <strong
-        style={{
-          color: 'black',
-          textAlign: 'center',
-          padding: '1rem',
-          backgroundColor: 'white',
-        }}
-      >
-        {shop.name}
-      </strong>
-      <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      {!isMobile && (
+        <strong
+          style={{
+            color: 'black',
+            textAlign: 'center',
+            padding: '1rem',
+            backgroundColor: 'white',
+          }}
+        >
+          {shop.name}
+        </strong>
+      )}
+      {isMobile ? (
+        <div style={{color: 'white'}}>Mobile Header</div>
+      ) : (
+        <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      )}
     </header>
   );
 }
