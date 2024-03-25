@@ -651,7 +651,7 @@ body::-webkit-scrollbar {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  width: 90%;
+  width: 95%;
   position: absolute;
   bottom: 5%;
   font-size: 0.65rem !important;
@@ -914,4 +914,48 @@ button {
 
 .account-logout {
   display: inline-block;
+}
+
+/* MOBILE */
+.header-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding-top: 4%;
+  padding-bottom: 4%;
+  position: fixed;
+  top: 3%;
+  width: 90%;
+  z-index: 999;
+  left: 5%;
+}
+
+.header-mobile .brand-mobile {
+  text-align: center;
+  font-family: 'nolita-font';
+  font-size: 24px;
+}
+
+.header-mobile .menu-mobile,
+.header-mobile .cart-mobile {
+  flex-basis: 20%;
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  font-size: 24px;
+}
+
+.dropdown-mobile {
+  display: none;
+  position: absolute;
+  top: calc(100% + 5px); /* Adjust the margin between dropdown and header */
+  left: 0;
+  width: 100%; /* Set the width to match the menu and cart icons */
+  background-color: white; /* Set the background color to white */
+  padding: 10px;
+}
+
+.dropdown-mobile.active {
+  display: block;
 }

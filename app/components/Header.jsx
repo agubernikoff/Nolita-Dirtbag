@@ -14,6 +14,18 @@ import {CartMain} from './Cart.jsx';
 export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   const [isMobile, setIsMobile] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [cartOpen, setCartOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+    setCartOpen(false);
+  };
+
+  const toggleCart = () => {
+    setCartOpen(!cartOpen);
+    setMenuOpen(false);
+  };
 
   useEffect(() => {
     window
@@ -22,25 +34,44 @@ export function Header({header, isLoggedIn, cart}) {
     if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
   }, []);
   return (
-    <header className="header">
+    <>
       {!isMobile && (
-        <strong
-          style={{
-            color: 'black',
-            textAlign: 'center',
-            padding: '1rem',
-            backgroundColor: 'white',
-          }}
-        >
-          {shop.name}
-        </strong>
+        <header className="header">
+          <strong
+            style={{
+              color: 'black',
+              textAlign: 'center',
+              padding: '1rem',
+              backgroundColor: 'white',
+            }}
+          >
+            {shop.name}
+          </strong>
+          <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+        </header>
       )}
-      {isMobile ? (
-        <div style={{color: 'white'}}>Mobile Header</div>
-      ) : (
-        <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+      {isMobile && (
+        <div className="header-mobile">
+          <div className="menu-mobile" onClick={toggleMenu}>
+            &#9776;
+          </div>
+          <div className="brand-mobile">NOLITA DIRTBAG</div>
+          <div className="cart-mobile" onClick={toggleCart}>
+            &#128722;
+          </div>
+          {menuOpen && (
+            <div className={`dropdown-mobile ${menuOpen ? 'active' : ''}`}>
+              <p>dropdown</p>
+            </div>
+          )}
+          {cartOpen && (
+            <div className={`dropdown-mobile ${cartOpen ? 'active' : ''}`}>
+              <p>dropdown</p>
+            </div>
+          )}
+        </div>
       )}
-    </header>
+    </>
   );
 }
 
