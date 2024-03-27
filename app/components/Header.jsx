@@ -437,7 +437,12 @@ function Information({setToDisplay}) {
 
   return (
     <>
-      <div className="info-subsection-head" style={{marginBottom: '-1%'}}>
+      <div
+        className={
+          isMobile ? 'info-subsection-head-mobile' : 'info-subsection-head'
+        }
+        style={{marginBottom: '-1%'}}
+      >
         <li>INFORMATION</li>
         {isMobile ? (
           <button className="info-sub-button" onClick={() => setToDisplay('')}>
