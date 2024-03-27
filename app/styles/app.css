@@ -1035,10 +1035,12 @@ button {
   margin-top: 2%;
   margin-bottom: 2%;
 }
-.info-subsection-head-mobile > li::marker {
+.info-subsection-head-mobile > li::marker,
+.info-main-mobile > li::marker {
   font-size: 0;
 }
-.info-subsection-head-mobile > li::before {
+.info-subsection-head-mobile > li::before,
+.info-main-mobile > li::before {
   content: '\25a0';
   font-size: 0.75em;
   display: inline-block;

@@ -450,7 +450,7 @@ function Information({setToDisplay}) {
           </button>
         ) : null}
       </div>
-      <div className="info-main">
+      <div className={isMobile ? 'info-main-mobile' : 'info-main'}>
         <img
           style={{width: '100%', borderRadius: '0', marginBottom: '2%'}}
           src={image}
