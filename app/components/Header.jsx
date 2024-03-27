@@ -142,7 +142,7 @@ export function Header({header, isLoggedIn, cart}) {
                 {activeDropdown === 'newsletter' && (
                   <div className="dropdown-content-newsletter">
                     <div
-                      className="info-subsection-head"
+                      className="info-subsection-head-mobile"
                       style={{marginBottom: '-1%'}}
                     >
                       <li>NEWSLETTER</li>
