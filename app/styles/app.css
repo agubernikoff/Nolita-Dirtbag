@@ -1022,7 +1022,7 @@ button {
   vertical-align: sub;
 }
 
-/* .info-subsection-head-mobile {
+.info-subsection-head-mobile {
   display: flex;
   justify-content: space-between;
   margin-top: 2%;
@@ -1033,9 +1033,9 @@ button {
 }
 .info-subsection-head-mobile > li::before {
   content: '\25a0';
-  font-size: 0.5em;
+  font-size: 1.5em;
   display: inline-block;
   width: 0.75em;
   margin-right: 0;
   vertical-align: sub;
-} */
+}
