@@ -168,7 +168,10 @@ export function Header({header, isLoggedIn, cart}) {
                   </div>
                 )}
                 {activeDropdown === 'information' && (
-                  <InformationTab setMenuOpen={setMenuOpen} />
+                  <InformationTab
+                    setMenuOpen={setMenuOpen}
+                    toggleDropdown={toggleDropdown}
+                  />
                 )}
                 {activeDropdown === 'bag' && (
                   <div className="dropdown-content">
@@ -387,7 +390,7 @@ function HeaderCtas({isLoggedIn, cart}) {
     </div>
   );
 }
-function InformationTab({setMenuOpen}) {
+function InformationTab({setMenuOpen, toggleDropdown}) {
   const [toDisplay, setToDisplay] = useState('Information');
   return (
     <div className="dropdown-content-container">
@@ -404,6 +407,7 @@ function InformationTab({setMenuOpen}) {
             <Information
               setMenuOpen={setMenuOpen}
               setToDisplay={setToDisplay}
+              toggleDropdown={toggleDropdown}
             />
           </motion.div>
         )}
@@ -448,7 +452,7 @@ function InformationTab({setMenuOpen}) {
   );
 }
 
-function Information({setToDisplay, setMenuOpen}) {
+function Information({setToDisplay, setMenuOpen, toggleDropdown}) {
   const [isMobile, setIsMobile] = useState(false);
   // const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
@@ -471,7 +475,7 @@ function Information({setToDisplay, setMenuOpen}) {
           <button
             className="info-sub-button"
             onClick={() => {
-              setToDisplay('');
+              toggleDropdown('');
               setMenuOpen(true);
             }}
           >
