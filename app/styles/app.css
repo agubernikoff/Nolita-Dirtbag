@@ -435,6 +435,14 @@ body::-webkit-scrollbar {
   position: absolute;
   width: 92%;
 }
+.cart-summary-aside-mobile {
+  background: white;
+  border-top: 1px solid var(--color-dark);
+  bottom: 0;
+  padding-top: 0.75rem;
+  position: absolute;
+  width: 94%;
+}
 
 .cart-line-quantiy {
   display: flex;

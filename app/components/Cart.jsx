@@ -147,8 +147,25 @@ export function CartSummary({cost, layout, children = null, setHOS}) {
   const className =
     layout === 'page' ? 'cart-summary-page' : 'cart-summary-aside';
 
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
   return (
-    <div aria-labelledby="cart-summary" className={className} ref={cartSummary}>
+    <div
+      aria-labelledby="cart-summary"
+      className={
+        isMobile
+          ? 'cart-summary-aside-mobile'
+          : layout === 'page'
+          ? 'cart-summary-page'
+          : 'cart-summary-aside'
+      }
+      ref={cartSummary}
+    >
       <dl
         className="cart-subtotal"
         style={{display: 'flex', justifyContent: 'space-between'}}
