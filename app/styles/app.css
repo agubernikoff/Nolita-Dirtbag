@@ -953,9 +953,63 @@ button {
   left: 0;
   width: 100%; /* Set the width to match the menu and cart icons */
   background-color: white; /* Set the background color to white */
-  padding: 10px;
 }
 
 .dropdown-mobile.active {
   display: block;
+}
+
+.category,
+.category-last {
+  width: 100%;
+  text-align: center;
+  padding-top: 1%;
+  padding-bottom: 1%;
+  cursor: pointer;
+  border-bottom: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+.category-last {
+  border-bottom: none;
+}
+
+.dropdown-container-mobile {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  max-height: 75vh;
+  overflow: auto;
+}
+.dropdown-container-mobile::-webkit-scrollbar {
+  display: none;
+}
+.dropdown-container-mobile .dropdown-content {
+  border: none;
+}
+
+.dropdown-content-newsletter {
+  font-size: 0.65rem;
+  margin-top: 0.5rem;
+  background-color: white;
+  /* border: 1px solid #ddd; */
+  z-index: 1;
+  padding: 0.75rem;
+  padding-top: 0.2rem;
+  height: 13.5vh;
+}
+
+.dropdown-content-newsletter > li {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+.dropdown-content-newsletter > li::before {
+  content: '\25a0';
+  font-size: 2em;
+  display: inline-block;
+  width: 0.75em;
+  margin-right: 0;
+  vertical-align: sub;
 }

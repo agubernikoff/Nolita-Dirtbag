@@ -16,15 +16,22 @@ export function Header({header, isLoggedIn, cart}) {
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [cartOpen, setCartOpen] = useState(false);
+  const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
     setCartOpen(false);
+    setActiveDropdown(null);
   };
 
   const toggleCart = () => {
     setCartOpen(!cartOpen);
     setMenuOpen(false);
+    setActiveDropdown(null);
+  };
+
+  const toggleDropdown = (dropdown) => {
+    setActiveDropdown(activeDropdown === dropdown ? null : dropdown); // Toggle active dropdown
   };
 
   useEffect(() => {
@@ -56,19 +63,125 @@ export function Header({header, isLoggedIn, cart}) {
             &#9776;
           </div>
           <div className="brand-mobile">NOLITA DIRTBAG</div>
-          <div className="cart-mobile" onClick={toggleCart}>
+          <div
+            className="cart-mobile"
+            onClick={toggleCart}
+            onClick={() => toggleDropdown('bag')}
+          >
             &#128722;
           </div>
           {menuOpen && (
             <div className={`dropdown-mobile ${menuOpen ? 'active' : ''}`}>
-              <p>dropdown</p>
+              <div
+                className="category"
+                onClick={() => toggleDropdown('instagram')}
+              >
+                INSTAGRAM
+              </div>
+              <div
+                className="category"
+                onClick={() => toggleDropdown('newsletter')}
+              >
+                NEWSLETTER
+              </div>
+              <div
+                className="category"
+                onClick={() => toggleDropdown('information')}
+              >
+                INFORMATION
+              </div>
+              <div
+                className="category-last"
+                onClick={() => toggleDropdown('bag')}
+              >
+                BAG
+              </div>
             </div>
           )}
           {cartOpen && (
-            <div className={`dropdown-mobile ${cartOpen ? 'active' : ''}`}>
-              <p>dropdown</p>
-            </div>
+            <div
+              className={`dropdown-mobile ${cartOpen ? 'active' : ''}`}
+            ></div>
           )}
+          <AnimatePresence>
+            {activeDropdown && (
+              <motion.div
+                className="dropdown-container-mobile"
+                initial={{opacity: 0}}
+                animate={{opacity: 1}}
+                exit={{opacity: 0}}
+                transition={{duration: 0.25}}
+                key={activeDropdown}
+              >
+                {activeDropdown === 'instagram' && (
+                  <div className="dropdown-content">
+                    <div
+                      className="info-subsection-head"
+                      style={{marginBottom: '-1%'}}
+                    >
+                      <li>INSTAGRAM</li>
+                      <button
+                        className="info-sub-button"
+                        onClick={() => toggleDropdown('')}
+                      >
+                        Back
+                      </button>
+                    </div>
+                    <video
+                      width="auto"
+                      height="auto"
+                      style={{width: '100%'}}
+                      autoPlay
+                      loop
+                    >
+                      <source src={Meme_Sequence} type="video/mp4" />
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
+                )}
+                {activeDropdown === 'newsletter' && (
+                  <div className="dropdown-content-newsletter">
+                    <div
+                      className="info-subsection-head"
+                      style={{marginBottom: '-1%'}}
+                    >
+                      <li>NEWSLETTER</li>
+                      <button
+                        className="info-sub-button"
+                        onClick={() => toggleDropdown('')}
+                      >
+                        Back
+                      </button>
+                    </div>
+                    <form className="newsletter-input-container">
+                      <input placeholder="Email Address" name="email"></input>
+                      <button type="submit">Submit</button>
+                    </form>
+                  </div>
+                )}
+                {activeDropdown === 'information' && <InformationTab />}
+                {activeDropdown === 'bag' && (
+                  <div className="dropdown-content">
+                    <div
+                      className="info-subsection-head"
+                      style={{marginBottom: '-1%'}}
+                    >
+                      <li>
+                        <CartToggle cart={cart} allCaps={true} />
+                      </li>
+                    </div>
+                    <Suspense fallback={<p>Loading cart ...</p>}>
+                      <Await resolve={cart}>
+                        {(cart) => {
+                          return <CartMain cart={cart} layout="aside" />;
+                        }}
+                      </Await>
+                    </Suspense>
+                  </div>
+                )}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       )}
     </>
@@ -314,10 +427,23 @@ function InformationTab() {
 }
 
 function Information({setToDisplay}) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
+
   return (
     <>
       <div className="info-subsection-head" style={{marginBottom: '-1%'}}>
         <li>INFORMATION</li>
+        {isMobile ? (
+          <button className="info-sub-button" onClick={() => setToDisplay('')}>
+            Back
+          </button>
+        ) : null}
       </div>
       <div className="info-main">
         <img
@@ -1124,6 +1250,13 @@ function SearchToggle() {
  * @param {{count: number}}
  */
 function CartBadge({count, allCaps}) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
   return (
     <a className="bag-header-link">{`${allCaps ? 'BAG' : 'Bag'} [${count}]`}</a>
   );
