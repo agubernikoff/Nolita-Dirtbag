@@ -116,7 +116,7 @@ export function Header({header, isLoggedIn, cart}) {
                 {activeDropdown === 'instagram' && (
                   <div className="dropdown-content">
                     <div
-                      className="info-subsection-head-mobile"
+                      className="info-subsection-head"
                       style={{marginBottom: '-1%'}}
                     >
                       <li>INSTAGRAM</li>

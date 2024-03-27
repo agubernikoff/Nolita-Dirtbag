@@ -1014,7 +1014,7 @@ button {
   vertical-align: sub;
 }
 
-.info-subsection-head-mobile {
+/* .info-subsection-head-mobile {
   display: flex;
   justify-content: space-between;
   margin-top: 2%;
@@ -1030,4 +1030,4 @@ button {
   width: 0.75em;
   margin-right: 0;
   vertical-align: sub;
-}
+} */
