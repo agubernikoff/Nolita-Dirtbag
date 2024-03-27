@@ -1063,3 +1063,7 @@ button {
 .info-main-mobile > li {
   margin-top: 2%;
 }
+.info-main-mobile::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none;
+}
