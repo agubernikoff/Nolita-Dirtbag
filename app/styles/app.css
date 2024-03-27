@@ -976,8 +976,8 @@ button {
   margin-left: 2%;
   font-family: 'nolita-font';
   font-size: 0.75rem;
-  padding-top: 0.75%;
-  padding-bottom: 0.75%;
+  padding-top: 1%;
+  padding-bottom: 1%;
 }
 .category-last {
   border-bottom: none;
