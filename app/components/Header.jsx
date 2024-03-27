@@ -15,19 +15,17 @@ export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [cartOpen, setCartOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
-    setCartOpen(false);
     setActiveDropdown(null);
   };
 
   const toggleCart = () => {
-    setCartOpen(!cartOpen);
     setMenuOpen(false);
-    setActiveDropdown(null);
+    if (activeDropdown !== 'bag') setActiveDropdown('bag');
+    else setActiveDropdown(null);
   };
 
   const toggleDropdown = (dropdown) => {
@@ -41,9 +39,6 @@ export function Header({header, isLoggedIn, cart}) {
     if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
   }, []);
 
-  const handleBackClick = () => {
-    setMenuOpen(true);
-  };
   return (
     <>
       {!isMobile && (
@@ -67,11 +62,7 @@ export function Header({header, isLoggedIn, cart}) {
             &#9776;
           </div>
           <div className="brand-mobile">NOLITA DIRTBAG</div>
-          <div
-            className="cart-mobile"
-            onClick={toggleCart}
-            onClick={() => toggleDropdown('bag')}
-          >
+          <div className="cart-mobile" onClick={toggleCart}>
             &#128722;
           </div>
           {menuOpen && (
@@ -114,11 +105,6 @@ export function Header({header, isLoggedIn, cart}) {
               </div>
             </div>
           )}
-          {cartOpen && (
-            <div
-              className={`dropdown-mobile ${cartOpen ? 'active' : ''}`}
-            ></div>
-          )}
           <AnimatePresence>
             {activeDropdown && (
               <motion.div
@@ -139,9 +125,7 @@ export function Header({header, isLoggedIn, cart}) {
                       <button
                         className="info-sub-button"
                         onClick={() => {
-                          {
-                            toggleDropdown('');
-                          }
+                          toggleDropdown('');
                           setMenuOpen(true);
                         }}
                       >
@@ -170,9 +154,7 @@ export function Header({header, isLoggedIn, cart}) {
                       <button
                         className="info-sub-button"
                         onClick={() => {
-                          {
-                            toggleDropdown('');
-                          }
+                          toggleDropdown('');
                           setMenuOpen(true);
                         }}
                       >
@@ -186,7 +168,24 @@ export function Header({header, isLoggedIn, cart}) {
                   </div>
                 )}
                 {activeDropdown === 'information' && (
-                  <InformationTab setMenuOpen={handleBackClick} />
+                  <div className="dropdown-content">
+                    <div
+                      className="info-subsection-head-mobile"
+                      style={{marginBottom: '-1%'}}
+                    >
+                      <li>INFORMATION</li>
+                      <button
+                        className="info-sub-button"
+                        onClick={() => {
+                          toggleDropdown('');
+                          setMenuOpen(true);
+                        }}
+                      >
+                        Back
+                      </button>
+                    </div>
+                    <InformationTab />
+                  </div>
                 )}
                 {activeDropdown === 'bag' && (
                   <div className="dropdown-content">
@@ -197,6 +196,15 @@ export function Header({header, isLoggedIn, cart}) {
                       <li>
                         <CartToggle cart={cart} allCaps={true} />
                       </li>
+                      <button
+                        className="info-sub-button"
+                        onClick={() => {
+                          toggleDropdown('');
+                          setMenuOpen(true);
+                        }}
+                      >
+                        Back
+                      </button>
                     </div>
                     <Suspense fallback={<p>Loading cart ...</p>}>
                       <Await resolve={cart}>
@@ -396,9 +404,8 @@ function HeaderCtas({isLoggedIn, cart}) {
     </div>
   );
 }
-function InformationTab(setMenuOpen) {
+function InformationTab() {
   const [toDisplay, setToDisplay] = useState('Information');
-  console.log(setMenuOpen);
   return (
     <div className="dropdown-content-container">
       <AnimatePresence mode="wait" initial={false}>
@@ -411,10 +418,7 @@ function InformationTab(setMenuOpen) {
             transition={{duration: 0.25}}
             key="info"
           >
-            <Information
-              setMenuOpen={setMenuOpen}
-              setToDisplay={setToDisplay}
-            />
+            <Information setToDisplay={setToDisplay} />
           </motion.div>
         )}
         {toDisplay === 'Terms of Service' && (
@@ -475,18 +479,7 @@ function Information({setToDisplay, setMenuOpen}) {
         }
         style={{marginBottom: '-1%'}}
       >
-        <li>INFORMATION</li>
-        {isMobile ? (
-          <button
-            className="info-sub-button"
-            onClick={() => {
-              setToDisplay('');
-              setMenuOpen(true);
-            }}
-          >
-            Back
-          </button>
-        ) : null}
+        {!isMobile ? <li>INFORMATION</li> : null}
       </div>
       <div className={isMobile ? 'info-main-mobile' : 'info-main'}>
         <img
