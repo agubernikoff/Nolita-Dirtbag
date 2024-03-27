@@ -89,13 +89,15 @@ function AllProducts({products}) {
                   : 'recommended-products-container'
               }
             >
-              {products.edges.map((product) => (
-                <Product
-                  product={product}
-                  key={product.node.id}
-                  isMobile={isMobile}
-                />
-              ))}
+              {products.edges
+                .filter((p) => p.node.title !== 'FARTIER BUTT PLUG')
+                .map((product) => (
+                  <Product
+                    product={product}
+                    key={product.node.id}
+                    isMobile={isMobile}
+                  />
+                ))}
             </div>
           )}
         </Await>
