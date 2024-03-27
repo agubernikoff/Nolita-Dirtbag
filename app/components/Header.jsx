@@ -493,9 +493,20 @@ function Information({setToDisplay}) {
   );
 }
 function TermsOfService({setToDisplay}) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
   return (
     <>
-      <div className="info-subsection-head">
+      <div
+        className={
+          isMobile ? 'info-subsection-head-mobile' : 'info-subsection-head'
+        }
+      >
         <li>TERMS OF SERVICE</li>
         <button
           className="info-sub-button"
@@ -967,9 +978,20 @@ function TermsOfService({setToDisplay}) {
   );
 }
 function ShippingAndReturns({setToDisplay}) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
   return (
     <>
-      <div className="info-subsection-head">
+      <div
+        className={
+          isMobile ? 'info-subsection-head-mobile' : 'info-subsection-head'
+        }
+      >
         <li>SHIPPING AND RETURNS</li>
         <button
           className="info-sub-button"
@@ -1028,9 +1050,20 @@ function ShippingAndReturns({setToDisplay}) {
   );
 }
 function PrivacyPolicy({setToDisplay}) {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
   return (
     <>
-      <div className="info-subsection-head">
+      <div
+        className={
+          isMobile ? 'info-subsection-head-mobile' : 'info-subsection-head'
+        }
+      >
         <li>PRIVACY POLICY</li>
         <button
           className="info-sub-button"
