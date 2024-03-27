@@ -40,6 +40,10 @@ export function Header({header, isLoggedIn, cart}) {
       .addEventListener('change', (e) => setIsMobile(e.matches));
     if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
   }, []);
+
+  const handleBackClick = () => {
+    setMenuOpen(true);
+  };
   return (
     <>
       {!isMobile && (
@@ -74,25 +78,37 @@ export function Header({header, isLoggedIn, cart}) {
             <div className={`dropdown-mobile ${menuOpen ? 'active' : ''}`}>
               <div
                 className="category"
-                onClick={() => toggleDropdown('instagram')}
+                onClick={() => {
+                  toggleDropdown('instagram');
+                  setMenuOpen(false);
+                }}
               >
                 <p>INSTAGRAM</p>
               </div>
               <div
                 className="category"
-                onClick={() => toggleDropdown('newsletter')}
+                onClick={() => {
+                  toggleDropdown('newsletter');
+                  setMenuOpen(false);
+                }}
               >
                 <p>NEWSLETTER</p>
               </div>
               <div
                 className="category"
-                onClick={() => toggleDropdown('information')}
+                onClick={() => {
+                  toggleDropdown('information');
+                  setMenuOpen(false);
+                }}
               >
                 <p>INFORMATION</p>
               </div>
               <div
                 className="category-last"
-                onClick={() => toggleDropdown('bag')}
+                onClick={() => {
+                  toggleDropdown('bag');
+                  setMenuOpen(false);
+                }}
               >
                 <p>BAG</p>
               </div>
@@ -122,7 +138,12 @@ export function Header({header, isLoggedIn, cart}) {
                       <li>INSTAGRAM</li>
                       <button
                         className="info-sub-button"
-                        onClick={() => toggleDropdown('')}
+                        onClick={() => {
+                          {
+                            toggleDropdown('');
+                          }
+                          setMenuOpen(true);
+                        }}
                       >
                         Back
                       </button>
@@ -148,7 +169,12 @@ export function Header({header, isLoggedIn, cart}) {
                       <li>NEWSLETTER</li>
                       <button
                         className="info-sub-button"
-                        onClick={() => toggleDropdown('')}
+                        onClick={() => {
+                          {
+                            toggleDropdown('');
+                          }
+                          setMenuOpen(true);
+                        }}
                       >
                         Back
                       </button>
@@ -159,7 +185,9 @@ export function Header({header, isLoggedIn, cart}) {
                     </form>
                   </div>
                 )}
-                {activeDropdown === 'information' && <InformationTab />}
+                {activeDropdown === 'information' && (
+                  <InformationTab setMenuOpen={handleBackClick} />
+                )}
                 {activeDropdown === 'bag' && (
                   <div className="dropdown-content">
                     <div
@@ -368,8 +396,9 @@ function HeaderCtas({isLoggedIn, cart}) {
     </div>
   );
 }
-function InformationTab() {
+function InformationTab(setMenuOpen) {
   const [toDisplay, setToDisplay] = useState('Information');
+  console.log(setMenuOpen);
   return (
     <div className="dropdown-content-container">
       <AnimatePresence mode="wait" initial={false}>
@@ -382,7 +411,10 @@ function InformationTab() {
             transition={{duration: 0.25}}
             key="info"
           >
-            <Information setToDisplay={setToDisplay} />
+            <Information
+              setMenuOpen={setMenuOpen}
+              setToDisplay={setToDisplay}
+            />
           </motion.div>
         )}
         {toDisplay === 'Terms of Service' && (
@@ -426,7 +458,7 @@ function InformationTab() {
   );
 }
 
-function Information({setToDisplay}) {
+function Information({setToDisplay, setMenuOpen}) {
   const [isMobile, setIsMobile] = useState(false);
   useEffect(() => {
     window
@@ -445,7 +477,13 @@ function Information({setToDisplay}) {
       >
         <li>INFORMATION</li>
         {isMobile ? (
-          <button className="info-sub-button" onClick={() => setToDisplay('')}>
+          <button
+            className="info-sub-button"
+            onClick={() => {
+              setToDisplay('');
+              setMenuOpen(true);
+            }}
+          >
             Back
           </button>
         ) : null}
