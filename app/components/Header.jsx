@@ -142,7 +142,7 @@ export function Header({header, isLoggedIn, cart}) {
                 {activeDropdown === 'newsletter' && (
                   <div className="dropdown-content-newsletter">
                     <div
-                      className="info-subsection-head-mobile-mobile"
+                      className="info-subsection-head"
                       style={{marginBottom: '-1%'}}
                     >
                       <li>NEWSLETTER</li>
@@ -163,7 +163,7 @@ export function Header({header, isLoggedIn, cart}) {
                 {activeDropdown === 'bag' && (
                   <div className="dropdown-content">
                     <div
-                      className="info-subsection-head-mobile"
+                      className="info-subsection-head"
                       style={{marginBottom: '-1%'}}
                     >
                       <li>
