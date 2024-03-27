@@ -1015,7 +1015,7 @@ button {
 }
 .dropdown-content-newsletter > li::before {
   content: '\25a0';
-  font-size: 2em;
+  font-size: 0.75em;
   display: inline-block;
   width: 0.75em;
   margin-right: 0;
@@ -1033,7 +1033,7 @@ button {
 }
 .info-subsection-head-mobile > li::before {
   content: '\25a0';
-  font-size: 1.5em;
+  font-size: 0.75em;
   display: inline-block;
   width: 0.75em;
   margin-right: 0;
