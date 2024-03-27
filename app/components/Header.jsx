@@ -168,24 +168,7 @@ export function Header({header, isLoggedIn, cart}) {
                   </div>
                 )}
                 {activeDropdown === 'information' && (
-                  <div className="dropdown-content">
-                    <div
-                      className="info-subsection-head-mobile"
-                      style={{marginBottom: '-1%'}}
-                    >
-                      <li>INFORMATION</li>
-                      <button
-                        className="info-sub-button"
-                        onClick={() => {
-                          toggleDropdown('');
-                          setMenuOpen(true);
-                        }}
-                      >
-                        Back
-                      </button>
-                    </div>
-                    <InformationTab />
-                  </div>
+                  <InformationTab setMenuOpen={setMenuOpen} />
                 )}
                 {activeDropdown === 'bag' && (
                   <div className="dropdown-content">
@@ -404,7 +387,7 @@ function HeaderCtas({isLoggedIn, cart}) {
     </div>
   );
 }
-function InformationTab() {
+function InformationTab({setMenuOpen}) {
   const [toDisplay, setToDisplay] = useState('Information');
   return (
     <div className="dropdown-content-container">
@@ -418,7 +401,10 @@ function InformationTab() {
             transition={{duration: 0.25}}
             key="info"
           >
-            <Information setToDisplay={setToDisplay} />
+            <Information
+              setMenuOpen={setMenuOpen}
+              setToDisplay={setToDisplay}
+            />
           </motion.div>
         )}
         {toDisplay === 'Terms of Service' && (
@@ -464,6 +450,7 @@ function InformationTab() {
 
 function Information({setToDisplay, setMenuOpen}) {
   const [isMobile, setIsMobile] = useState(false);
+  // const [menuOpen, setMenuOpen] = useState(false);
   useEffect(() => {
     window
       .matchMedia('(max-width:700px)')
@@ -479,7 +466,18 @@ function Information({setToDisplay, setMenuOpen}) {
         }
         style={{marginBottom: '-1%'}}
       >
-        {!isMobile ? <li>INFORMATION</li> : null}
+        <li>INFORMATION</li>
+        {isMobile ? (
+          <button
+            className="info-sub-button"
+            onClick={() => {
+              setToDisplay('');
+              setMenuOpen(true);
+            }}
+          >
+            Back
+          </button>
+        ) : null}
       </div>
       <div className={isMobile ? 'info-main-mobile' : 'info-main'}>
         <img
