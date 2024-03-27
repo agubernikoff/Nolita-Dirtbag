@@ -76,25 +76,25 @@ export function Header({header, isLoggedIn, cart}) {
                 className="category"
                 onClick={() => toggleDropdown('instagram')}
               >
-                INSTAGRAM
+                <p>INSTAGRAM</p>
               </div>
               <div
                 className="category"
                 onClick={() => toggleDropdown('newsletter')}
               >
-                NEWSLETTER
+                <p>NEWSLETTER</p>
               </div>
               <div
                 className="category"
                 onClick={() => toggleDropdown('information')}
               >
-                INFORMATION
+                <p>INFORMATION</p>
               </div>
               <div
                 className="category-last"
                 onClick={() => toggleDropdown('bag')}
               >
-                BAG
+                <p>BAG</p>
               </div>
             </div>
           )}
