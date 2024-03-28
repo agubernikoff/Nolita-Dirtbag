@@ -298,34 +298,26 @@ function Product({product, isMobile}) {
                 </div>
               </div>
             </div>
-            {/* <div className="product-cart-add-cart"> */}
-            {size ? (
-              <AddToCartButton
-                disabled={!size}
-                onClick={() => {
-                  window.location.href = `${
-                    window.location.href.includes('#')
-                      ? window.location.href.replace('#x', '#bag')
-                      : window.location.href + '#bag'
-                  }`;
-                }}
-                lines={
-                  size
-                    ? [
-                        {
-                          merchandiseId: size,
-                          quantity: 1,
-                        },
-                      ]
-                    : []
-                }
-              />
-            ) : (
-              <button disabled className="disabled-add-to-cart">
-                Add to bag
-              </button>
-            )}
-            {/* </div> */}
+            <AddToCartButton
+              disabled={!size}
+              onClick={() => {
+                window.location.href = `${
+                  window.location.href.includes('#')
+                    ? window.location.href.replace('#x', '#bag')
+                    : window.location.href + '#bag'
+                }`;
+              }}
+              lines={
+                size
+                  ? [
+                      {
+                        merchandiseId: size,
+                        quantity: 1,
+                      },
+                    ]
+                  : []
+              }
+            />
           </div>
         ) : (
           <div className="product-cart-soldout">
@@ -364,7 +356,7 @@ function AddToCartButton({analytics, children, disabled, lines, onClick}) {
               }, 1500);
             }}
             disabled={disabled ?? fetcher.state !== 'idle'}
-            className="add-to-cart"
+            className={disabled ? 'disabled-add-to-cart' : 'add-to-cart'}
           >
             Add to bag
           </button>

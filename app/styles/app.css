@@ -722,17 +722,15 @@ button {
 }
 
 .disabled-add-to-cart {
-  background-color: black;
+  background-color: transparent;
   color: grey;
   border: none;
   font-family: 'nolita-font';
   font-size: 0.65rem;
-  border: 1px solid grey;
   display: flex;
   text-align: left;
-  padding: 2%;
-  margin-left: 2%;
-  width: 50%;
+  cursor: pointer;
+  margin-top: 6%;
 }
 .add-to-cart {
   background-color: transparent;
@@ -745,7 +743,8 @@ button {
   cursor: pointer;
   margin-top: 6%;
 }
-.product-cart-container > form {
+.product-cart-container > form,
+.product-cart-container-mobile > form {
   background-color: black;
   color: #fff !important;
   border: none !important;
@@ -758,6 +757,13 @@ button {
   cursor: pointer !important;
   width: 29.25% !important;
   transition: background-color 1s ease;
+}
+.product-cart-container-mobile > form {
+  width: 50% !important;
+}
+.product-cart-container-mobile .add-to-cart,
+.product-cart-container-mobile .disabled-add-to-cart {
+  margin-top: 3%;
 }
 
 .product-cart-soldout {
