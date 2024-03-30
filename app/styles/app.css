@@ -1,3 +1,7 @@
+html,
+body {
+  overflow-y: hidden;
+}
 :root {
   --aside-width: 400px;
   --cart-aside-summary-height-with-discount: 300px;
@@ -561,9 +565,14 @@ body::-webkit-scrollbar {
 .recommended-products-container {
   display: flex;
   /* gap: 1.5rem; */
+  overflow: scroll;
+  width: fit-content;
 }
 .recommended-products-container-mobile {
   flex-direction: column;
+  scroll-snap-type: y mandatory;
+  height: 100vh;
+  overflow: scroll;
 }
 
 .product-container {
@@ -581,6 +590,11 @@ body::-webkit-scrollbar {
   align-items: flex-end;
   justify-content: center;
   width: 100%;
+  margin-top: 20%;
+  scroll-snap-align: end;
+}
+.product-container-mobile:first-of-type {
+  margin-top: 0;
 }
 .left-image-button-container {
   position: absolute;
