@@ -691,6 +691,10 @@ body::-webkit-scrollbar {
 .product-details-container > div > div > p {
   margin: 0;
 }
+.product-details-container ul,
+.product-details-container-mobile ul {
+  list-style: inside;
+}
 .font-size-details {
   font-size: 0.65rem;
   padding-top: 3%;
