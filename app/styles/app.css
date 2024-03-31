@@ -571,8 +571,13 @@ body::-webkit-scrollbar {
 .recommended-products-container-mobile {
   flex-direction: column;
   scroll-snap-type: y mandatory;
-  height: 100vh;
+  height: -webkit-fill-available;
   overflow: scroll;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
 }
 
 .product-container {
@@ -586,12 +591,15 @@ body::-webkit-scrollbar {
 .product-container-mobile {
   position: relative;
   display: flex;
-  height: 100vh;
+  height: -webkit-fill-available;
   align-items: flex-end;
   justify-content: center;
   width: 100%;
   margin-top: 20%;
   scroll-snap-align: end;
+}
+.product-container-mobile .product-image-container {
+  height: 80vh;
 }
 .product-container-mobile:first-of-type {
   margin-top: 0;
