@@ -708,6 +708,14 @@ body::-webkit-scrollbar {
   background-color: white;
   overflow: hidden;
 }
+.product-details ul,
+.product-details-mobile ul {
+  margin-bottom: 2.5%;
+}
+.product-details li,
+.product-details-mobile li {
+  margin-bottom: 0;
+}
 .product-details-container {
   display: flex;
   flex-direction: column;
