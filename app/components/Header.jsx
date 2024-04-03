@@ -48,164 +48,167 @@ export function Header({header, isLoggedIn, cart}) {
       {!isMobile && (
         <header className="header">
           <img className="logo" src={logo} alt="nd logo" />
-          {/* <strong
-            style={{
-              color: 'black',
-              textAlign: 'center',
-              padding: '1rem',
-              backgroundColor: 'white',
-            }}
-          >
-            {shop.name}
-          </strong> */}
           <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
         </header>
       )}
       {isMobile && (
-        <div className="header-mobile">
-          <img className="menu-mobile" onClick={toggleMenu} src={burger} />
-          <img className="brand-mobile" src={logoblack} />
-          <img className="cart-mobile" onClick={toggleCart} src={carti} />
-          {menuOpen && (
-            <div className={`dropdown-mobile ${menuOpen ? 'active' : ''}`}>
-              <div
-                className="category"
-                onClick={() => {
-                  toggleDropdown('instagram');
-                  setMenuOpen(false);
-                }}
-              >
-                <p>INSTAGRAM</p>
+        <>
+          {menuOpen ? (
+            <div
+              style={{
+                position: 'fixed',
+                inset: 0,
+                background: 'rgba(0,0,0,.8)',
+                zIndex: 1,
+              }}
+            ></div>
+          ) : null}
+          <div className="header-mobile">
+            <img className="menu-mobile" onClick={toggleMenu} src={burger} />
+            <img className="brand-mobile" src={logoblack} />
+            <img className="cart-mobile" onClick={toggleCart} src={carti} />
+
+            {menuOpen && (
+              <div className={`dropdown-mobile ${menuOpen ? 'active' : ''}`}>
+                <div
+                  className="category"
+                  onClick={() => {
+                    toggleDropdown('instagram');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <p>INSTAGRAM</p>
+                </div>
+                <div
+                  className="category"
+                  onClick={() => {
+                    toggleDropdown('newsletter');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <p>NEWSLETTER</p>
+                </div>
+                <div
+                  className="category"
+                  onClick={() => {
+                    toggleDropdown('information');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <p>INFORMATION</p>
+                </div>
+                <div
+                  className="category-last"
+                  onClick={() => {
+                    toggleDropdown('bag');
+                    setMenuOpen(false);
+                  }}
+                >
+                  <p>BAG</p>
+                </div>
               </div>
-              <div
-                className="category"
-                onClick={() => {
-                  toggleDropdown('newsletter');
-                  setMenuOpen(false);
-                }}
-              >
-                <p>NEWSLETTER</p>
-              </div>
-              <div
-                className="category"
-                onClick={() => {
-                  toggleDropdown('information');
-                  setMenuOpen(false);
-                }}
-              >
-                <p>INFORMATION</p>
-              </div>
-              <div
-                className="category-last"
-                onClick={() => {
-                  toggleDropdown('bag');
-                  setMenuOpen(false);
-                }}
-              >
-                <p>BAG</p>
-              </div>
-            </div>
-          )}
-          <AnimatePresence>
-            {activeDropdown && (
-              <motion.div
-                className="dropdown-container-mobile"
-                initial={{opacity: 0}}
-                animate={{opacity: 1}}
-                exit={{opacity: 0}}
-                transition={{duration: 0.25}}
-                key={activeDropdown}
-              >
-                {activeDropdown === 'instagram' && (
-                  <div className="dropdown-content">
-                    <div
-                      className="info-subsection-head-mobile"
-                      style={{marginBottom: '-1%'}}
-                    >
-                      <li>INSTAGRAM</li>
-                      <button
-                        className="info-sub-button"
-                        onClick={() => {
-                          toggleDropdown('');
-                          setMenuOpen(true);
-                        }}
-                      >
-                        Back
-                      </button>
-                    </div>
-                    <video
-                      width="auto"
-                      height="auto"
-                      style={{width: '100%'}}
-                      autoPlay
-                      loop
-                    >
-                      <source src={Meme_Sequence} type="video/mp4" />
-                      Your browser does not support the video tag.
-                    </video>
-                  </div>
-                )}
-                {activeDropdown === 'newsletter' && (
-                  <div className="dropdown-content-newsletter">
-                    <div
-                      className="info-subsection-head-mobile"
-                      style={{marginBottom: '-1%'}}
-                    >
-                      <li>NEWSLETTER</li>
-                      <button
-                        className="info-sub-button"
-                        onClick={() => {
-                          toggleDropdown('');
-                          setMenuOpen(true);
-                        }}
-                      >
-                        Back
-                      </button>
-                    </div>
-                    <form className="newsletter-input-container">
-                      <input placeholder="Email Address" name="email"></input>
-                      <button type="submit">Submit</button>
-                    </form>
-                  </div>
-                )}
-                {activeDropdown === 'information' && (
-                  <InformationTab
-                    setMenuOpen={setMenuOpen}
-                    toggleDropdown={toggleDropdown}
-                  />
-                )}
-                {activeDropdown === 'bag' && (
-                  <div className="dropdown-content">
-                    <div
-                      className="info-subsection-head-mobile"
-                      style={{marginBottom: '-1%'}}
-                    >
-                      <li>
-                        <CartToggle cart={cart} allCaps={true} />
-                      </li>
-                      <button
-                        className="info-sub-button"
-                        onClick={() => {
-                          toggleDropdown('');
-                          setMenuOpen(true);
-                        }}
-                      >
-                        Back
-                      </button>
-                    </div>
-                    <Suspense fallback={<p>Loading cart ...</p>}>
-                      <Await resolve={cart}>
-                        {(cart) => {
-                          return <CartMain cart={cart} layout="aside" />;
-                        }}
-                      </Await>
-                    </Suspense>
-                  </div>
-                )}
-              </motion.div>
             )}
-          </AnimatePresence>
-        </div>
+            <AnimatePresence>
+              {activeDropdown && (
+                <motion.div
+                  className="dropdown-container-mobile"
+                  initial={{opacity: 0}}
+                  animate={{opacity: 1}}
+                  exit={{opacity: 0}}
+                  transition={{duration: 0.25}}
+                  key={activeDropdown}
+                >
+                  {activeDropdown === 'instagram' && (
+                    <div className="dropdown-content">
+                      <div
+                        className="info-subsection-head-mobile"
+                        style={{marginBottom: '-1%'}}
+                      >
+                        <li>INSTAGRAM</li>
+                        <button
+                          className="info-sub-button"
+                          onClick={() => {
+                            toggleDropdown('');
+                            setMenuOpen(true);
+                          }}
+                        >
+                          Back
+                        </button>
+                      </div>
+                      <video
+                        width="auto"
+                        height="auto"
+                        style={{width: '100%'}}
+                        autoPlay
+                        loop
+                      >
+                        <source src={Meme_Sequence} type="video/mp4" />
+                        Your browser does not support the video tag.
+                      </video>
+                    </div>
+                  )}
+                  {activeDropdown === 'newsletter' && (
+                    <div className="dropdown-content-newsletter">
+                      <div
+                        className="info-subsection-head-mobile"
+                        style={{marginBottom: '-1%'}}
+                      >
+                        <li>NEWSLETTER</li>
+                        <button
+                          className="info-sub-button"
+                          onClick={() => {
+                            toggleDropdown('');
+                            setMenuOpen(true);
+                          }}
+                        >
+                          Back
+                        </button>
+                      </div>
+                      <form className="newsletter-input-container">
+                        <input placeholder="Email Address" name="email"></input>
+                        <button type="submit">Submit</button>
+                      </form>
+                    </div>
+                  )}
+                  {activeDropdown === 'information' && (
+                    <InformationTab
+                      setMenuOpen={setMenuOpen}
+                      toggleDropdown={toggleDropdown}
+                    />
+                  )}
+                  {activeDropdown === 'bag' && (
+                    <div className="dropdown-content">
+                      <div
+                        className="info-subsection-head-mobile"
+                        style={{marginBottom: '-1%'}}
+                      >
+                        <li>
+                          <CartToggle cart={cart} allCaps={true} />
+                        </li>
+                        <button
+                          className="info-sub-button"
+                          onClick={() => {
+                            toggleDropdown('');
+                            setMenuOpen(true);
+                          }}
+                        >
+                          Back
+                        </button>
+                      </div>
+                      <Suspense fallback={<p>Loading cart ...</p>}>
+                        <Await resolve={cart}>
+                          {(cart) => {
+                            return <CartMain cart={cart} layout="aside" />;
+                          }}
+                        </Await>
+                      </Suspense>
+                    </div>
+                  )}
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </>
       )}
     </>
   );
