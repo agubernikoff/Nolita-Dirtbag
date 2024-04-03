@@ -334,9 +334,11 @@ function Product({product, isMobile}) {
 
 function AddToCartButton({analytics, children, disabled, lines, onClick}) {
   const btn = useRef();
-  if (btn.current && disabled)
-    btn.current.parentNode.style.borderColor = 'grey';
-  else btn.current.parentNode.style.borderColor = 'white';
+  useEffect(() => {
+    if (btn.current && disabled)
+      btn.current.parentNode.style.borderColor = 'grey';
+    else btn.current.parentNode.style.borderColor = 'white';
+  }, [disabled]);
   return (
     <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
       {(fetcher) => (
