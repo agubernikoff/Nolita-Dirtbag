@@ -4,6 +4,8 @@ import {Suspense, useState, useEffect} from 'react';
 import {Image, Money, CartForm} from '@shopify/hydrogen';
 import {motion, useAnimate} from 'framer-motion';
 import useMeasure from 'react-use-measure';
+import right from '../assets/right-ar.png';
+import left from '../assets/left-ar.png';
 
 /**
  * @type {MetaFunction}
@@ -190,9 +192,7 @@ function Product({product, isMobile}) {
         }}
       >
         {isHovered ? (
-          <p className="left-arrow-product" style={{color: 'white'}}>
-            &lt;
-          </p>
+          <img className="left-arrow-product" src={left}></img>
         ) : null}{' '}
       </div>
       <div
@@ -202,9 +202,7 @@ function Product({product, isMobile}) {
         }}
       >
         {isHovered ? (
-          <p className="right-arrow-product" style={{color: 'white'}}>
-            &gt;
-          </p>
+          <img className="right-arrow-product" src={right}></img>
         ) : null}{' '}
       </div>
       <div className="product-image-container">

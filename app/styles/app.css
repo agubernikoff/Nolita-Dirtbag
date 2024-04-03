@@ -141,6 +141,7 @@ aside li {
   display: flex;
   height: var(--header-height);
   padding: 2rem;
+  padding-top: 1rem !important;
   position: fixed;
   top: 0;
   left: 0;
@@ -149,7 +150,9 @@ aside li {
   width: 96vw;
   font-size: 0.65rem;
 }
-
+.logo {
+  width: 10%;
+}
 .header-menu-mobile-toggle {
   @media (min-width: 48em) {
     display: none;
@@ -178,7 +181,7 @@ aside li {
 .header-ctas-container {
   position: relative;
   width: 18%;
-  padding: 1rem;
+  padding: 0.9rem;
   background: white;
 }
 .header-ctas {
@@ -612,6 +615,8 @@ body::-webkit-scrollbar {
   width: 50%;
   display: flex;
   align-items: center;
+  cursor: pointer;
+  user-select: none;
 }
 .right-image-button-container {
   position: absolute;
@@ -622,16 +627,18 @@ body::-webkit-scrollbar {
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  cursor: pointer;
+  user-select: none;
 }
 .right-arrow-product {
   margin-right: 10%;
   cursor: pointer;
-  font-size: 1.5rem;
+  width: 3%;
 }
 .left-arrow-product {
   margin-left: 10%;
   cursor: pointer;
-  font-size: 1.5rem;
+  width: 3%;
 }
 .product-container:hover {
   /* outline: 1px solid grey; */
@@ -673,7 +680,7 @@ body::-webkit-scrollbar {
   align-items: flex-end;
   width: 90%;
   position: absolute;
-  bottom: 5%;
+  bottom: 2.5%;
   font-size: 0.65rem !important;
 }
 .product-interaction-container-mobile {
@@ -776,7 +783,7 @@ button {
   border: none !important;
   font-family: nolita-font !important;
   font-size: 0.65rem !important;
-  border: 1px solid white !important;
+  border: 1px solid gray !important;
   display: flex !important;
   text-align: left !important;
   margin-left: 2% !important;
@@ -962,28 +969,29 @@ button {
   align-items: center;
   justify-content: space-between;
   background-color: white;
-  padding-top: 4%;
-  padding-bottom: 4%;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
   position: fixed;
   top: 3%;
-  width: 90%;
+  width: 95%;
   z-index: 999;
-  left: 5%;
+  left: 2.5%;
 }
 
 .header-mobile .brand-mobile {
-  text-align: center;
-  font-family: 'nolita-font';
-  font-size: 24px;
+  width: 20%;
 }
 
 .header-mobile .menu-mobile,
 .header-mobile .cart-mobile {
-  flex-basis: 20%;
-  text-align: center;
-  color: black;
+  width: 5%;
   cursor: pointer;
-  font-size: 24px;
+}
+.cart-mobile {
+  margin-right: 2%;
+}
+.menu-mobile {
+  margin-left: 2%;
 }
 
 .dropdown-mobile {

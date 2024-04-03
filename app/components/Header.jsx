@@ -6,6 +6,10 @@ import Meme_Sequence from '../../public/Meme_Sequence.mp4';
 import image from '../../public/image.jpg';
 import {motion, AnimatePresence} from 'framer-motion';
 import {CartMain} from './Cart.jsx';
+import logo from '../assets/logo.png';
+import logoblack from '../assets/logo-black.png';
+import burger from '../assets/mobile-burger.png';
+import carti from '../assets/mobile-cart.png';
 
 /**
  * @param {HeaderProps}
@@ -43,7 +47,8 @@ export function Header({header, isLoggedIn, cart}) {
     <>
       {!isMobile && (
         <header className="header">
-          <strong
+          <img className="logo" src={logo} alt="nd logo" />
+          {/* <strong
             style={{
               color: 'black',
               textAlign: 'center',
@@ -52,19 +57,15 @@ export function Header({header, isLoggedIn, cart}) {
             }}
           >
             {shop.name}
-          </strong>
+          </strong> */}
           <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
         </header>
       )}
       {isMobile && (
         <div className="header-mobile">
-          <div className="menu-mobile" onClick={toggleMenu}>
-            &#9776;
-          </div>
-          <div className="brand-mobile">NOLITA DIRTBAG</div>
-          <div className="cart-mobile" onClick={toggleCart}>
-            &#128722;
-          </div>
+          <img className="menu-mobile" onClick={toggleMenu} src={burger} />
+          <img className="brand-mobile" src={logoblack} />
+          <img className="cart-mobile" onClick={toggleCart} src={carti} />
           {menuOpen && (
             <div className={`dropdown-mobile ${menuOpen ? 'active' : ''}`}>
               <div
