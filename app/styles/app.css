@@ -372,6 +372,10 @@ body::-webkit-scrollbar {
 .cart-main.with-discount {
   max-height: 70vh;
 }
+.dropdown-container-mobile .cart-main {
+  max-height: 77.8vh;
+  height: auto;
+}
 
 .cart-line {
   display: flex;
@@ -448,7 +452,7 @@ body::-webkit-scrollbar {
   bottom: 0;
   padding-top: 0.75rem;
   position: absolute;
-  width: 93.25%;
+  width: 95.6%;
 }
 
 .cart-line-quantiy {
@@ -1043,7 +1047,7 @@ button {
   top: 100%;
   left: 0;
   right: 0;
-  max-height: 75vh;
+  max-height: 83vh;
   overflow: auto;
 }
 .dropdown-container-mobile::-webkit-scrollbar {
@@ -1096,8 +1100,8 @@ button {
 }
 
 .info-main-mobile {
-  height: 60vh;
-  max-height: 70vh;
+  /* height: 82vh; */
+  max-height: 77.8vh;
   overflow: auto;
   width: auto;
   font-family: 'nolita-font';
