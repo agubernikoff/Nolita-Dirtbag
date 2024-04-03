@@ -12,8 +12,10 @@ export function CartMain({layout, cart}) {
     Boolean(cart.discountCodes.filter((code) => code.applicable).length);
   const className = `cart-main ${withDiscount ? 'with-discount' : ''}`;
 
+  const cartHasItems = !!cart && cart.totalQuantity > 0;
+
   return (
-    <div className={className}>
+    <div className={className} style={!cartHasItems ? {height: 'auto'} : null}>
       <CartEmpty hidden={linesCount} layout={layout} />
       <CartDetails cart={cart} layout={layout} />
     </div>
