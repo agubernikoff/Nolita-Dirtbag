@@ -1,6 +1,6 @@
 import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData} from '@remix-run/react';
-import {Suspense, useState, useEffect} from 'react';
+import {Suspense, useState, useEffect, useRef} from 'react';
 import {Image, Money, CartForm} from '@shopify/hydrogen';
 import {motion, useAnimate} from 'framer-motion';
 import useMeasure from 'react-use-measure';
@@ -132,7 +132,7 @@ function Product({product, isMobile}) {
   }
 
   useEffect(() => {
-    animate(scope.current, {height: height + 10});
+    animate(scope.current, {height: height + 15});
   }, [animate, scope, height]);
 
   const mappedSizeButtons = product.node.variants
@@ -333,6 +333,10 @@ function Product({product, isMobile}) {
 }
 
 function AddToCartButton({analytics, children, disabled, lines, onClick}) {
+  const btn = useRef();
+  if (btn.current && disabled)
+    btn.current.parentNode.style.borderColor = 'grey';
+  else btn.current.parentNode.style.borderColor = 'white';
   return (
     <CartForm route="/cart" inputs={{lines}} action={CartForm.ACTIONS.LinesAdd}>
       {(fetcher) => (
@@ -355,6 +359,7 @@ function AddToCartButton({analytics, children, disabled, lines, onClick}) {
             }}
             disabled={disabled ?? fetcher.state !== 'idle'}
             className={disabled ? 'disabled-add-to-cart' : 'add-to-cart'}
+            ref={btn}
           >
             Add to bag
           </button>

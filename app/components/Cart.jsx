@@ -29,7 +29,9 @@ function CartDetails({layout, cart}) {
   return (
     <div
       className="cart-details"
-      style={{paddingBottom: `${heightOfSummary}px`}}
+      style={
+        cart.totalQuantity > 0 ? {paddingBottom: `${heightOfSummary}px`} : null
+      }
     >
       <CartLines lines={cart?.lines} layout={layout} />
       {cartHasItems && (

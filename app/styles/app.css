@@ -780,10 +780,9 @@ button {
 .product-cart-container-mobile > form {
   background-color: black;
   color: #fff !important;
-  border: none !important;
   font-family: nolita-font !important;
   font-size: 0.65rem !important;
-  border: 1px solid gray !important;
+  border: 1px solid white;
   display: flex !important;
   text-align: left !important;
   margin-left: 2% !important;
