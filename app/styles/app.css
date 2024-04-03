@@ -836,6 +836,7 @@ button {
 }
 .product-size-button {
   background-color: white;
+  color: black;
   border: 1px solid black;
   height: 32px;
   width: 32px;
@@ -851,6 +852,7 @@ button {
 }
 .size-button-soldout {
   border-color: #dadada;
+  color: #dadada;
 }
 /*
 * --------------------------------------------------
