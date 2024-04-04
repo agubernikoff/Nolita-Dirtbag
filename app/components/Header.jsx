@@ -74,7 +74,8 @@ export function Header({header, isLoggedIn, cart}) {
                 <div
                   className="category"
                   onClick={() => {
-                    toggleDropdown('instagram');
+                    window.location.href =
+                      'https://www.instagram.com/nolitadirtbag/';
                     setMenuOpen(false);
                   }}
                 >
