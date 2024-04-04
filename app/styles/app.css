@@ -1133,6 +1133,7 @@ button {
 }
 .mobile-newsletter-submit {
   font-size: 0.6875rem !important;
+  font-family: 'nolita-font';
 }
 .info-main-mobile::-webkit-scrollbar,
 .recommended-products-container-mobile::-webkit-scrollbar,
