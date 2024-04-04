@@ -53,7 +53,7 @@ export function Header({header, isLoggedIn, cart}) {
       )}
       {isMobile && (
         <>
-          {menuOpen ? (
+          {menuOpen || activeDropdown ? (
             <div
               style={{
                 position: 'fixed',
