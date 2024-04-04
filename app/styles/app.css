@@ -635,7 +635,7 @@ body::-webkit-scrollbar {
   align-items: flex-end;
 }
 .mobile-image-container > img {
-  max-width: 95vw;
+  max-width: 90vw;
 }
 .product-container-mobile:first-of-type {
   margin-top: 0;
