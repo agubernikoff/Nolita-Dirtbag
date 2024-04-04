@@ -165,8 +165,20 @@ export function Header({header, isLoggedIn, cart}) {
                         </button>
                       </div>
                       <form className="newsletter-input-container">
-                        <input placeholder="Email Address" name="email"></input>
-                        <button type="submit">Submit</button>
+                        <input
+                          placeholder="Email"
+                          style={{
+                            fontSize: '0.6875rem',
+                            fontFamily: 'nolita-font',
+                          }}
+                          name="email"
+                        ></input>
+                        <button
+                          type="submit"
+                          className="mobile-newsletter-submit"
+                        >
+                          Submit
+                        </button>
                       </form>
                     </div>
                   )}

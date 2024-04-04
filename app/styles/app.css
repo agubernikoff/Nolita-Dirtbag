@@ -299,6 +299,7 @@ li {
   font: inherit;
   text-decoration: none;
   margin-bottom: 0.35rem;
+  font-size: 0.6875rem;
 }
 .newsletter-input-container {
   width: 100% !important;
@@ -1099,6 +1100,7 @@ button {
   justify-content: space-between;
   margin-top: 2%;
   margin-bottom: 2%;
+  font-size: 0.6875rem;
 }
 .info-subsection-head-mobile > li::marker,
 .info-main-mobile > li::marker {
@@ -1128,6 +1130,9 @@ button {
 .info-main-mobile > li {
   margin-top: 2%;
   font-size: 0.6875rem;
+}
+.mobile-newsletter-submit {
+  font-size: 0.6875rem !important;
 }
 .info-main-mobile::-webkit-scrollbar,
 .recommended-products-container-mobile::-webkit-scrollbar,
