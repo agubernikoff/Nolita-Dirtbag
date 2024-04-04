@@ -116,6 +116,7 @@ function Product({product, isMobile}) {
   const [imageSrc, setImageSrc] = useState(
     product.node.images.edges[imageIndex].node.url,
   );
+  const [prevScrollL, setPrevScrollL] = useState(0);
 
   function handleSizeButtonClick(id) {
     if (size === id) {
@@ -179,39 +180,82 @@ function Product({product, isMobile}) {
   }
   const [isHovered, setIsHovered] = useState(false);
 
+  function handleScroll(scrollWidth, scrollLeft) {
+    const widthOfAnImage = scrollWidth / product.node.images.edges.length;
+    const dividend = scrollLeft / widthOfAnImage;
+    const rounded = parseFloat((scrollLeft / widthOfAnImage).toFixed(0));
+
+    if (Math.abs(dividend - rounded) < 0.001) setImageIndex(rounded);
+  }
+
+  const mappedIndicators = product.node.images.edges.map((e, i) => (
+    <div
+      key={e.node.id}
+      style={{
+        background: i === imageIndex ? 'white' : 'grey',
+        height: '10px',
+        width: '10px',
+      }}
+    ></div>
+  ));
   return (
     <div
       className={isMobile ? 'product-container-mobile' : 'product-container'}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div
-        className="left-image-button-container"
-        onClick={() => {
-          cycleImages(-1);
-        }}
-      >
-        {isHovered ? (
-          <img className="left-arrow-product" src={left}></img>
-        ) : null}{' '}
-      </div>
-      <div
-        className="right-image-button-container"
-        onClick={() => {
-          cycleImages(1);
-        }}
-      >
-        {isHovered ? (
-          <img className="right-arrow-product" src={right}></img>
-        ) : null}{' '}
-      </div>
-      <div className="product-image-container">
-        <img
-          src={imageSrc}
-          sizes="(min-width: 45em) 20vw, 50vw"
-          alt={product.node.title}
-        />
-      </div>
+      {isMobile ? (
+        <div
+          className="product-image-container-mobile"
+          onScroll={(e) =>
+            handleScroll(e.target.scrollWidth, e.target.scrollLeft)
+          }
+        >
+          {product.node.images.edges.map((i) => (
+            <div
+              key={i.node.id}
+              style={{color: 'white'}}
+              className="mobile-image-container"
+            >
+              <img
+                src={i.node.url}
+                sizes="(min-width: 45em) 20vw, 50vw"
+                alt={i.node.altText}
+              />
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>
+          <div
+            className="left-image-button-container"
+            onClick={() => {
+              cycleImages(-1);
+            }}
+          >
+            {isHovered ? (
+              <img className="left-arrow-product" src={left}></img>
+            ) : null}{' '}
+          </div>
+          <div
+            className="right-image-button-container"
+            onClick={() => {
+              cycleImages(1);
+            }}
+          >
+            {isHovered ? (
+              <img className="right-arrow-product" src={right}></img>
+            ) : null}{' '}
+          </div>
+          <div className="product-image-container">
+            <img
+              src={imageSrc}
+              sizes="(min-width: 45em) 20vw, 50vw"
+              alt={product.node.title}
+            />
+          </div>
+        </>
+      )}
       <div
         className={
           isMobile
@@ -219,6 +263,16 @@ function Product({product, isMobile}) {
             : 'product-interaction-container'
         }
       >
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'row',
+            width: 'fit-content',
+            gap: '.2rem',
+          }}
+        >
+          {mappedIndicators}
+        </div>
         <motion.div
           className={isMobile ? 'product-details-mobile' : 'product-details'}
           onClick={handleExpandDetailsClick}
