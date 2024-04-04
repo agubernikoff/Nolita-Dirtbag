@@ -1128,6 +1128,8 @@ button {
 .info-main-mobile::-webkit-scrollbar,
 .recommended-products-container-mobile::-webkit-scrollbar,
 .product-container-mobile::-webkit-scrollbar,
+.home::-webkit-scrollbar,
+main::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }
