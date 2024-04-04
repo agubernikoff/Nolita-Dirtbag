@@ -187,6 +187,7 @@ li {
   width: 18%;
   padding: 0.9rem;
   background: white;
+  cursor: default;
 }
 .header-ctas {
   align-items: center;
@@ -1134,6 +1135,7 @@ button {
 .mobile-newsletter-submit {
   font-size: 0.6875rem !important;
   font-family: 'nolita-font';
+  font-weight: normal !important;
 }
 .info-main-mobile::-webkit-scrollbar,
 .recommended-products-container-mobile::-webkit-scrollbar,

@@ -1363,7 +1363,9 @@ function CartBadge({count, allCaps}) {
     if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
   }, []);
   return (
-    <a className="bag-header-link">{`${allCaps ? 'BAG' : 'Bag'} [${count}]`}</a>
+    <a className="bag-header-link" style={{cursor: 'default'}}>{`${
+      allCaps ? 'BAG' : 'Bag'
+    } [${count}]`}</a>
   );
 }
 
