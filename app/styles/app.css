@@ -1126,6 +1126,8 @@ button {
   font-size: 0.6875rem;
 }
 .info-main-mobile::-webkit-scrollbar,
+.recommended-products-container-mobile::-webkit-scrollbar,
+.product-container-mobile::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }
