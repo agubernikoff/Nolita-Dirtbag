@@ -1041,7 +1041,7 @@ button {
   padding-bottom: 1%;
   cursor: pointer;
   border-bottom: 1px solid black;
-  padding-top: 2.75%;
+  padding-top: 3%;
   padding-bottom: 2.5%;
   text-align: left;
 }
@@ -1130,6 +1130,10 @@ button {
   font-size: 0.6875rem;
 }
 .info-main-mobile::-webkit-scrollbar,
+.recommended-products-container-mobile::-webkit-scrollbar,
+.product-container-mobile::-webkit-scrollbar,
+.home::-webkit-scrollbar,
+main::-webkit-scrollbar,
 body::-webkit-scrollbar {
   display: none;
 }
