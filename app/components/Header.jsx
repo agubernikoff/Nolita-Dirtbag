@@ -61,6 +61,7 @@ export function Header({header, isLoggedIn, cart}) {
                 background: 'rgba(0,0,0,.8)',
                 zIndex: 1,
               }}
+              className="dimmer"
             ></div>
           ) : null}
           <div className="header-mobile">

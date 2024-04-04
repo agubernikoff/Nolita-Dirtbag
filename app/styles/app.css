@@ -1117,7 +1117,7 @@ button {
 
 .info-main-mobile {
   /* height: 82vh; */
-  max-height: 67vh;
+  max-height: 70vh;
   overflow: auto;
   width: auto;
   font-family: 'nolita-font';
@@ -1140,6 +1140,7 @@ button {
 .product-container-mobile::-webkit-scrollbar,
 .home::-webkit-scrollbar,
 main::-webkit-scrollbar,
-body::-webkit-scrollbar {
+body::-webkit-scrollbar,
+.dimmer::-webkit-scrollbar {
   display: none;
 }
