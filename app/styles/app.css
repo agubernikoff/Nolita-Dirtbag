@@ -703,7 +703,7 @@ body::-webkit-scrollbar {
   width: 95%;
   position: absolute;
   bottom: 5%;
-  font-size: 0.65rem !important;
+  font-size: 0.6875rem !important;
   gap: 0.5rem;
 }
 .product-interaction-container > p {
@@ -719,6 +719,7 @@ body::-webkit-scrollbar {
   width: 100%;
   background-color: white;
   overflow: hidden;
+  font-size: 0.6875rem;
 }
 .product-details ul,
 .product-details-mobile ul {
@@ -749,7 +750,7 @@ body::-webkit-scrollbar {
   padding-top: 3%;
 }
 .font-size-details-mobile {
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
 }
 .product-cart-container {
   display: flex;
@@ -839,7 +840,7 @@ button {
   margin: auto;
 }
 .font-size {
-  font-size: 0.65rem !important;
+  font-size: 0.6875rem !important;
   margin-bottom: 2%;
 }
 .product-size-button {
@@ -1036,17 +1037,16 @@ button {
   padding-bottom: 1%;
   cursor: pointer;
   border-bottom: 1px solid black;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 1.5%;
+  padding-bottom: 1.5%;
   text-align: left;
 }
 .category > p,
 .category-last > p {
   margin-left: 2%;
   font-family: 'nolita-font';
-  font-size: 0.75rem;
-  padding-top: 1.5%;
-  padding-bottom: 1.5%;
+  font-size: 0.6875rem;
+  line-height: normal;
 }
 .category-last {
   border-bottom: none;
@@ -1115,14 +1115,15 @@ button {
   overflow: auto;
   width: auto;
   font-family: 'nolita-font';
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
 }
 .info-main-mobile > p {
   font-family: 'nolita-font';
-  font-size: 0.65rem;
+  font-size: 0.6875rem;
 }
 .info-main-mobile > li {
   margin-top: 2%;
+  font-size: 0.6875rem;
 }
 .info-main-mobile::-webkit-scrollbar,
 body::-webkit-scrollbar {
