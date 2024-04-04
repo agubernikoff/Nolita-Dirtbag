@@ -1037,6 +1037,18 @@ button {
 }
 .cart-mobile {
   margin-right: 4%;
+  position: relative;
+}
+.cart-mobile > img {
+  width: 100%;
+}
+.cart-mobile .bag-header-link {
+  position: absolute;
+  height: fit-content;
+  width: fit-content;
+  top: 55%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .menu-mobile {
   margin-left: 4%;

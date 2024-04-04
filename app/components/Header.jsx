@@ -65,9 +65,21 @@ export function Header({header, isLoggedIn, cart}) {
             ></div>
           ) : null}
           <div className="header-mobile">
-            <img className="menu-mobile" onClick={toggleMenu} src={burger} />
-            <img className="brand-mobile" src={logoblack} />
-            <img className="cart-mobile" onClick={toggleCart} src={carti} />
+            <img
+              className="menu-mobile"
+              onClick={toggleMenu}
+              src={burger}
+              alt="menu icon"
+            />
+            <img
+              className="brand-mobile"
+              src={logoblack}
+              alt="really cool logo"
+            />
+            <div className="cart-mobile" onClick={toggleCart}>
+              <img src={carti} alt="cart icon" />
+              <CartToggle cart={cart} allCaps={false} justTheNumber={true} />
+            </div>
 
             {menuOpen && (
               <div className={`dropdown-mobile ${menuOpen ? 'active' : ''}`}>
@@ -1355,32 +1367,42 @@ function SearchToggle() {
 /**
  * @param {{count: number}}
  */
-function CartBadge({count, allCaps}) {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    window
-      .matchMedia('(max-width:700px)')
-      .addEventListener('change', (e) => setIsMobile(e.matches));
-    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
-  }, []);
+function CartBadge({count, allCaps, justTheNumber}) {
   return (
-    <a className="bag-header-link" style={{cursor: 'default'}}>{`${
-      allCaps ? 'BAG' : 'Bag'
-    } [${count}]`}</a>
+    <>
+      {justTheNumber ? (
+        <a className="bag-header-link">{count}</a>
+      ) : (
+        <a className="bag-header-link" style={{cursor: 'default'}}>{`${
+          allCaps ? 'BAG' : 'Bag'
+        } [${count}]`}</a>
+      )}
+    </>
   );
 }
 
 /**
  * @param {Pick<HeaderProps, 'cart'>}
  */
-function CartToggle({cart, allCaps}) {
+function CartToggle({cart, allCaps, justTheNumber}) {
   return (
     <Suspense fallback={<CartBadge count={0} />}>
       <Await resolve={cart}>
         {(cart) => {
-          if (!cart) return <CartBadge count={0} allCaps={allCaps} />;
+          if (!cart)
+            return (
+              <CartBadge
+                count={0}
+                allCaps={allCaps}
+                justTheNumber={justTheNumber}
+              />
+            );
           return (
-            <CartBadge count={cart.totalQuantity || 0} allCaps={allCaps} />
+            <CartBadge
+              count={cart.totalQuantity || 0}
+              allCaps={allCaps}
+              justTheNumber={justTheNumber}
+            />
           );
         }}
       </Await>
