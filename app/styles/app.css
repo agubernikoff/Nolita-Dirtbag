@@ -299,7 +299,7 @@ li {
   font: inherit;
   text-decoration: none;
   margin-bottom: 0.35rem;
-  font-size: 0.6875rem;
+  font-size: 0.6875rem !important;
 }
 .newsletter-input-container {
   width: 100% !important;
