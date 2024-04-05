@@ -263,16 +263,18 @@ function Product({product, isMobile}) {
             : 'product-interaction-container'
         }
       >
-        <div
-          style={{
-            display: 'flex',
-            flexDirection: 'row',
-            width: 'fit-content',
-            gap: '.2rem',
-          }}
-        >
-          {mappedIndicators}
-        </div>
+        {isMobile ? (
+          <div
+            style={{
+              display: 'flex',
+              flexDirection: 'row',
+              width: 'fit-content',
+              gap: '.2rem',
+            }}
+          >
+            {mappedIndicators}
+          </div>
+        ) : null}
         <motion.div
           className={isMobile ? 'product-details-mobile' : 'product-details'}
           onClick={handleExpandDetailsClick}
