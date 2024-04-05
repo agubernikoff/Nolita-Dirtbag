@@ -796,7 +796,11 @@ body::-webkit-scrollbar {
 button {
   font-size: 0.65rem !important;
 }
-
+.product-cart-sizing-mobile > p,
+.product-cart-container-mobile button {
+  font-size: 0.6785rem;
+  font-weight: normal;
+}
 .disabled-add-to-cart {
   background-color: transparent;
   color: grey;
