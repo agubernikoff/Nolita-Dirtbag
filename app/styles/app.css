@@ -755,7 +755,7 @@ body::-webkit-scrollbar {
 .product-details-container {
   display: flex;
   flex-direction: column;
-  margin-top: 4%;
+  margin-top: 0.5rem;
   margin-left: 3%;
 }
 .product-details-container-mobile {
@@ -811,7 +811,7 @@ button {
   display: flex;
   text-align: left;
   cursor: pointer;
-  margin-top: 6%;
+  margin-top: 0.4rem;
 }
 .add-to-cart {
   background-color: transparent;
@@ -822,7 +822,7 @@ button {
   display: flex;
   text-align: left;
   cursor: pointer;
-  margin-top: 6%;
+  margin-top: 0.4rem;
 }
 .product-cart-container > form,
 .product-cart-container-mobile > form {
@@ -858,7 +858,7 @@ button {
   padding-left: 4%;
 }
 .product-cart-sizing-container {
-  margin: 4%;
+  margin: 0.5rem;
 }
 .product-size-button-container {
   display: flex;
