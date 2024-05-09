@@ -1142,6 +1142,9 @@ button {
   vertical-align: middle;
 }
 
+.dropdown-content-newsletter .info-subsection-head-mobile {
+  margin-top: 0;
+}
 .info-subsection-head-mobile {
   display: flex;
   justify-content: space-between;
