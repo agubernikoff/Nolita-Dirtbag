@@ -148,7 +148,7 @@ function Product({product, isMobile}) {
                 : 'product-size-button'
             }
           >
-            {sizeOption.title}
+            {sizeOption.title === 'One Size' ? 'OS' : sizeOption.title}
           </button>
         ) : (
           <button
