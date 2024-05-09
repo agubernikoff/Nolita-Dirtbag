@@ -746,7 +746,7 @@ body::-webkit-scrollbar {
 }
 .product-details ul,
 .product-details-mobile ul {
-  margin-bottom: 2.5%;
+  margin-bottom: 1.1rem;
 }
 .product-details li,
 .product-details-mobile li {
@@ -755,8 +755,7 @@ body::-webkit-scrollbar {
 .product-details-container {
   display: flex;
   flex-direction: column;
-  margin-top: 0.5rem;
-  margin-left: 3%;
+  margin: 0.5rem;
 }
 .product-details-container-mobile {
   margin: 1.5% 3%;

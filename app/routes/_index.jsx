@@ -296,7 +296,7 @@ function Product({product, isMobile}) {
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                     }
-                  : null
+                  : {marginBottom: '1rem'}
               }
             >
               <div>
@@ -324,9 +324,7 @@ function Product({product, isMobile}) {
                       __html: product.node.descriptionHtml,
                     }}
                   ></div>
-                  <p style={{fontSize: '.65rem', marginBottom: '2%'}}>
-                    Close Details
-                  </p>
+                  <p style={{fontSize: '.65rem'}}>Close Details</p>
                 </>
               ) : null}
             </div>
