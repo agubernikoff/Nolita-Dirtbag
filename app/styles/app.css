@@ -155,7 +155,7 @@ li {
   font-size: 0.65rem;
 }
 .logo {
-  width: 10%;
+  width: 8%;
 }
 .header-menu-mobile-toggle {
   @media (min-width: 48em) {
