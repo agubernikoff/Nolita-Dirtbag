@@ -1127,7 +1127,7 @@ button {
   z-index: 1;
   padding: 0.75rem;
   padding-top: 0.2rem;
-  height: 8vh;
+  max-height: 8vh;
 }
 
 .dropdown-content-newsletter > li {
