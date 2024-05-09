@@ -1148,6 +1148,7 @@ button {
   margin-top: 2%;
   margin-bottom: 2%;
   font-size: 0.6875rem;
+  padding-top: 1rem;
 }
 .info-subsection-head-mobile > li::marker,
 .info-main-mobile > li::marker {
