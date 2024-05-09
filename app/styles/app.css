@@ -156,6 +156,7 @@ li {
 }
 .logo {
   width: 8%;
+  min-width: 250px;
 }
 .header-menu-mobile-toggle {
   @media (min-width: 48em) {
