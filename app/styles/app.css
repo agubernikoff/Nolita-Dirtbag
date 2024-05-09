@@ -473,6 +473,9 @@ body::-webkit-scrollbar {
 .cart-line-quantiy {
   display: flex;
 }
+.cart-line-quantiy form {
+  margin-inline: 0.25rem;
+}
 
 .cart-discount {
   align-items: center;
