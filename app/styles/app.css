@@ -823,6 +823,7 @@ button {
   text-align: left;
   cursor: pointer;
   margin-top: 0.4rem;
+  width: 100%;
 }
 .product-cart-container > form,
 .product-cart-container-mobile > form {
@@ -837,6 +838,7 @@ button {
   cursor: pointer !important;
   width: 29.25% !important;
   transition: background-color 1s ease;
+  position: relative;
 }
 .product-cart-container-mobile > form {
   width: 50% !important;

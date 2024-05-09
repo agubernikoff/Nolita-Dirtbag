@@ -403,7 +403,19 @@ function AddToCartButton({analytics, children, disabled, lines, onClick}) {
             name="analytics"
             type="hidden"
             value={JSON.stringify(analytics)}
+            style={{position: 'relative'}}
           />
+          {disabled ? (
+            <div
+              style={{inset: 0, position: 'absolute'}}
+              onClick={(e) => {
+                e.target.nextSibling.innerHTML = 'What size, dumbass?';
+                setTimeout(() => {
+                  e.target.nextSibling.innerHTML = 'Add to bag';
+                }, 1500);
+              }}
+            />
+          ) : null}
           <button
             type="submit"
             onClick={(e) => {
