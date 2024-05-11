@@ -320,6 +320,7 @@ function Product({product, isMobile}) {
               {expandDetails ? (
                 <>
                   <div
+                    style={{marginTop: '.75rem'}}
                     dangerouslySetInnerHTML={{
                       __html: product.node.descriptionHtml,
                     }}
