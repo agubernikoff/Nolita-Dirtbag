@@ -296,7 +296,7 @@ function Product({product, isMobile}) {
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                     }
-                  : {marginBottom: '1rem'}
+                  : null
               }
             >
               <div>
