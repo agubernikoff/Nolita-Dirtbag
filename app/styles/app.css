@@ -151,7 +151,7 @@ li {
   left: 0;
   z-index: 1;
   justify-content: space-between;
-  width: 96vw;
+  /* width: 96vw; */
   font-size: 0.65rem;
 }
 .logo {
@@ -185,7 +185,7 @@ li {
 }
 .header-ctas-container {
   position: relative;
-  width: 18%;
+  /* width: 18%; */
   padding: 0.9rem;
   background: white;
   cursor: default;
@@ -195,7 +195,7 @@ li {
   display: flex;
   width: 100%;
   justify-content: space-between;
-  /* padding: 2%; */
+  gap: 2rem;
 }
 .bag-header-link:hover {
   text-decoration: none;
