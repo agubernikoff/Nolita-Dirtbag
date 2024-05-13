@@ -1048,6 +1048,7 @@ button {
 .header-mobile .cart-mobile {
   width: 5%;
   cursor: pointer;
+  border-radius: 0%;
 }
 .cart-mobile {
   margin-right: 4%;
@@ -1055,6 +1056,7 @@ button {
 }
 .cart-mobile > img {
   width: 100%;
+  border-radius: 0%;
 }
 .cart-mobile .bag-header-link {
   position: absolute;
