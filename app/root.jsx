@@ -100,6 +100,7 @@ export async function loader({context}) {
       header: await headerPromise,
       isLoggedIn,
       publicStoreDomain,
+      storefront,
     },
     {headers},
   );

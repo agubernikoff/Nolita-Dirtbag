@@ -15,7 +15,7 @@ import carti from '../assets/mobile-cart.png';
  * @param {HeaderProps}
  */
 
-export function Header({header, isLoggedIn, cart}) {
+export function Header({header, isLoggedIn, cart, storefront}) {
   const {shop, menu} = header;
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
