@@ -10,6 +10,7 @@ import logo from '../assets/logo.png';
 import logoblack from '../assets/logo-black.png';
 import burger from '../assets/mobile-burger.png';
 import carti from '../assets/mobile-cart.png';
+import {useShopQuery} from '@shopify/hydrogen';
 
 /**
  * @param {HeaderProps}
@@ -20,6 +21,7 @@ export function Header({header, isLoggedIn, cart}) {
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [email, setEmail] = useState('');
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -178,7 +180,20 @@ export function Header({header, isLoggedIn, cart}) {
                           Back
                         </button>
                       </div>
-                      <form className="newsletter-input-container">
+                      <form
+                        className="newsletter-input-container"
+                        onSubmit={() => {
+                          const {data} = useShopQuery({
+                            query: QUERY,
+                            variables: {
+                              input: {
+                                email: email,
+                                acceptsMarketing: true,
+                              },
+                            },
+                          });
+                        }}
+                      >
                         <input
                           placeholder="Email"
                           style={{
@@ -186,6 +201,8 @@ export function Header({header, isLoggedIn, cart}) {
                             fontFamily: 'nolita-font',
                           }}
                           name="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                         ></input>
                         <button
                           type="submit"
@@ -305,6 +322,7 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
 function HeaderCtas({isLoggedIn, cart}) {
   const loc = useLocation();
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [email, setEmail] = useState('');
 
   const handleMouseEnter = (section) => {
     setActiveDropdown(section);
@@ -388,8 +406,26 @@ function HeaderCtas({isLoggedIn, cart}) {
                 >
                   <li>NEWSLETTER</li>
                 </div>
-                <form className="newsletter-input-container">
-                  <input placeholder="Email Address" name="email"></input>
+                <form
+                  className="newsletter-input-container"
+                  onSubmit={() => {
+                    const {data} = useShopQuery({
+                      query: QUERY,
+                      variables: {
+                        input: {
+                          email: email,
+                          acceptsMarketing: true,
+                        },
+                      },
+                    });
+                  }}
+                >
+                  <input
+                    placeholder="Email Address"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                  ></input>
                   <button type="submit">Submit</button>
                 </form>
               </div>
@@ -1451,6 +1487,22 @@ const FALLBACK_HEADER_MENU = {
     },
   ],
 };
+
+const CUSTOMER_CREATE_QUERY = gql`
+  mutation customerCreate($input: CustomerCreateInput!) {
+    customerCreate(input: $input) {
+      customer {
+        email
+        acceptsMarketing
+      }
+      customerUserErrors {
+        field
+        message
+        code
+      }
+    }
+  }
+`;
 
 /**
  * @param {{
