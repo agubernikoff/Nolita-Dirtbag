@@ -181,15 +181,18 @@ export function Header({header, isLoggedIn, cart}) {
                       </div>
                       <form
                         className="newsletter-input-container"
-                        onSubmit={() => {
-                          const {data} = await storefront.mutate(CUSTOMER_CREATE_QUERY, {
-                            variables: {
-                              input: {
-                                email: email,
-                                acceptsMarketing: true,
+                        onSubmit={async () => {
+                          const {data} = await storefront.mutate(
+                            CUSTOMER_CREATE_QUERY,
+                            {
+                              variables: {
+                                input: {
+                                  email: email,
+                                  acceptsMarketing: true,
+                                },
                               },
                             },
-                          });
+                          );
                         }}
                       >
                         <input
@@ -406,15 +409,18 @@ function HeaderCtas({isLoggedIn, cart}) {
                 </div>
                 <form
                   className="newsletter-input-container"
-                  onSubmit={() => {
-                    const {data} = await storefront.mutate(CUSTOMER_CREATE_QUERY, {
-                      variables: {
-                        input: {
-                          email: email,
-                          acceptsMarketing: true,
+                  onSubmit={async () => {
+                    const {data} = await storefront.mutate(
+                      CUSTOMER_CREATE_QUERY,
+                      {
+                        variables: {
+                          input: {
+                            email: email,
+                            acceptsMarketing: true,
+                          },
                         },
                       },
-                    });
+                    );
                   }}
                 >
                   <input
