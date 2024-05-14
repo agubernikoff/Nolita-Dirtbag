@@ -10,7 +10,6 @@ import logo from '../assets/logo.png';
 import logoblack from '../assets/logo-black.png';
 import burger from '../assets/mobile-burger.png';
 import carti from '../assets/mobile-cart.png';
-import {useShopQuery} from '@shopify/hydrogen';
 
 /**
  * @param {HeaderProps}
@@ -183,8 +182,7 @@ export function Header({header, isLoggedIn, cart}) {
                       <form
                         className="newsletter-input-container"
                         onSubmit={() => {
-                          const {data} = useShopQuery({
-                            query: QUERY,
+                          const {data} = await storefront.mutate(CUSTOMER_CREATE_QUERY, {
                             variables: {
                               input: {
                                 email: email,
@@ -409,8 +407,7 @@ function HeaderCtas({isLoggedIn, cart}) {
                 <form
                   className="newsletter-input-container"
                   onSubmit={() => {
-                    const {data} = useShopQuery({
-                      query: QUERY,
+                    const {data} = await storefront.mutate(CUSTOMER_CREATE_QUERY, {
                       variables: {
                         input: {
                           email: email,
@@ -1488,8 +1485,8 @@ const FALLBACK_HEADER_MENU = {
   ],
 };
 
-const CUSTOMER_CREATE_QUERY = gql`
-  mutation customerCreate($input: CustomerCreateInput!) {
+const CUSTOMER_CREATE_QUERY = `#graphql
+    mutation customerCreate($input: CustomerCreateInput!) {
     customerCreate(input: $input) {
       customer {
         email
