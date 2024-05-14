@@ -49,7 +49,11 @@ export function Header({header, isLoggedIn, cart, storefront}) {
       {!isMobile && (
         <header className="header">
           <img className="logo" src={logo} alt="nd logo" />
-          <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
+          <HeaderCtas
+            storefront={storefront}
+            isLoggedIn={isLoggedIn}
+            cart={cart}
+          />
         </header>
       )}
       {isMobile && (
@@ -181,18 +185,25 @@ export function Header({header, isLoggedIn, cart, storefront}) {
                       </div>
                       <form
                         className="newsletter-input-container"
-                        onSubmit={async () => {
-                          const {data} = await storefront.mutate(
-                            CUSTOMER_CREATE_QUERY,
-                            {
-                              variables: {
-                                input: {
-                                  email: email,
-                                  acceptsMarketing: true,
+                        onSubmit={async (e) => {
+                          e.preventDefault(); // Prevent default form submission
+                          console.log(storefront); // Log the storefront object (optional)
+                          try {
+                            const {data} = await storefront.mutate(
+                              CUSTOMER_CREATE_QUERY,
+                              {
+                                variables: {
+                                  input: {
+                                    email: email,
+                                    acceptsMarketing: true,
+                                  },
                                 },
                               },
-                            },
-                          );
+                            );
+                            console.log('Customer created:', data);
+                          } catch (error) {
+                            console.error('Error creating customer:', error);
+                          }
                         }}
                       >
                         <input
@@ -409,18 +420,25 @@ function HeaderCtas({isLoggedIn, cart, storefront}) {
                 </div>
                 <form
                   className="newsletter-input-container"
-                  onSubmit={async () => {
-                    const {data} = await storefront.mutate(
-                      CUSTOMER_CREATE_QUERY,
-                      {
-                        variables: {
-                          input: {
-                            email: email,
-                            acceptsMarketing: true,
+                  onSubmit={async (e) => {
+                    e.preventDefault(); // Prevent default form submission
+                    console.log(storefront); // Log the storefront object (optional)
+                    try {
+                      const {data} = await storefront.query(
+                        CUSTOMER_CREATE_QUERY,
+                        {
+                          variables: {
+                            input: {
+                              email: email,
+                              acceptsMarketing: true,
+                            },
                           },
                         },
-                      },
-                    );
+                      );
+                      console.log('Customer created:', data);
+                    } catch (error) {
+                      console.error('Error creating customer:', error);
+                    }
                   }}
                 >
                   <input
