@@ -320,7 +320,7 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
 /**
  * @param {Pick<HeaderProps, 'isLoggedIn' | 'cart'>}
  */
-function HeaderCtas({isLoggedIn, cart}) {
+function HeaderCtas({isLoggedIn, cart, storefront}) {
   const loc = useLocation();
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [email, setEmail] = useState('');
