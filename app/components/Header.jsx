@@ -1,4 +1,11 @@
-import {Await, NavLink, useLocation} from '@remix-run/react';
+import {
+  Await,
+  NavLink,
+  useLocation,
+  Form,
+  useFetcher,
+  useActionData,
+} from '@remix-run/react';
 import {Info} from 'node_modules/property-information/lib/util/info';
 import {Suspense, useState, useEffect} from 'react';
 import {useRootLoaderData} from '~/root';
@@ -15,12 +22,14 @@ import carti from '../assets/mobile-cart.png';
  * @param {HeaderProps}
  */
 
-export function Header({header, isLoggedIn, cart, storefront}) {
+export function Header({header, isLoggedIn, cart}) {
   const {shop, menu} = header;
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [email, setEmail] = useState('');
+  const fetcher = useFetcher();
+  console.log(fetcher.data);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -49,11 +58,7 @@ export function Header({header, isLoggedIn, cart, storefront}) {
       {!isMobile && (
         <header className="header">
           <img className="logo" src={logo} alt="nd logo" />
-          <HeaderCtas
-            storefront={storefront}
-            isLoggedIn={isLoggedIn}
-            cart={cart}
-          />
+          <HeaderCtas isLoggedIn={isLoggedIn} cart={cart} />
         </header>
       )}
       {isMobile && (
@@ -183,38 +188,22 @@ export function Header({header, isLoggedIn, cart, storefront}) {
                           Back
                         </button>
                       </div>
-                      <form
+                      <fetcher.Form
+                        method="POST"
+                        action="/newsletter"
                         className="newsletter-input-container"
-                        onSubmit={async (e) => {
-                          e.preventDefault(); // Prevent default form submission
-                          console.log(storefront); // Log the storefront object (optional)
-                          try {
-                            const {data} = await storefront.mutate(
-                              CUSTOMER_CREATE_QUERY,
-                              {
-                                variables: {
-                                  input: {
-                                    email: email,
-                                    acceptsMarketing: true,
-                                  },
-                                },
-                              },
-                            );
-                            console.log('Customer created:', data);
-                          } catch (error) {
-                            console.error('Error creating customer:', error);
-                          }
-                        }}
+                        navigate="false"
                       >
                         <input
-                          placeholder="Email"
-                          style={{
-                            fontSize: '0.6875rem',
-                            fontFamily: 'nolita-font',
-                          }}
+                          placeholder="Email Address"
                           name="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
+                          style={
+                            fetcher.data?.customer?.email === email
+                              ? {outline: '1px solid green'}
+                              : null
+                          }
                         ></input>
                         <button
                           type="submit"
@@ -222,7 +211,7 @@ export function Header({header, isLoggedIn, cart, storefront}) {
                         >
                           Submit
                         </button>
-                      </form>
+                      </fetcher.Form>
                     </div>
                   )}
                   {activeDropdown === 'information' && (
@@ -331,10 +320,12 @@ export function HeaderMenu({menu, primaryDomainUrl, viewport}) {
 /**
  * @param {Pick<HeaderProps, 'isLoggedIn' | 'cart'>}
  */
-function HeaderCtas({isLoggedIn, cart, storefront}) {
+function HeaderCtas({isLoggedIn, cart}) {
   const loc = useLocation();
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [email, setEmail] = useState('');
+  const fetcher = useFetcher();
+  console.log(fetcher.data);
 
   const handleMouseEnter = (section) => {
     setActiveDropdown(section);
@@ -418,37 +409,25 @@ function HeaderCtas({isLoggedIn, cart, storefront}) {
                 >
                   <li>NEWSLETTER</li>
                 </div>
-                <form
+                <fetcher.Form
+                  method="POST"
+                  action="/newsletter"
                   className="newsletter-input-container"
-                  onSubmit={async (e) => {
-                    e.preventDefault(); // Prevent default form submission
-                    console.log(storefront); // Log the storefront object (optional)
-                    try {
-                      const {data} = await storefront.query(
-                        CUSTOMER_CREATE_QUERY,
-                        {
-                          variables: {
-                            input: {
-                              email: email,
-                              acceptsMarketing: true,
-                            },
-                          },
-                        },
-                      );
-                      console.log('Customer created:', data);
-                    } catch (error) {
-                      console.error('Error creating customer:', error);
-                    }
-                  }}
+                  navigate="false"
                 >
                   <input
                     placeholder="Email Address"
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    style={
+                      fetcher.data?.customer?.email === email
+                        ? {outline: '1px solid green'}
+                        : null
+                    }
                   ></input>
                   <button type="submit">Submit</button>
-                </form>
+                </fetcher.Form>
               </div>
             )}
             {activeDropdown === 'information' && <InformationTab />}
