@@ -7,7 +7,7 @@ import {
   useActionData,
 } from '@remix-run/react';
 import {Info} from 'node_modules/property-information/lib/util/info';
-import {Suspense, useState, useEffect} from 'react';
+import {Suspense, useState, useEffect, useRef} from 'react';
 import {useRootLoaderData} from '~/root';
 import Meme_Sequence from '../../public/Meme_Sequence.mp4';
 import image from '../../public/image.jpg';
@@ -29,7 +29,7 @@ export function Header({header, isLoggedIn, cart}) {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [email, setEmail] = useState('');
   const fetcher = useFetcher();
-  console.log(fetcher.data);
+  const submitBtn = useRef();
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -52,6 +52,15 @@ export function Header({header, isLoggedIn, cart}) {
       .addEventListener('change', (e) => setIsMobile(e.matches));
     if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
   }, []);
+
+  useEffect(() => {
+    if (fetcher.data?.customer?.email) {
+      submitBtn.current.innerText = 'Thank You';
+      setTimeout(() => {
+        submitBtn.current.innerText = 'Submit';
+      }, 1500);
+    }
+  }, [fetcher.data]);
 
   return (
     <>
@@ -199,19 +208,29 @@ export function Header({header, isLoggedIn, cart}) {
                           name="email"
                           value={email}
                           onChange={(e) => setEmail(e.target.value)}
-                          style={
-                            fetcher.data?.customer?.email === email
-                              ? {outline: '1px solid green'}
-                              : null
-                          }
                         ></input>
                         <button
                           type="submit"
                           className="mobile-newsletter-submit"
+                          ref={submitBtn}
                         >
                           Submit
                         </button>
                       </fetcher.Form>
+                      {fetcher.data?.error ? (
+                        <p style={{marginTop: '1rem', color: 'red'}}>
+                          {!fetcher.data?.error?.message
+                            ? fetcher.data?.error?.includes(
+                                'invalid value for email (Expected value to not be null)',
+                              )
+                              ? 'Please enter email before submitting'
+                              : fetcher.data.error
+                                  .split(']')[1]
+                                  .split('-')[0]
+                                  .join(' ')
+                            : fetcher.data.error.message}
+                        </p>
+                      ) : null}
                     </div>
                   )}
                   {activeDropdown === 'information' && (
@@ -325,7 +344,7 @@ function HeaderCtas({isLoggedIn, cart}) {
   const [activeDropdown, setActiveDropdown] = useState(null);
   const [email, setEmail] = useState('');
   const fetcher = useFetcher();
-  console.log(fetcher.data);
+  const submitBtn = useRef();
 
   const handleMouseEnter = (section) => {
     setActiveDropdown(section);
@@ -339,6 +358,14 @@ function HeaderCtas({isLoggedIn, cart}) {
     if (loc.hash.includes('#bag')) handleMouseEnter('bag');
   }, [loc.hash]);
 
+  useEffect(() => {
+    if (fetcher.data?.customer?.email) {
+      submitBtn.current.innerText = 'Thank You';
+      setTimeout(() => {
+        submitBtn.current.innerText = 'Submit';
+      }, 1500);
+    }
+  }, [fetcher.data]);
   return (
     <div className="header-ctas-container">
       <div className="header-ctas">
@@ -420,14 +447,25 @@ function HeaderCtas({isLoggedIn, cart}) {
                     name="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    style={
-                      fetcher.data?.customer?.email === email
-                        ? {outline: '1px solid green'}
-                        : null
-                    }
                   ></input>
-                  <button type="submit">Submit</button>
+                  <button type="submit" ref={submitBtn}>
+                    Submit
+                  </button>
                 </fetcher.Form>
+                {fetcher.data?.error ? (
+                  <p style={{marginTop: '1rem', color: 'red'}}>
+                    {!fetcher.data?.error?.message
+                      ? fetcher.data?.error?.includes(
+                          'invalid value for email (Expected value to not be null)',
+                        )
+                        ? 'Please enter email before submitting'
+                        : fetcher.data.error
+                            .split(']')[1]
+                            .split('-')[0]
+                            .join(' ')
+                      : fetcher.data.error.message}
+                  </p>
+                ) : null}
               </div>
             )}
             {activeDropdown === 'information' && <InformationTab />}
