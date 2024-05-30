@@ -130,3 +130,8 @@ code {
   font-family: monospace;
   padding: 0.25rem;
 }
+
+span {
+  font-family: 'nolita-font';
+  font-size: 0.6875rem;
+}
