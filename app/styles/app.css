@@ -152,7 +152,7 @@ li {
   z-index: 1;
   justify-content: space-between;
   /* width: 96vw; */
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 .logo {
   width: 8%;
@@ -203,7 +203,7 @@ li {
 .header-section-hold {
   background-color: white;
   /* padding: 1rem; */
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 .dropdown-container {
   position: absolute;
@@ -229,7 +229,7 @@ li {
   list-style: none;
 }
 .dropdown-content {
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   margin-top: 0.5rem;
   background-color: white;
   border: 1px solid #ddd;
@@ -263,20 +263,20 @@ li {
   overflow: auto;
   width: auto;
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 .info-main > li {
   margin-top: 0.5rem;
 }
 .info-main > p {
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 .dropdown-content > p {
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 .dropdown-info > p {
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   cursor: pointer;
 }
 .site-credit {
@@ -326,7 +326,7 @@ li {
   font-family: 'nolita-font';
   margin: 0;
   padding: 0;
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 
 .newsletter-input-container > button {
@@ -338,7 +338,7 @@ li {
   padding: 0;
   width: fit-content;
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 
 /*
@@ -397,7 +397,7 @@ body::-webkit-scrollbar {
   padding: 0.75rem 0;
   flex-direction: column;
   font-family: 'nolita-font';
-  font-size: 0.6875rem; !important;
+  font-size: 0.6875rem !important;
 }
 
 .cart-line img {
@@ -419,7 +419,7 @@ body::-webkit-scrollbar {
 }
 .cart-title-price > p {
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 .cart-size-quant {
   display: flex;
@@ -428,7 +428,7 @@ body::-webkit-scrollbar {
 .cart-size-quant > li {
   margin-bottom: 0% !important;
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 .cart-button-quant {
   background-color: transparent;
@@ -450,7 +450,7 @@ body::-webkit-scrollbar {
   text-decoration: underline;
   /* margin-left: -8%; */
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
 }
 
 .cart-summary-aside {
@@ -490,7 +490,7 @@ body::-webkit-scrollbar {
 }
 .checkout-text {
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   width: 50%;
 }
 
@@ -682,9 +682,6 @@ body::-webkit-scrollbar {
   cursor: pointer;
   width: 3%;
 }
-.product-container:hover {
-  /* outline: 1px solid grey; */
-}
 
 .product-image-container {
   display: flex;
@@ -724,7 +721,7 @@ body::-webkit-scrollbar {
   width: 90%;
   position: absolute;
   bottom: 2.5%;
-  font-size: 0.6875rem; !important;
+  font-size: 0.6875rem !important;
 }
 .product-interaction-container-mobile {
   display: flex;
@@ -738,7 +735,7 @@ body::-webkit-scrollbar {
   gap: 0.5rem;
 }
 .product-interaction-container > p {
-  font-size: 0.6875rem; !important;
+  font-size: 0.6875rem !important;
 }
 .product-details {
   width: 49.5%;
@@ -776,7 +773,7 @@ body::-webkit-scrollbar {
   list-style: inside;
 }
 .font-size-details {
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   padding-top: 3%;
 }
 .font-size-details-mobile {
@@ -802,7 +799,7 @@ body::-webkit-scrollbar {
 .product-cart-sizing,
 .product-cart-sizing-mobile > p,
 button {
-  font-size: 0.6875rem; !important;
+  font-size: 0.6875rem !important;
 }
 .product-cart-sizing-mobile > p,
 .product-cart-container-mobile button {
@@ -814,7 +811,7 @@ button {
   color: grey;
   border: none;
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   display: flex;
   text-align: left;
   cursor: pointer;
@@ -825,7 +822,7 @@ button {
   color: white;
   border: none;
   font-family: 'nolita-font';
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   display: flex;
   text-align: left;
   cursor: pointer;
@@ -837,7 +834,7 @@ button {
   background-color: black;
   color: #fff !important;
   font-family: nolita-font !important;
-  font-size: 0.6875rem; !important;
+  font-size: 0.6875rem !important;
   border: 1px solid white;
   display: flex !important;
   text-align: left !important;
@@ -862,7 +859,7 @@ button {
   height: 75px;
 }
 .product-cart-soldout > p {
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   padding-top: 4%;
   padding-left: 4%;
 }
@@ -1122,7 +1119,7 @@ button {
 }
 
 .dropdown-content-newsletter {
-  font-size: 0.6875rem;;
+  font-size: 0.6875rem;
   margin-top: 0.5rem;
   background-color: white;
   /* border: 1px solid #ddd; */
