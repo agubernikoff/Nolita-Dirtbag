@@ -767,9 +767,11 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
+  z-index: 3;
+  position: relative;
 }
 .product-details-container-mobile {
-  margin: 1.5% 3%;
+  margin: 1.5%;
 }
 .product-details-container > div > div > p {
   margin: 0;
@@ -781,6 +783,7 @@ body::-webkit-scrollbar {
 .font-size-details {
   font-size: 0.6875rem;
   padding-top: 3%;
+  cursor: pointer;
 }
 .font-size-details-mobile {
   font-size: 0.6875rem;

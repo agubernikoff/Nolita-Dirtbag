@@ -296,7 +296,12 @@ function Product({product, isMobile}) {
                       flexDirection: 'row',
                       justifyContent: 'space-between',
                     }
-                  : null
+                  : {
+                      display: 'flex',
+                      flexDirection: 'column',
+                      justifyContent: 'space-between',
+                      minHeight: '60px',
+                    }
               }
             >
               <div>
@@ -316,19 +321,17 @@ function Product({product, isMobile}) {
                 </p>
               )}
             </div>
-            <div>
-              {expandDetails ? (
-                <>
-                  <div
-                    style={{marginTop: '.75rem'}}
-                    dangerouslySetInnerHTML={{
-                      __html: product.node.descriptionHtml,
-                    }}
-                  ></div>
-                  <p style={{fontSize: '.65rem'}}>Close Details</p>
-                </>
-              ) : null}
-            </div>
+            {expandDetails ? (
+              <>
+                <div
+                  style={{marginTop: '.75rem'}}
+                  dangerouslySetInnerHTML={{
+                    __html: product.node.descriptionHtml,
+                  }}
+                ></div>
+                <p style={{fontSize: '.65rem'}}>Close Details</p>
+              </>
+            ) : null}
           </div>
         </motion.div>
         {product.node.availableForSale ? (
