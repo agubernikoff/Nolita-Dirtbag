@@ -728,6 +728,7 @@ body::-webkit-scrollbar {
   position: absolute;
   bottom: 2.5%;
   font-size: 0.6875rem !important;
+  z-index: 3;
 }
 .product-interaction-container-mobile {
   display: flex;
@@ -767,7 +768,6 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
-  z-index: 3;
   position: relative;
 }
 .product-details-container-mobile {
@@ -880,6 +880,7 @@ button {
   flex-direction: row;
   justify-content: space-between;
   margin: auto;
+  margin-top: 0.5rem;
 }
 .font-size {
   font-size: 0.6875rem !important;
@@ -889,8 +890,8 @@ button {
   background-color: white;
   color: black;
   border: 1px solid black;
-  height: 32px;
-  width: 32px;
+  height: 34px;
+  width: 34px;
   text-align: center;
   font-family: 'nolita-font';
   padding: 0;
