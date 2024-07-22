@@ -572,7 +572,6 @@ function Information({setToDisplay, setMenuOpen, toggleDropdown}) {
         className={
           isMobile ? 'info-subsection-head-mobile' : 'info-subsection-head'
         }
-        style={{marginBottom: '-1%'}}
       >
         <li>INFORMATION</li>
         {isMobile ? (
