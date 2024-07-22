@@ -187,7 +187,7 @@ function Product({product, isMobile}) {
 
     if (Math.abs(dividend - rounded) < 0.001) setImageIndex(rounded);
   }
-
+  console.log(product.node.images.edges);
   const mappedIndicators = product.node.images.edges.map((e, i) => (
     <div
       key={e.node.id}
@@ -233,7 +233,7 @@ function Product({product, isMobile}) {
               cycleImages(-1);
             }}
           >
-            {isHovered ? (
+            {isHovered && product.node.images.edges.length > 1 ? (
               <img className="left-arrow-product" src={left}></img>
             ) : null}{' '}
           </div>
@@ -243,7 +243,7 @@ function Product({product, isMobile}) {
               cycleImages(1);
             }}
           >
-            {isHovered ? (
+            {isHovered && product.node.images.edges.length > 1 ? (
               <img className="right-arrow-product" src={right}></img>
             ) : null}{' '}
           </div>

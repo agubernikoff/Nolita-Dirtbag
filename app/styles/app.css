@@ -658,6 +658,7 @@ body::-webkit-scrollbar {
   align-items: center;
   cursor: pointer;
   user-select: none;
+  z-index: 2;
 }
 .right-image-button-container {
   position: absolute;
@@ -670,6 +671,7 @@ body::-webkit-scrollbar {
   justify-content: flex-end;
   cursor: pointer;
   user-select: none;
+  z-index: 2;
 }
 .right-arrow-product {
   margin-right: 10%;
