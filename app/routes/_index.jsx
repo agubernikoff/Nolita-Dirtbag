@@ -193,8 +193,8 @@ function Product({product, isMobile}) {
       key={e.node.id}
       style={{
         background: i === imageIndex ? 'white' : 'grey',
-        height: '8px',
-        width: '8px',
+        height: '6px',
+        width: '6px',
       }}
     ></div>
   ));
