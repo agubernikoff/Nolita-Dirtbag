@@ -300,7 +300,7 @@ function Product({product, isMobile}) {
                       display: 'flex',
                       flexDirection: 'column',
                       justifyContent: 'space-between',
-                      minHeight: '60px',
+                      minHeight: !expandDetails ? '60px' : null,
                     }
               }
             >
@@ -311,7 +311,19 @@ function Product({product, isMobile}) {
                   className="font-size"
                 />
               </div>
-              {expandDetails ? null : (
+              {expandDetails ? (
+                !isMobile ? null : (
+                  <p
+                    className={
+                      isMobile
+                        ? 'font-size-details-mobile'
+                        : 'font-size-details'
+                    }
+                  >
+                    Close Details
+                  </p>
+                )
+              ) : (
                 <p
                   className={
                     isMobile ? 'font-size-details-mobile' : 'font-size-details'
@@ -329,7 +341,9 @@ function Product({product, isMobile}) {
                     __html: product.node.descriptionHtml,
                   }}
                 ></div>
-                <p style={{fontSize: '.65rem'}}>Close Details</p>
+                {isMobile ? null : (
+                  <p style={{fontSize: '.65rem'}}>Close Details</p>
+                )}
               </>
             ) : null}
           </div>

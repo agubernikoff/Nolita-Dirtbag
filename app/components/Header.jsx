@@ -105,13 +105,16 @@ export function Header({header, isLoggedIn, cart}) {
                 <div
                   className="category"
                   onClick={() => {
-                    window.location.href =
-                      'https://www.instagram.com/nolitadirtbag/';
+                    window.open(
+                      'https://www.instagram.com/nolitadirtbag/',
+                      '_blank',
+                    );
                     setMenuOpen(false);
                   }}
                 >
                   <p>INSTAGRAM</p>
                 </div>
+
                 <div
                   className="category"
                   onClick={() => {
@@ -416,16 +419,26 @@ function HeaderCtas({isLoggedIn, cart}) {
                 >
                   <li>INSTAGRAM</li>
                 </div>
-                <video
-                  width="auto"
-                  height="auto"
-                  style={{width: '100%'}}
-                  autoPlay
-                  loop
+                <div
+                  style={{cursor: 'pointer'}}
+                  onClick={() =>
+                    window.open(
+                      'https://www.instagram.com/nolitadirtbag/',
+                      '_blank',
+                    )
+                  }
                 >
-                  <source src={Meme_Sequence} type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
+                  <video
+                    width="auto"
+                    height="auto"
+                    style={{width: '100%'}}
+                    autoPlay
+                    loop
+                  >
+                    <source src={Meme_Sequence} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
               </div>
             )}
             {activeDropdown === 'newsletter' && (

@@ -773,6 +773,10 @@ body::-webkit-scrollbar {
 .product-details-container-mobile {
   margin: 1.5%;
 }
+.product-details-container-mobile > div > p,
+.product-details-container > div > p {
+  line-height: 0.75rem;
+}
 .product-details-container > div > div > p {
   margin: 0;
 }
