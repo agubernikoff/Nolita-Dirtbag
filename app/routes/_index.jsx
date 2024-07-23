@@ -184,8 +184,8 @@ function Product({product, isMobile}) {
     const widthOfAnImage = scrollWidth / product.node.images.edges.length;
     const dividend = scrollLeft / widthOfAnImage;
     const rounded = parseFloat((scrollLeft / widthOfAnImage).toFixed(0));
-
-    if (Math.abs(dividend - rounded) < 0.001) setImageIndex(rounded);
+    console.log(Math.abs(dividend - rounded));
+    if (Math.abs(dividend - rounded) < 0.003) setImageIndex(rounded);
   }
   console.log(product.node.images.edges);
   const mappedIndicators = product.node.images.edges.map((e, i) => (
@@ -193,8 +193,8 @@ function Product({product, isMobile}) {
       key={e.node.id}
       style={{
         background: i === imageIndex ? 'white' : 'grey',
-        height: '10px',
-        width: '10px',
+        height: '4px',
+        width: '4px',
       }}
     ></div>
   ));
@@ -263,7 +263,7 @@ function Product({product, isMobile}) {
             : 'product-interaction-container'
         }
       >
-        {isMobile ? (
+        {isMobile && mappedIndicators.length > 1 ? (
           <div
             style={{
               display: 'flex',
