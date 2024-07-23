@@ -193,8 +193,8 @@ function Product({product, isMobile}) {
       key={e.node.id}
       style={{
         background: i === imageIndex ? 'white' : 'grey',
-        height: '4px',
-        width: '4px',
+        height: '8px',
+        width: '8px',
       }}
     ></div>
   ));
@@ -270,6 +270,7 @@ function Product({product, isMobile}) {
               flexDirection: 'row',
               width: 'fit-content',
               gap: '.2rem',
+              marginBottom: '.5rem',
             }}
           >
             {mappedIndicators}
