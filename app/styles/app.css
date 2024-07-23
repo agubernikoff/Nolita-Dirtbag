@@ -737,7 +737,7 @@ body::-webkit-scrollbar {
   align-items: flex-end;
   width: 95%;
   position: absolute;
-  bottom: 5%;
+  bottom: 2%;
   font-size: 0.6875rem !important;
   gap: 0.5rem;
 }
