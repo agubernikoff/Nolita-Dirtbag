@@ -459,6 +459,7 @@ body::-webkit-scrollbar {
 }
 .cart-line-mobile .cart-remove-button {
   margin-top: 0.75rem;
+  font-weight: normal;
 }
 .cart-remove-button {
   background-color: transparent;
