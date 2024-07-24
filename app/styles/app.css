@@ -686,17 +686,15 @@ body::-webkit-scrollbar {
 
 .product-image-container {
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
   width: 100%;
-  height: 90vh;
+  height: 75vh;
   position: relative;
 }
 
 .product-image-container > img {
-  width: 90%;
-  position: absolute;
-  top: 0;
+  width: 80%;
 }
 .mobile-image-container > img {
   /* width: 50% !important; */
