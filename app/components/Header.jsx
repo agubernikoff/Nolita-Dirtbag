@@ -36,6 +36,11 @@ export function Header({header, isLoggedIn, cart}) {
     setActiveDropdown(null);
   };
 
+  function closeMenu() {
+    setMenuOpen(false);
+    setActiveDropdown(null);
+  }
+
   const toggleCart = () => {
     setMenuOpen(false);
     if (activeDropdown !== 'bag') setActiveDropdown('bag');
@@ -81,6 +86,7 @@ export function Header({header, isLoggedIn, cart}) {
                 zIndex: 1,
               }}
               className="dimmer"
+              onClick={closeMenu}
             ></div>
           ) : null}
           <div className="header-mobile">
@@ -94,6 +100,7 @@ export function Header({header, isLoggedIn, cart}) {
               className="brand-mobile"
               src={logoblack}
               alt="really cool logo"
+              onClick={closeMenu}
             />
             <div className="cart-mobile" onClick={toggleCart}>
               <img src={carti} alt="cart icon" />
