@@ -230,7 +230,7 @@ li {
 }
 .dropdown-content {
   font-size: 0.6875rem;
-  margin-top: 0.5rem;
+  margin-top: 5px;
   background-color: white;
   border: 1px solid #ddd;
   z-index: 1;
@@ -1147,7 +1147,7 @@ button {
 
 .dropdown-content-newsletter {
   font-size: 0.6875rem;
-  margin-top: 0.5rem;
+  margin-top: 5px;
   background-color: white;
   /* border: 1px solid #ddd; */
   z-index: 1;
@@ -1174,7 +1174,7 @@ button {
 .info-subsection-head-mobile {
   display: flex;
   justify-content: space-between;
-  margin-top: 2%;
+  /* margin-top: 2%; */
   margin-bottom: 2%;
   font-size: 0.6875rem;
   padding-top: 1rem;
