@@ -915,15 +915,17 @@ button {
   cursor: pointer;
   font-size: 0.5rem !important;
 }
-.product-cart-sizing-mobile .product-size-button {
+.product-cart-sizing-mobile .product-size-button-mobile {
   height: 28px;
   width: 28px;
 }
-.size-button-selected {
+.size-button-selected,
+.size-button-selected-mobile {
   background-color: black;
   color: white;
 }
-.size-button-soldout {
+.size-button-soldout,
+.size-button-soldout-mobile {
   border-color: #dadada;
   color: #dadada;
 }
