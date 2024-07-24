@@ -888,7 +888,7 @@ button {
 }
 .font-size {
   font-size: 0.6875rem !important;
-  margin-bottom: 2%;
+  /* margin-bottom: 2%; */
 }
 .product-size-button {
   background-color: white;
@@ -901,6 +901,19 @@ button {
   padding: 0;
   margin: 0;
   cursor: pointer;
+}
+.product-size-button-mobile {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  height: 34px;
+  width: 34px;
+  text-align: center;
+  font-family: 'nolita-font';
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  font-size: 0.5rem !important;
 }
 .product-cart-sizing-mobile .product-size-button {
   height: 28px;

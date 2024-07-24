@@ -138,14 +138,24 @@ function Product({product, isMobile}) {
 
   const mappedSizeButtons = product.node.variants
     ? product.node.variants.nodes.map((sizeOption) => {
+        const baseClass = isMobile
+          ? 'product-size-button-mobile'
+          : 'product-size-button';
+        const selectedClass = isMobile
+          ? 'size-button-selected-mobile'
+          : 'size-button-selected';
+        const soldOutClass = isMobile
+          ? 'size-button-soldout-mobile'
+          : 'size-button-soldout';
+
         return sizeOption.availableForSale ? (
           <button
             key={sizeOption.title}
             onClick={() => handleSizeButtonClick(sizeOption.id)}
             className={
               size === sizeOption.id
-                ? 'product-size-button size-button-selected'
-                : 'product-size-button'
+                ? `${baseClass} ${selectedClass}`
+                : baseClass
             }
           >
             {sizeOption.title === 'One Size' ? 'OS' : sizeOption.title}
@@ -154,7 +164,7 @@ function Product({product, isMobile}) {
           <button
             key={sizeOption.title}
             disabled
-            className={'product-size-button size-button-soldout'}
+            className={`${baseClass} ${soldOutClass}`}
           >
             {sizeOption.title}
           </button>
