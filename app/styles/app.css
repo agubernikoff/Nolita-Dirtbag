@@ -771,7 +771,7 @@ body::-webkit-scrollbar {
   position: relative;
 }
 .product-details-container-mobile {
-  margin: 1.5%;
+  margin: 2%;
 }
 .product-details-container-mobile > div > p,
 .product-details-container > div > p {
