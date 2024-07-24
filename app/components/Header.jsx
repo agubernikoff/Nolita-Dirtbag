@@ -398,27 +398,31 @@ function HeaderCtas({isLoggedIn, cart}) {
   }, [fetcher.data]);
   return (
     <div className="header-ctas-container">
-      <div className="header-ctas">
+      <div className="header-ctas" style={{gap: 'normal', width: '333px'}}>
         {/* <HeaderMenuMobileToggle /> */}
-        <p
-          className="header-section-hold"
-          onMouseEnter={() => handleMouseEnter('instagram')}
+        <div className="header-ctas" style={{width: '75%'}}>
+          <p
+            className="header-section-hold"
+            onMouseEnter={() => handleMouseEnter('instagram')}
+          >
+            Instagram
+          </p>
+          <p
+            className="header-section-hold"
+            onMouseEnter={() => handleMouseEnter('newsletter')}
+          >
+            Newsletter
+          </p>
+          <p
+            className="header-section-hold"
+            onMouseEnter={() => handleMouseEnter('information')}
+          >
+            Information
+          </p>
+        </div>
+        <div
+          style={{width: '25%', display: 'flex', justifyContent: 'flex-end'}}
         >
-          Instagram
-        </p>
-        <p
-          className="header-section-hold"
-          onMouseEnter={() => handleMouseEnter('newsletter')}
-        >
-          Newsletter
-        </p>
-        <p
-          className="header-section-hold"
-          onMouseEnter={() => handleMouseEnter('information')}
-        >
-          Information
-        </p>
-        <div>
           <p
             className="header-section-hold"
             onMouseEnter={() => handleMouseEnter('bag')}
