@@ -90,15 +90,17 @@ export function MobileCartLineItem({layout, line}) {
   return (
     <li key={id} className="cart-line-mobile">
       {image && (
-        <Image
-          alt={title}
-          aspectRatio="1/1.05"
-          data={image}
-          height={300}
-          loading="lazy"
-          width={300}
-          crop="center"
-        />
+        <div style={{background: 'black', marginRight: '3%', width: '50%'}}>
+          <Image
+            alt={title}
+            aspectRatio="1/1.05"
+            data={image}
+            height={300}
+            loading="lazy"
+            width={300}
+            crop="center"
+          />
+        </div>
       )}
 
       <div style={{display: 'flex', gap: '.75rem', flexDirection: 'column'}}>

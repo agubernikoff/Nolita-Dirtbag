@@ -410,9 +410,9 @@ body::-webkit-scrollbar {
 
 .cart-line-mobile img {
   display: block;
-  margin-right: 3%;
-  width: 50%;
+  width: 100%;
   border-radius: 0;
+  object-fit: contain;
 }
 
 .cart-line img {
