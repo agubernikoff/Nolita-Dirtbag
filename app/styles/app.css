@@ -420,6 +420,7 @@ body::-webkit-scrollbar {
   display: block;
   margin: auto;
   width: 100%;
+  border-radius: 0;
 }
 
 .cart-summary-page {
