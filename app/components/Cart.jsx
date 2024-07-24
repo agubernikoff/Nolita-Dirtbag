@@ -52,15 +52,80 @@ function CartDetails({layout, cart}) {
  */
 function CartLines({lines, layout}) {
   if (!lines) return null;
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    window
+      .matchMedia('(max-width:700px)')
+      .addEventListener('change', (e) => setIsMobile(e.matches));
+    if (window.matchMedia('(max-width:700px)').matches) setIsMobile(true);
+  }, []);
 
   return (
     <div aria-labelledby="cart-lines">
       <ul>
-        {lines.nodes.map((line) => (
-          <CartLineItem key={line.id} line={line} layout={layout} />
-        ))}
+        {lines.nodes.map((line) => {
+          if (isMobile)
+            return (
+              <MobileCartLineItem key={line.id} line={line} layout={layout} />
+            );
+          else
+            return <CartLineItem key={line.id} line={line} layout={layout} />;
+        })}
       </ul>
     </div>
+  );
+}
+
+/**
+ * @param {{
+ *   layout: CartMainProps['layout'];
+ *   line: CartLine;
+ * }}
+ */
+export function MobileCartLineItem({layout, line}) {
+  const {id, merchandise} = line;
+  const {product, title, image, selectedOptions} = merchandise;
+  const lineItemUrl = useVariantUrl(product.handle, selectedOptions);
+
+  return (
+    <li key={id} className="cart-line-mobile">
+      {image && (
+        <Image
+          alt={title}
+          aspectRatio="1/1.05"
+          data={image}
+          height={300}
+          loading="lazy"
+          width={300}
+          crop="center"
+        />
+      )}
+
+      <div style={{display: 'flex', gap: '.75rem', flexDirection: 'column'}}>
+        <div className="cart-title-price-mobile">
+          <p>{product.title}</p>
+          <CartLinePrice line={line} as="span" />
+        </div>
+        <div className="cart-size-quant">
+          <ul>
+            {selectedOptions.map((option) => (
+              <li key={option.name} style={{marginBottom: '0%'}}>
+                <p
+                  style={{
+                    fontSize: '.65rem',
+                    fontFamily: 'nolita-font',
+                    wordSpacing: '3px',
+                  }}
+                >
+                  {option.name}: {option.value}
+                </p>
+              </li>
+            ))}
+          </ul>
+          <CartLineQuantity line={line} />
+        </div>
+      </div>
+    </li>
   );
 }
 

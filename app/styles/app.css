@@ -400,6 +400,20 @@ body::-webkit-scrollbar {
   font-size: 0.6875rem !important;
 }
 
+.cart-line-mobile {
+  display: flex;
+  padding: 0.75rem 0;
+  flex-direction: row;
+  font-family: 'nolita-font';
+  font-size: 0.6875rem !important;
+}
+
+.cart-line-mobile img {
+  display: block;
+  margin-right: 3%;
+  width: 50%;
+}
+
 .cart-line img {
   height: 100%;
   display: block;
@@ -417,7 +431,11 @@ body::-webkit-scrollbar {
   margin-top: 3%;
   margin-bottom: 3%;
 }
-.cart-title-price > p {
+.cart-title-price-mobile {
+  margin-bottom: 3%;
+}
+.cart-title-price > p,
+.cart-title-price-mobile > p {
   font-family: 'nolita-font';
   font-size: 0.6875rem;
 }
@@ -438,6 +456,9 @@ body::-webkit-scrollbar {
   font-size: inherit;
   color: black;
   cursor: pointer;
+}
+.cart-line-mobile .cart-remove-button {
+  margin-top: 0.75rem;
 }
 .cart-remove-button {
   background-color: transparent;
