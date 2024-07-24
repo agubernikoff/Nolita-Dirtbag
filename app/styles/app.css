@@ -722,10 +722,6 @@ body::-webkit-scrollbar {
 .product-image-container > img {
   width: 88%;
 }
-.mobile-image-container > img {
-  /* width: 50% !important; */
-  height: 95%;
-}
 
 /*
 * --------------------------------------------------
