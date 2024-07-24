@@ -412,6 +412,7 @@ body::-webkit-scrollbar {
   display: block;
   margin-right: 3%;
   width: 50%;
+  border-radius: 0;
 }
 
 .cart-line img {
