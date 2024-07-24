@@ -96,12 +96,32 @@ export function Header({header, isLoggedIn, cart}) {
               src={burger}
               alt="menu icon"
             />
+            <div
+              style={{
+                width: '1px',
+                background: '#eaeaea',
+                position: 'absolute',
+                left: '20%',
+                top: 0,
+                bottom: 0,
+              }}
+            ></div>
             <img
               className="brand-mobile"
               src={logoblack}
               alt="really cool logo"
               onClick={closeMenu}
             />
+            <div
+              style={{
+                width: '1px',
+                background: '#eaeaea',
+                position: 'absolute',
+                right: '20%',
+                top: 0,
+                bottom: 0,
+              }}
+            ></div>
             <div className="cart-mobile" onClick={toggleCart}>
               <img src={carti} alt="cart icon" />
               <CartToggle cart={cart} allCaps={false} justTheNumber={true} />
