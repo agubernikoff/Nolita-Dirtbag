@@ -610,6 +610,7 @@ body::-webkit-scrollbar {
   display: flex;
   align-content: flex-end;
   overflow: auto;
+  overflow-y: hidden;
 }
 
 .recommended-products-container {
@@ -617,6 +618,7 @@ body::-webkit-scrollbar {
   /* gap: 1.5rem; */
   overflow: scroll;
   width: fit-content;
+  overflow-y: hidden;
 }
 .recommended-products-container-mobile {
   flex-direction: column;
