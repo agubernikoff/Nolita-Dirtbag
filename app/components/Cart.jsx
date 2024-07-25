@@ -98,7 +98,6 @@ export function MobileCartLineItem({layout, line}) {
             height={300}
             loading="lazy"
             width={300}
-            // crop="center"
           />
         </div>
       )}
@@ -153,7 +152,6 @@ export function CartLineItem({layout, line}) {
             height={300}
             loading="lazy"
             width={300}
-            // crop="center"
           />
         </div>
       )}
