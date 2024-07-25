@@ -164,6 +164,7 @@ export function ErrorBoundary() {
                     color: 'white',
                     fontFamily: 'nolita-font',
                     margin: 'auto',
+                    textAlign: 'center',
                   }}
                 >
                   Ah shit. Our useless devs couldn't figure this one out. Please
