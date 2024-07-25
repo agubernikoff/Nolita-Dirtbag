@@ -158,7 +158,7 @@ export function ErrorBoundary() {
             <h1>Oops</h1>
             <h2>{errorStatus}</h2>
             {errorMessage && (
-              <fieldset style={{border: 'none', height: '65vh'}}>
+              <fieldset style={{border: 'none', height: '55vh'}}>
                 <pre
                   style={{
                     color: 'white',
