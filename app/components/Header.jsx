@@ -158,7 +158,7 @@ export function Header({header, isLoggedIn, cart}) {
                     setMenuOpen(false);
                   }}
                 >
-                  <p>INFORMATION</p>
+                  <p>CONTACT</p>
                 </div>
                 <div
                   className="category-last"
@@ -417,7 +417,7 @@ function HeaderCtas({isLoggedIn, cart}) {
             className="header-section-hold"
             onMouseEnter={() => handleMouseEnter('information')}
           >
-            Information
+            Contact
           </p>
         </div>
         <div
@@ -617,7 +617,18 @@ function Information({setToDisplay, setMenuOpen, toggleDropdown}) {
           isMobile ? 'info-subsection-head-mobile' : 'info-subsection-head'
         }
       >
-        <li>INFORMATION</li>
+        <div className={isMobile ? 'dropdown-info-mobile' : 'dropdown-info'}>
+          <li>SUPPORT</li>
+          <p onClick={(e) => setToDisplay(e.target.innerText)}>
+            Terms of Service
+          </p>
+          <p onClick={(e) => setToDisplay(e.target.innerText)}>
+            Privacy Policy
+          </p>
+          <p onClick={(e) => setToDisplay(e.target.innerText)}>
+            Shipping and Returns
+          </p>
+        </div>
         {isMobile ? (
           <button
             className="info-sub-button"
@@ -631,7 +642,7 @@ function Information({setToDisplay, setMenuOpen, toggleDropdown}) {
         ) : null}
       </div>
       <div className={isMobile ? 'info-main-mobile' : 'info-main'}>
-        <img
+        {/* <img
           style={{width: '100%', borderRadius: '0', marginBottom: '2%'}}
           src={image}
           alt="sick painting"
@@ -641,19 +652,8 @@ function Information({setToDisplay, setMenuOpen, toggleDropdown}) {
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
           ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
           tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <li>SUPPORT</li>
-        <div className="dropdown-info">
-          <p onClick={(e) => setToDisplay(e.target.innerText)}>
-            Terms of Service
-          </p>
-          <p onClick={(e) => setToDisplay(e.target.innerText)}>
-            Privacy Policy
-          </p>
-          <p onClick={(e) => setToDisplay(e.target.innerText)}>
-            Shipping and Returns
-          </p>
-        </div>
+        </p> */}
+
         <li>CONTACT</li>
         <p>team@nolitadirtbag.com</p>
         <li>CREDITS</li>

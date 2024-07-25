@@ -239,14 +239,14 @@ li {
   padding-top: 0rem;
   padding-bottom: 1rem;
 }
-
 .dropdown-content > li {
   margin-top: 2%;
   margin-bottom: 2%;
 }
 .dropdown-content > li::before,
 .info-subsection-head > li::before,
-.info-main > li::before {
+.info-main > li::before,
+.dropdown-info > li::before {
   content: '\25a0';
   font-size: 2em;
   display: inline-block;
@@ -276,7 +276,8 @@ li {
 .dropdown-content > p {
   font-size: 0.6875rem;
 }
-.dropdown-info > p {
+.dropdown-info > p,
+.dropdown-info-mobile > p {
   font-size: 0.6875rem;
   cursor: pointer;
 }
@@ -1208,13 +1209,17 @@ button {
   margin-bottom: 2%;
   font-size: 0.6875rem;
   padding-top: 1rem;
+  align-items: flex-start;
 }
 .info-subsection-head-mobile > li::marker,
-.info-main-mobile > li::marker {
+.info-main-mobile > li::marker,
+.dropdown-info-mobile > li::marker,
+.dropdown-info > li::marker {
   font-size: 0;
 }
 .info-subsection-head-mobile > li::before,
-.info-main-mobile > li::before {
+.info-main-mobile > li::before,
+.dropdown-info-mobile > li::before {
   content: '\25a0';
   font-size: 0.75em;
   display: inline-block;
