@@ -6,12 +6,16 @@ import {motion, useAnimate} from 'framer-motion';
 import useMeasure from 'react-use-measure';
 import right from '../assets/right-ar.png';
 import left from '../assets/left-ar.png';
+import shareasset from '../assets/share-asset.jpg';
 
 /**
  * @type {MetaFunction}
  */
 export const meta = () => {
-  return [{title: 'Hydrogen | Home'}];
+  return [
+    {title: 'Nolita Dirtbag'},
+    {property: 'og:image', content: shareasset},
+  ];
 };
 
 /**
