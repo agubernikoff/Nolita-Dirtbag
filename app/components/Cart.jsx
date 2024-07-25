@@ -145,15 +145,17 @@ export function CartLineItem({layout, line}) {
   return (
     <li key={id} className="cart-line">
       {image && (
-        <Image
-          alt={title}
-          aspectRatio="1/1.05"
-          data={image}
-          height={300}
-          loading="lazy"
-          width={300}
-          crop="center"
-        />
+        <div style={{background: 'black', width: '100%'}}>
+          <Image
+            alt={title}
+            aspectRatio="1/1.05"
+            data={image}
+            height={300}
+            loading="lazy"
+            width={300}
+            crop="center"
+          />
+        </div>
       )}
 
       <div className="cart-title-price">
