@@ -385,6 +385,7 @@ function HeaderCtas({isLoggedIn, cart}) {
     window.location.hash = 'x';
   };
   useEffect(() => {
+    setActiveDropdown('bag');
     if (loc.hash.includes('#bag')) handleMouseEnter('bag');
   }, [loc.hash]);
 

@@ -417,10 +417,10 @@ body::-webkit-scrollbar {
 }
 
 .cart-line img {
-  height: 100%;
+  height: auto;
   display: block;
   margin: auto;
-  width: 100%;
+  width: 75%;
   border-radius: 0;
 }
 
@@ -484,7 +484,8 @@ body::-webkit-scrollbar {
   bottom: 0;
   padding-top: 0.75rem;
   position: absolute;
-  width: 92%;
+  right: 0.75rem;
+  left: 0.75rem;
 }
 .cart-summary-aside-mobile {
   background: white;
