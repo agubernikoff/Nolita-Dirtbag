@@ -254,7 +254,7 @@ export function Header({header, isLoggedIn, cart}) {
                         </button>
                       </fetcher.Form>
                       {fetcher.data?.error ? (
-                        <p style={{marginTop: '1rem', color: 'red'}}>
+                        <p style={{color: 'red', fontSize: '.6875rem'}}>
                           {!fetcher.data?.error?.message
                             ? fetcher.data?.error?.includes(
                                 'invalid value for email (Expected value to not be null)',
