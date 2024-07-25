@@ -892,10 +892,17 @@ button {
   color: white;
   height: 75px;
 }
-.product-cart-soldout > p {
+.product-cart-soldout-mobile {
+  width: 100%;
+  background-color: rgb(184, 184, 184);
+  color: white;
+  height: 40px;
+}
+.product-cart-soldout > p,
+.product-cart-soldout-mobile > p {
   font-size: 0.6875rem;
-  padding-top: 4%;
-  padding-left: 4%;
+  padding-top: 2%;
+  padding-left: 2%;
 }
 .product-cart-sizing-container {
   margin: 0.5rem;

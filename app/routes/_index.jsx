@@ -401,7 +401,11 @@ function Product({product, isMobile}) {
             />
           </div>
         ) : (
-          <div className="product-cart-soldout">
+          <div
+            className={
+              isMobile ? 'product-cart-soldout-mobile' : 'product-cart-soldout'
+            }
+          >
             <p>Sold Out</p>
           </div>
         )}
