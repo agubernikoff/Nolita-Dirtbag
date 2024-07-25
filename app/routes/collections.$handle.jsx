@@ -12,7 +12,7 @@ import {useVariantUrl} from '~/utils';
  * @type {MetaFunction<typeof loader>}
  */
 export const meta = ({data}) => {
-  return [{title: `Hydrogen | ${data?.collection.title ?? ''} Collection`}];
+  return [{title: 'Nolita Dirtbag'}];
 };
 
 /**
