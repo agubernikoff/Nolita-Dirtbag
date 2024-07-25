@@ -158,8 +158,28 @@ export function ErrorBoundary() {
             <h1>Oops</h1>
             <h2>{errorStatus}</h2>
             {errorMessage && (
-              <fieldset>
-                <pre>{errorMessage}</pre>
+              <fieldset style={{border: 'none', height: '65vh'}}>
+                <pre
+                  style={{
+                    color: 'white',
+                    fontFamily: 'nolita-font',
+                    margin: 'auto',
+                  }}
+                >
+                  Ah shit. Our useless devs couldn't figure this one out. Please
+                  go{' '}
+                  <a
+                    style={{
+                      color: 'white',
+                      fontFamily: 'nolita-font',
+                      textDecoration: 'underline',
+                    }}
+                    href="https://nolitadirtbag.com"
+                  >
+                    home
+                  </a>
+                  .
+                </pre>
               </fieldset>
             )}
           </div>
