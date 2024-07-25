@@ -211,7 +211,13 @@ export function Header({header, isLoggedIn, cart}) {
                     </div>
                   )}
                   {activeDropdown === 'newsletter' && (
-                    <div className="dropdown-content-newsletter">
+                    <div
+                      className={
+                        isMobile
+                          ? 'dropdown-content-newsletter-mobile'
+                          : 'dropdown-content-newsletter'
+                      }
+                    >
                       <div
                         className="info-subsection-head-mobile"
                         style={{marginBottom: '-1%'}}
